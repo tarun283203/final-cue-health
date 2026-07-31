@@ -1,0 +1,69 @@
+{{ 'custom-cuehealth.css' | asset_url | stylesheet_tag }}
+
+<div class="ch-trust-badges">
+  <div class="ch-trust-badges__inner">
+    {%- for block in section.blocks -%}
+      <div class="ch-trust-badge" {{ block.shopify_attributes }}>
+        <div class="ch-trust-badge__icon">
+          {%- render 'ch-icon', icon: block.settings.icon, size: 20 -%}
+        </div>
+        <span>{{ block.settings.label }}</span>
+      </div>
+      {%- unless forloop.last -%}
+        <div class="ch-trust-badges__divider" aria-hidden="true"></div>
+      {%- endunless -%}
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Trust Badges Row",
+  "tag": "section",
+  "class": "ch-trust-badges-section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Trust Badge",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "shield", "label": "Shield (FSSAI)" },
+            { "value": "flask", "label": "Flask (Lab Tested)" },
+            { "value": "leaf", "label": "Leaf (Natural)" },
+            { "value": "truck", "label": "Truck (Shipping)" },
+            { "value": "lock", "label": "Lock (Secure)" },
+            { "value": "return", "label": "Return (Refunds)" },
+            { "value": "check-circle", "label": "Checkmark" },
+            { "value": "heart", "label": "Heart (Wellness)" }
+          ],
+          "default": "shield"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Badge Label",
+          "default": "FSSAI Approved"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trust Badges Row",
+      "blocks": [
+        { "type": "badge", "settings": { "icon": "shield",      "label": "FSSAI Approved" } },
+        { "type": "badge", "settings": { "icon": "flask",       "label": "Lab Tested" } },
+        { "type": "badge", "settings": { "icon": "leaf",        "label": "No Fillers" } },
+        { "type": "badge", "settings": { "icon": "truck",       "label": "Free Shipping ₹499+" } },
+        { "type": "badge", "settings": { "icon": "return",      "label": "7-Day Returns" } },
+        { "type": "badge", "settings": { "icon": "lock",        "label": "Secure Payment" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

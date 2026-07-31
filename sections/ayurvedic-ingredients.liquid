@@ -1,0 +1,97 @@
+{{ 'custom-cuehealth.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .ch-ingredients-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+{%- endstyle -%}
+
+<section class="ch-ingredients ch-ingredients-{{ section.id }}">
+  <div class="ch-ingredients__inner">
+    <div class="ch-ingredients__header">
+      <p class="ch-ingredients__eyebrow">
+        {%- render 'ch-icon', icon: 'leaf', size: 14 -%}
+        {{ section.settings.eyebrow }}
+      </p>
+      <h2 class="ch-ingredients__heading">{{ section.settings.heading }}</h2>
+      <p class="ch-ingredients__subheading">{{ section.settings.subheading }}</p>
+    </div>
+
+    <div class="ch-ingredients__grid">
+      {%- for block in section.blocks -%}
+        <div class="ch-ingredient-card{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}" {{ block.shopify_attributes }}
+          {% if settings.animations_reveal_on_scroll %}style="--animation-order: {{ forloop.index }};"{% endif %}
+        >
+          {%- if block.settings.image != blank -%}
+            <img
+              class="ch-ingredient-card__img"
+              src="{{ block.settings.image | image_url: width: 200 }}"
+              alt="{{ block.settings.name }}"
+              width="100" height="100" loading="lazy"
+            >
+          {%- else -%}
+            <div class="ch-ingredient-card__icon-wrap ch-ingredient-card__icon-wrap--{{ forloop.index }}">
+              <i class="fa-solid {{ block.settings.fa_icon }}" aria-hidden="true"></i>
+            </div>
+          {%- endif -%}
+
+          <h3 class="ch-ingredient-card__name">{{ block.settings.name }}</h3>
+          <span class="ch-ingredient-card__sanskrit">{{ block.settings.sanskrit }}</span>
+          <p class="ch-ingredient-card__benefit">{{ block.settings.benefit }}</p>
+
+          {%- if block.settings.tags != blank -%}
+            <div class="ch-ingredient-card__tags">
+              {%- assign tag_list = block.settings.tags | split: ',' -%}
+              {%- for tag in tag_list -%}
+                <span class="ch-ingredient-card__tag">{{ tag | strip }}</span>
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Ayurvedic Ingredients",
+  "tag": "section",
+  "class": "ch-ingredients-section",
+  "settings": [
+    { "type": "text", "id": "eyebrow",    "label": "Eyebrow",    "default": "The Power of Nature" },
+    { "type": "text", "id": "heading",    "label": "Heading",    "default": "Key Ayurvedic Ingredients" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Time-tested herbs, scientifically validated for modern wellness" },
+    { "type": "range", "id": "padding_top",    "min": 20, "max": 120, "step": 4, "unit": "px", "label": "Padding Top",    "default": 80 },
+    { "type": "range", "id": "padding_bottom", "min": 20, "max": 120, "step": 4, "unit": "px", "label": "Padding Bottom", "default": 80 }
+  ],
+  "blocks": [
+    {
+      "type": "ingredient",
+      "name": "Ingredient",
+      "settings": [
+        { "type": "image_picker", "id": "image",    "label": "Ingredient Image (optional)" },
+        { "type": "text",         "id": "fa_icon",  "label": "Font Awesome Icon Class", "info": "e.g. fa-seedling, fa-brain, fa-mortar-pestle (fa-solid prefix added automatically)", "default": "fa-seedling" },
+        { "type": "text",         "id": "name",     "label": "Herb Name",               "default": "Ashwagandha" },
+        { "type": "text",         "id": "sanskrit", "label": "Sanskrit / Latin Name",   "default": "Withania somnifera" },
+        { "type": "textarea",     "id": "benefit",  "label": "Key Benefit",             "default": "Adaptogenic herb that reduces stress, boosts energy, and enhances strength and immunity." },
+        { "type": "text",         "id": "tags",     "label": "Tags (comma separated)",  "default": "Stress Relief, Energy, Immunity" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ayurvedic Ingredients",
+      "blocks": [
+        { "type": "ingredient", "settings": { "fa_icon": "fa-seedling",      "name": "Ashwagandha", "sanskrit": "Withania somnifera",      "benefit": "India's most powerful adaptogen — reduces cortisol, builds strength, and restores vitality naturally.",               "tags": "Stress Relief, Energy, Strength" } },
+        { "type": "ingredient", "settings": { "fa_icon": "fa-mortar-pestle", "name": "Turmeric",    "sanskrit": "Curcuma longa",           "benefit": "Golden spice with potent anti-inflammatory and antioxidant properties, supporting joint health and immunity.",         "tags": "Anti-inflammatory, Joints, Immunity" } },
+        { "type": "ingredient", "settings": { "fa_icon": "fa-brain",         "name": "Brahmi",      "sanskrit": "Bacopa monnieri",         "benefit": "Sacred brain tonic — enhances memory, focus, and cognitive function while calming the nervous system.",               "tags": "Brain Health, Memory, Focus" } },
+        { "type": "ingredient", "settings": { "fa_icon": "fa-mountain",      "name": "Shilajit",    "sanskrit": "Asphaltum punjabianum",   "benefit": "Himalayan mineral resin rich in fulvic acid — boosts energy, stamina, and vitality.",                                "tags": "Energy, Vitality, Men's Health" } },
+        { "type": "ingredient", "settings": { "fa_icon": "fa-spa",           "name": "Shatavari",   "sanskrit": "Asparagus racemosus",     "benefit": "Queen of Ayurvedic herbs for women — balances hormones, supports fertility, and enhances vitality.",                  "tags": "Women's Health, Hormones, Fertility" } },
+        { "type": "ingredient", "settings": { "fa_icon": "fa-apple-whole",   "name": "Triphala",    "sanskrit": "Three Sacred Fruits",     "benefit": "Ancient tridoshic formula of Amalaki, Bibhitaki & Haritaki for complete digestive health and detox.",                "tags": "Gut Health, Digestion, Detox" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

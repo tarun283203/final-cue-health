@@ -1,0 +1,243 @@
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+
+{%- unless section.settings.quick_add == 'none' -%}
+  {{ 'quick-add.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+{%- endunless -%}
+
+{%- if section.settings.quick_add == 'standard' -%}
+  <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+{%- liquid
+  assign recommendation_collection = section.settings.collection
+  assign rendered_products = 0
+  assign cart_product_handles = '|'
+
+  for item in cart.items
+    assign cart_product_handles = cart_product_handles | append: item.product.handle | append: '|'
+  endfor
+
+  assign free_shipping_threshold = section.settings.free_shipping_threshold | times: 100
+  assign amount_to_free_shipping = free_shipping_threshold | minus: cart.total_price
+-%}
+
+{%- if cart != empty and recommendation_collection != blank and recommendation_collection.products_count > 0 -%}
+  <section class="ch-cart-recs color-{{ section.settings.color_scheme }}">
+    <div class="page-width">
+      <div class="ch-cart-recs__shell">
+        <div class="ch-cart-recs__header">
+          <div>
+            {%- if section.settings.eyebrow != blank -%}
+              <p class="ch-cart-recs__eyebrow">
+                <i class="fa-solid fa-bolt" aria-hidden="true"></i>
+                {{ section.settings.eyebrow | escape }}
+              </p>
+            {%- endif -%}
+            <h2 class="ch-cart-recs__heading">{{ section.settings.heading | escape }}</h2>
+            {%- if section.settings.subheading != blank -%}
+              <p class="ch-cart-recs__subheading">{{ section.settings.subheading | escape }}</p>
+            {%- endif -%}
+          </div>
+
+          <div class="ch-cart-recs__fomo">
+            {%- if amount_to_free_shipping > 0 -%}
+              <span class="ch-cart-recs__fomo-pill">
+                Add {{ amount_to_free_shipping | money }} more for free shipping
+              </span>
+            {%- else -%}
+              <span class="ch-cart-recs__fomo-pill ch-cart-recs__fomo-pill--success">
+                Free shipping unlocked
+              </span>
+            {%- endif -%}
+            <span class="ch-cart-recs__live">
+              <span aria-hidden="true"></span>
+              {{ section.settings.live_text | escape }}
+            </span>
+          </div>
+        </div>
+
+        <ul class="grid product-grid grid--2-col-tablet-down grid--4-col-desktop ch-cart-recs__grid" role="list">
+          {%- for recommended_product in recommendation_collection.products limit: 12 -%}
+            {%- liquid
+              assign handle_token = '|' | append: recommended_product.handle | append: '|'
+              assign displayed_position = rendered_products | plus: 1
+              assign fomo_label = 'Popular add-on'
+              if displayed_position == 1
+                assign fomo_label = section.settings.fomo_label_1
+              elsif displayed_position == 2
+                assign fomo_label = section.settings.fomo_label_2
+              elsif displayed_position == 3
+                assign fomo_label = section.settings.fomo_label_3
+              elsif displayed_position == 4
+                assign fomo_label = section.settings.fomo_label_4
+              endif
+            -%}
+            {%- unless cart_product_handles contains handle_token -%}
+              <li class="grid__item ch-cart-recs__item">
+                <div class="ch-cart-recs__badge">
+                  <i class="fa-solid fa-fire" aria-hidden="true"></i>
+                  {{ fomo_label | escape }}
+                </div>
+                {% render 'card-product',
+                  card_product: recommended_product,
+                  media_aspect_ratio: section.settings.image_ratio,
+                  image_shape: section.settings.image_shape,
+                  show_secondary_image: true,
+                  show_vendor: false,
+                  show_rating: true,
+                  skip_styles: false,
+                  section_id: section.id,
+                  quick_add: section.settings.quick_add
+                %}
+              </li>
+              {%- assign rendered_products = rendered_products | plus: 1 -%}
+              {%- if rendered_products >= section.settings.products_to_show -%}
+                {%- break -%}
+              {%- endif -%}
+            {%- endunless -%}
+          {%- endfor -%}
+        </ul>
+      </div>
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Cart FOMO Recommendations",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Trending with your cart"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Complete your wellness routine"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Customers often add these Ayurvedic essentials before checkout."
+    },
+    {
+      "type": "text",
+      "id": "live_text",
+      "label": "Live activity text",
+      "default": "18 people are viewing wellness add-ons right now"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Recommendation collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 4,
+      "label": "Products to show"
+    },
+    {
+      "type": "text",
+      "id": "free_shipping_threshold",
+      "label": "Free shipping threshold",
+      "default": "499"
+    },
+    {
+      "type": "text",
+      "id": "fomo_label_1",
+      "label": "FOMO label 1",
+      "default": "Most added today"
+    },
+    {
+      "type": "text",
+      "id": "fomo_label_2",
+      "label": "FOMO label 2",
+      "default": "Only few left"
+    },
+    {
+      "type": "text",
+      "id": "fomo_label_3",
+      "label": "FOMO label 3",
+      "default": "Pairs well with this"
+    },
+    {
+      "type": "text",
+      "id": "fomo_label_4",
+      "label": "FOMO label 4",
+      "default": "Customer favorite"
+    },
+    {
+      "type": "select",
+      "id": "quick_add",
+      "default": "standard",
+      "label": "Quick add",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "standard",
+          "label": "Standard"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "Adapt"
+        },
+        {
+          "value": "portrait",
+          "label": "Portrait"
+        },
+        {
+          "value": "square",
+          "label": "Square"
+        }
+      ],
+      "default": "adapt",
+      "label": "Image ratio"
+    },
+    {
+      "type": "select",
+      "id": "image_shape",
+      "options": [
+        {
+          "value": "default",
+          "label": "Default"
+        },
+        {
+          "value": "arch",
+          "label": "Arch"
+        },
+        {
+          "value": "blob",
+          "label": "Blob"
+        }
+      ],
+      "default": "default",
+      "label": "Image shape"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    }
+  ]
+}
+{% endschema %}

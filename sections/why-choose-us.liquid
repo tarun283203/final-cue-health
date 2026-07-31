@@ -1,0 +1,90 @@
+{{ 'custom-cuehealth.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .ch-why-us-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+{%- endstyle -%}
+
+<section class="ch-why-us ch-why-us-{{ section.id }}">
+  <div class="ch-why-us__inner">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="ch-why-us__heading{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+        {{ section.settings.heading }}
+      </h2>
+    {%- endif -%}
+    {%- if section.settings.subheading != blank -%}
+      <p class="ch-why-us__subheading{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+        {{ section.settings.subheading }}
+      </p>
+    {%- endif -%}
+
+    <div class="ch-why-us__grid{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      {%- for block in section.blocks -%}
+        <div class="ch-why-us__item" {{ block.shopify_attributes }}>
+          <div class="ch-why-us__icon-wrap">
+            {%- render 'ch-icon', icon: block.settings.icon, size: 28 -%}
+          </div>
+          <h3 class="ch-why-us__item-title">{{ block.settings.title }}</h3>
+          <p class="ch-why-us__item-desc">{{ block.settings.description }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Why Choose Us",
+  "tag": "section",
+  "class": "ch-why-us-section",
+  "settings": [
+    { "type": "text", "id": "heading",    "label": "Heading",    "default": "Why Choose CueHealth?" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Science-backed supplements crafted for real results" },
+    { "type": "range", "id": "padding_top",    "min": 20, "max": 120, "step": 4, "unit": "px", "label": "Padding Top",    "default": 60 },
+    { "type": "range", "id": "padding_bottom", "min": 20, "max": 120, "step": 4, "unit": "px", "label": "Padding Bottom", "default": 60 }
+  ],
+  "blocks": [
+    {
+      "type": "usp_item",
+      "name": "USP Item",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "leaf",        "label": "Leaf — Natural" },
+            { "value": "flask",       "label": "Flask — Lab Tested" },
+            { "value": "shield",      "label": "Shield — FSSAI" },
+            { "value": "microscope",  "label": "Microscope — Research" },
+            { "value": "truck",       "label": "Truck — Shipping" },
+            { "value": "return",      "label": "Return — Refunds" },
+            { "value": "heart",       "label": "Heart — Wellness" },
+            { "value": "lock",        "label": "Lock — Secure" },
+            { "value": "check-circle","label": "Check — Certified" },
+            { "value": "capsule",     "label": "Capsule — Supplements" }
+          ],
+          "default": "leaf"
+        },
+        { "type": "text",     "id": "title",       "label": "Title",       "default": "100% Natural Ingredients" },
+        { "type": "textarea", "id": "description", "label": "Description", "default": "Clean, natural ingredients with no artificial colours, flavours, or fillers." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Why Choose Us",
+      "blocks": [
+        { "type": "usp_item", "settings": { "icon": "leaf",       "title": "100% Natural",           "description": "Clean ingredients — no artificial colours, flavours, or fillers." } },
+        { "type": "usp_item", "settings": { "icon": "flask",      "title": "Lab Tested & Certified", "description": "Every batch is third-party tested for purity, potency, and safety." } },
+        { "type": "usp_item", "settings": { "icon": "shield",     "title": "FSSAI Approved",         "description": "Manufactured in FSSAI-licensed facilities meeting the highest standards." } },
+        { "type": "usp_item", "settings": { "icon": "microscope", "title": "Clinically Researched",  "description": "Formulas backed by peer-reviewed science and clinical research." } },
+        { "type": "usp_item", "settings": { "icon": "truck",      "title": "Fast & Free Delivery",   "description": "Free shipping on orders above ₹499. Delivered pan-India in 3–7 days." } },
+        { "type": "usp_item", "settings": { "icon": "return",     "title": "7-Day Easy Returns",     "description": "Not satisfied? Return within 7 days for a full refund — no questions asked." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 1000" role="img" aria-label="Ayurvedic wellness products with herbs">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#123524"/>
+      <stop offset="0.52" stop-color="#1B4332"/>
+      <stop offset="1" stop-color="#40916C"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F4D03F"/>
+      <stop offset="1" stop-color="#C8960C"/>
+    </linearGradient>
+    <linearGradient id="cream" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFF8EA"/>
+      <stop offset="1" stop-color="#F5EDD8"/>
+    </linearGradient>
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="30" stdDeviation="28" flood-color="#082014" flood-opacity="0.32"/>
+    </filter>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="18" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="2000" height="1000" fill="url(#bg)"/>
+  <path d="M0 720C260 620 430 780 680 680C940 575 1130 375 1440 450C1680 510 1800 665 2000 560V1000H0Z" fill="#0D2818" opacity="0.48"/>
+  <path d="M0 805C280 720 530 850 770 770C1110 655 1250 525 1580 610C1770 660 1880 760 2000 705V1000H0Z" fill="#FDF8F0" opacity="0.10"/>
+  <circle cx="1640" cy="160" r="210" fill="#F4D03F" opacity="0.10" filter="url(#glow)"/>
+  <circle cx="1240" cy="740" r="310" fill="#6EE7B7" opacity="0.10" filter="url(#glow)"/>
+
+  <g opacity="0.18" fill="none" stroke="#FDF8F0" stroke-width="2">
+    <path d="M1080 160C1180 120 1278 170 1320 260C1220 300 1112 256 1080 160Z"/>
+    <path d="M1580 310C1665 285 1744 330 1770 410C1685 430 1602 392 1580 310Z"/>
+    <path d="M1435 120C1505 95 1585 118 1615 190C1540 224 1462 196 1435 120Z"/>
+  </g>
+
+  <g transform="translate(930 160)" filter="url(#softShadow)">
+    <ellipse cx="470" cy="660" rx="430" ry="70" fill="#07170F" opacity="0.28"/>
+
+    <g transform="translate(120 255)">
+      <path d="M80 110h170l32 420c4 50-35 92-85 92H132c-50 0-89-42-85-92Z" fill="url(#cream)"/>
+      <path d="M88 110h154l11 138H77Z" fill="#E8DDD0"/>
+      <rect x="78" y="58" width="174" height="70" rx="18" fill="#C8960C"/>
+      <rect x="112" y="0" width="106" height="76" rx="16" fill="#F4D03F"/>
+      <rect x="76" y="280" width="176" height="148" rx="18" fill="#1B4332"/>
+      <text x="164" y="330" fill="#FDF8F0" font-family="Georgia, serif" font-size="34" font-weight="700" text-anchor="middle">Cue</text>
+      <text x="164" y="365" fill="#F4D03F" font-family="Arial, sans-serif" font-size="18" font-weight="700" text-anchor="middle">ASHWAGANDHA</text>
+      <path d="M128 396C156 358 202 358 228 396C194 422 158 422 128 396Z" fill="#40916C"/>
+    </g>
+
+    <g transform="translate(380 170)">
+      <path d="M88 118h210l38 520c4 58-42 106-100 106H150c-58 0-104-48-100-106Z" fill="#FFF9ED"/>
+      <path d="M98 118h190l13 170H85Z" fill="#E7D6BD"/>
+      <rect x="83" y="58" width="220" height="78" rx="20" fill="#C8960C"/>
+      <rect x="130" y="0" width="126" height="82" rx="18" fill="#F4D03F"/>
+      <rect x="88" y="334" width="210" height="180" rx="22" fill="#1B4332"/>
+      <text x="193" y="390" fill="#FDF8F0" font-family="Georgia, serif" font-size="44" font-weight="700" text-anchor="middle">CueHealth</text>
+      <text x="193" y="438" fill="#F4D03F" font-family="Arial, sans-serif" font-size="21" font-weight="700" text-anchor="middle">AYURVEDIC</text>
+      <text x="193" y="468" fill="#FDF8F0" font-family="Arial, sans-serif" font-size="18" text-anchor="middle">Wellness Formula</text>
+      <path d="M148 500C180 458 224 458 256 500C220 532 184 532 148 500Z" fill="#40916C"/>
+    </g>
+
+    <g transform="translate(700 305)">
+      <path d="M70 92h150l28 385c4 44-31 82-76 82h-54c-45 0-80-38-76-82Z" fill="url(#cream)"/>
+      <path d="M78 92h134l10 122H68Z" fill="#E8DDD0"/>
+      <rect x="67" y="45" width="156" height="62" rx="16" fill="#C8960C"/>
+      <rect x="98" y="0" width="94" height="58" rx="14" fill="#F4D03F"/>
+      <rect x="69" y="260" width="152" height="126" rx="17" fill="#1B4332"/>
+      <text x="145" y="308" fill="#FDF8F0" font-family="Georgia, serif" font-size="31" font-weight="700" text-anchor="middle">Cue</text>
+      <text x="145" y="342" fill="#F4D03F" font-family="Arial, sans-serif" font-size="17" font-weight="700" text-anchor="middle">TRIPHALA</text>
+    </g>
+
+    <g transform="translate(0 600)">
+      <path d="M135 58C65 38 25 71 5 132C78 150 128 126 158 66C153 63 144 60 135 58Z" fill="#40916C"/>
+      <path d="M135 58C92 78 58 104 20 132" fill="none" stroke="#D8F3DC" stroke-width="5" stroke-linecap="round"/>
+      <path d="M790 30C705 15 652 58 635 136C725 145 780 105 812 38C806 35 798 32 790 30Z" fill="#6EBF8B"/>
+      <path d="M790 30C742 58 700 94 648 134" fill="none" stroke="#D8F3DC" stroke-width="5" stroke-linecap="round"/>
+      <ellipse cx="365" cy="120" rx="105" ry="32" fill="#C8960C" opacity="0.96"/>
+      <ellipse cx="365" cy="108" rx="86" ry="20" fill="#F4D03F"/>
+      <path d="M488 98C568 60 625 70 690 118" fill="none" stroke="#F4D03F" stroke-width="24" stroke-linecap="round"/>
+    </g>
+  </g>
+
+  <g transform="translate(115 190)" fill="#FDF8F0">
+    <text font-family="Georgia, serif" font-size="42" font-weight="700" opacity="0.20">Ayurvedic Wellness</text>
+    <text y="64" font-family="Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="6" opacity="0.26">HERBS . SCIENCE . CARE</text>
+  </g>
+</svg>

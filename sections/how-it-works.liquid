@@ -1,0 +1,114 @@
+{{ 'custom-cuehealth.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .ch-hiw-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+{%- endstyle -%}
+
+<section class="ch-hiw ch-hiw-{{ section.id }}">
+  <div class="ch-hiw__inner">
+    <div class="ch-hiw__header">
+      <p class="ch-hiw__eyebrow">
+        {%- render 'ch-icon', icon: 'leaf', size: 14 -%}
+        {{ section.settings.eyebrow }}
+      </p>
+      <h2 class="ch-hiw__heading">{{ section.settings.heading }}</h2>
+      <p class="ch-hiw__subheading">{{ section.settings.subheading }}</p>
+    </div>
+
+    <div class="ch-hiw__steps">
+      {%- for block in section.blocks -%}
+        <div class="ch-hiw__step{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}" {{ block.shopify_attributes }}
+          {% if settings.animations_reveal_on_scroll %}style="--animation-order: {{ forloop.index }};"{% endif %}
+        >
+          <div class="ch-hiw__step-number">
+            {%- render 'ch-icon', icon: block.settings.icon, size: 36 -%}
+          </div>
+          <h3 class="ch-hiw__step-title">{{ block.settings.title }}</h3>
+          <p class="ch-hiw__step-desc">{{ block.settings.description }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "How It Works",
+  "tag": "section",
+  "class": "ch-hiw-section",
+  "settings": [
+    { "type": "text", "id": "eyebrow",    "label": "Eyebrow",    "default": "Our Promise" },
+    { "type": "text", "id": "heading",    "label": "Heading",    "default": "From Nature to Your Doorstep" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Every CueHealth supplement goes through a rigorous 4-step journey to reach you" },
+    { "type": "range", "id": "padding_top",    "min": 20, "max": 120, "step": 4, "unit": "px", "label": "Padding Top",    "default": 80 },
+    { "type": "range", "id": "padding_bottom", "min": 20, "max": 120, "step": 4, "unit": "px", "label": "Padding Bottom", "default": 80 }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Process Step",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "leaf",       "label": "Leaf — Sourcing" },
+            { "value": "flask",      "label": "Flask — Extraction" },
+            { "value": "check-circle","label": "Check — Certification" },
+            { "value": "truck",      "label": "Truck — Delivery" },
+            { "value": "shield",     "label": "Shield — Quality" },
+            { "value": "microscope", "label": "Microscope — Testing" },
+            { "value": "heart",      "label": "Heart — Care" }
+          ],
+          "default": "leaf"
+        },
+        { "type": "text",     "id": "title",       "label": "Step Title",       "default": "Ethically Sourced" },
+        { "type": "textarea", "id": "description", "label": "Step Description", "default": "Premium herbs sourced from certified organic farms across the Himalayas and South India." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "How It Works",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "icon": "leaf",
+            "title": "Ethically Sourced",
+            "description": "Premium herbs sourced directly from certified organic farms across the Himalayas and South India — no middlemen."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "icon": "flask",
+            "title": "Precision Extracted",
+            "description": "Active compounds carefully extracted using traditional cold-press methods combined with modern standardization technology."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "icon": "microscope",
+            "title": "Lab Certified",
+            "description": "Every single batch is third-party tested for heavy metals, microbials, potency, and purity before it leaves the facility."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "icon": "truck",
+            "title": "Delivered with Care",
+            "description": "Carefully packaged in eco-friendly materials and shipped pan-India within 3–7 working days, free on orders above ₹499."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

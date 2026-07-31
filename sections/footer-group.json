@@ -1,0 +1,62 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "brand_info": {
+          "type": "brand_information",
+          "settings": {
+            "show_social": false
+          }
+        },
+        "quick_links": {
+          "type": "text",
+          "settings": {
+            "heading": "Quick Links",
+            "subtext": "<p><a href=\"/collections/all\">Shop All Products</a></p><p><a href=\"/pages/about-us\">About Us</a></p><p><a href=\"/blogs/news\">Wellness Blog</a></p><p><a href=\"/pages/contact-us\">Contact Us</a></p><p><a href=\"/pages/about-us#team\">Our Team</a></p>"
+          }
+        },
+        "policy_links": {
+          "type": "text",
+          "settings": {
+            "heading": "Policies & Legal",
+            "subtext": "<p><a href=\"/pages/shipping-policy\">Shipping Policy</a></p><p><a href=\"/pages/refund-policy\">Refund &amp; Return Policy</a></p><p><a href=\"/pages/privacy-policy\">Privacy Policy</a></p><p><a href=\"/pages/terms\">Terms of Service</a></p><p><a href=\"/pages/disclaimer\">Disclaimer</a></p>"
+          }
+        },
+        "contact_info": {
+          "type": "text",
+          "settings": {
+            "heading": "Get in Touch",
+            "subtext": "<p>Email: <a href=\"mailto:hello@cuehealth.in\">hello@cuehealth.in</a></p><p>WhatsApp: <a href=\"https://wa.me/917455918832\">+91 7455918832</a></p><p>Address: Sector 73, Noida, UP - 201301</p><p>Hours: Mon-Sat, 10am-7pm IST</p>"
+          }
+        }
+      },
+      "block_order": ["brand_info", "quick_links", "policy_links", "contact_info"],
+      "settings": {
+        "color_scheme": "scheme-3",
+        "newsletter_enable": false,
+        "enable_follow_on_shop": false,
+        "show_social": false,
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "payment_enable": true,
+        "show_policy": false,
+        "margin_top": 0,
+        "padding_top": 56,
+        "padding_bottom": 40
+      }
+    }
+  },
+  "order": ["footer"]
+}

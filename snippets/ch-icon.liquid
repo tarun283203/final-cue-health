@@ -1,0 +1,138 @@
+{% comment %}
+  CueHealth Icon System — Font Awesome 6 Free
+  Usage: {% render 'ch-icon', icon: 'shield', size: 18, class: 'extra-class' %}
+  Size is in pixels (sets font-size). Colour inherits from parent.
+{% endcomment %}
+{%- assign icon_size = size | default: 18 -%}
+{%- case icon -%}
+
+  {%- when 'shield' -%}
+    <i class="ch-icon fa-solid fa-shield-halved{% if class %} {{ class }}{% endif %}" style="font-size:{{ icon_size }}px;" aria-hidden="true"></i>
+
+  {%- when 'flask' or 'lab' -%}
+    <i class="ch-icon fa-solid fa-flask{% if class %} {{ class }}{% endif %}" style="font-size:{{ icon_size }}px;" aria-hidden="true"></i>
+
+  {%- when 'leaf' or 'natural' -%}
+    <i class="ch-icon fa-solid fa-leaf{% if class %} {{ class }}{% endif %}" style="font-size:{{ icon_size }}px;" aria-hidden="true"></i>
+
+  {%- when 'truck' or 'shipping' -%}
+    <i class="ch-icon fa-solid fa-truck-fast{% if class %} {{ class }}{% endif %}" style="font-size:{{ icon_size }}px;" aria-hidden="true"></i>
+
+  {%- when 'check-circle' or 'check' -%}
+    <i class="ch-icon fa-solid fa-circle-check{% if class %} {{ class }}{% endif %}" style="font-size:{{ icon_size }}px;" aria-hidden="true"></i>
+
+  {%- when 'check-simple' -%}
+    <i class="ch-icon fa-solid fa-check{% if class %} {{ class }}{% endif %}" style="font-size:{{ icon_size }}px;" aria-hidden="true"></i>
+
+  {%- when 'lock' or 'secure' -%}
+    <i class="ch-icon fa-solid fa-lock{% if class %} {{ class }}{% endif %}" style="font-size:{{ icon_size }}px;" aria-hidden="true"></i>
+
+  {%- when 'return' or 'refresh' -%}
+    <i class="ch-icon fa-solid fa-rotate-left{% if class %} {{ class }}{% endif %}" style="font-size:{{ icon_size }}px;" aria-hidden="true"></i>
+
+  {%- when 'heart' or 'wellness' -%}
+    <i class="ch-icon fa-solid fa-heart{% if class %} {{ class }}{% endif %}" style="font-size:{{ icon_size }}px;" aria-hidden="true"></i>
+
+  {%- when 'star' -%}
+    <i class="ch-icon fa-regular fa-star{% if class %} {{ class }}{% endif %}" style="font-size:{{ icon_size }}px;" aria-hidden="true"></i>
+
+  {%- when 'star-filled' -%}
+    <i class="ch-icon fa-solid fa-star{% if class %} {{ class }}{% endif %}" style="font-size:{{ icon_size }}px;" aria-hidden="true"></i>
+
+  {%- when 'microscope' or 'research' -%}
+    <i class="ch-icon fa-solid fa-microscope{% if class %} {{ class }}{% endif %}" style="font-size:{{ icon_size }}px;" aria-hidden="true"></i>
+
+  {%- when 'capsule' or 'pill' -%}
+    <i class="ch-icon fa-solid fa-capsules{% if class %} {{ class }}{% endif %}" style="font-size:{{ icon_size }}px;" aria-hidden="true"></i>
+
+  {%- when 'seedling' -%}
+    <i class="ch-icon fa-solid fa-seedling{% if class %} {{ class }}{% endif %}" style="font-size:{{ icon_size }}px;" aria-hidden="true"></i>
+
+  {%- when 'mortar' -%}
+    <i class="ch-icon fa-solid fa-mortar-pestle{% if class %} {{ class }}{% endif %}" style="font-size:{{ icon_size }}px;" aria-hidden="true"></i>
+
+  {%- when 'brain' -%}
+    <i class="ch-icon fa-solid fa-brain{% if class %} {{ class }}{% endif %}" style="font-size:{{ icon_size }}px;" aria-hidden="true"></i>
+
+  {%- when 'mountain' -%}
+    <i class="ch-icon fa-solid fa-mountain{% if class %} {{ class }}{% endif %}" style="font-size:{{ icon_size }}px;" aria-hidden="true"></i>
+
+  {%- when 'spa' -%}
+    <i class="ch-icon fa-solid fa-spa{% if class %} {{ class }}{% endif %}" style="font-size:{{ icon_size }}px;" aria-hidden="true"></i>
+
+  {%- when 'apple' -%}
+    <i class="ch-icon fa-solid fa-apple-whole{% if class %} {{ class }}{% endif %}" style="font-size:{{ icon_size }}px;" aria-hidden="true"></i>
+
+  {%- when 'moon' -%}
+    <i class="ch-icon fa-solid fa-moon{% if class %} {{ class }}{% endif %}" style="font-size:{{ icon_size }}px;" aria-hidden="true"></i>
+
+  {%- when 'bolt' or 'energy' -%}
+    <i class="ch-icon fa-solid fa-bolt{% if class %} {{ class }}{% endif %}" style="font-size:{{ icon_size }}px;" aria-hidden="true"></i>
+
+  {%- when 'venus' or 'women' -%}
+    <i class="ch-icon fa-solid fa-venus{% if class %} {{ class }}{% endif %}" style="font-size:{{ icon_size }}px;" aria-hidden="true"></i>
+
+  {%- when 'email' or 'mail' -%}
+    <i class="ch-icon fa-solid fa-envelope{% if class %} {{ class }}{% endif %}" style="font-size:{{ icon_size }}px;" aria-hidden="true"></i>
+
+  {%- when 'phone' -%}
+    <i class="ch-icon fa-solid fa-phone{% if class %} {{ class }}{% endif %}" style="font-size:{{ icon_size }}px;" aria-hidden="true"></i>
+
+  {%- when 'whatsapp' -%}
+    <i class="ch-icon fa-brands fa-whatsapp{% if class %} {{ class }}{% endif %}" style="font-size:{{ icon_size }}px;" aria-hidden="true"></i>
+
+  {%- when 'amazon' -%}
+    <i class="ch-icon fa-brands fa-amazon{% if class %} {{ class }}{% endif %}" style="font-size:{{ icon_size }}px;" aria-hidden="true"></i>
+
+  {%- when 'location' or 'pin' -%}
+    <i class="ch-icon fa-solid fa-location-dot{% if class %} {{ class }}{% endif %}" style="font-size:{{ icon_size }}px;" aria-hidden="true"></i>
+
+  {%- when 'clock' or 'time' -%}
+    <i class="ch-icon fa-regular fa-clock{% if class %} {{ class }}{% endif %}" style="font-size:{{ icon_size }}px;" aria-hidden="true"></i>
+
+  {%- when 'instagram' -%}
+    <i class="ch-icon fa-brands fa-instagram{% if class %} {{ class }}{% endif %}" style="font-size:{{ icon_size }}px;" aria-hidden="true"></i>
+
+  {%- when 'facebook' -%}
+    <i class="ch-icon fa-brands fa-facebook{% if class %} {{ class }}{% endif %}" style="font-size:{{ icon_size }}px;" aria-hidden="true"></i>
+
+  {%- when 'youtube' -%}
+    <i class="ch-icon fa-brands fa-youtube{% if class %} {{ class }}{% endif %}" style="font-size:{{ icon_size }}px;" aria-hidden="true"></i>
+
+  {%- when 'twitter' -%}
+    <i class="ch-icon fa-brands fa-x-twitter{% if class %} {{ class }}{% endif %}" style="font-size:{{ icon_size }}px;" aria-hidden="true"></i>
+
+  {%- when 'play' -%}
+    <i class="ch-icon fa-solid fa-circle-play{% if class %} {{ class }}{% endif %}" style="font-size:{{ icon_size }}px;" aria-hidden="true"></i>
+
+  {%- when 'arrow-right' -%}
+    <i class="ch-icon fa-solid fa-arrow-right{% if class %} {{ class }}{% endif %}" style="font-size:{{ icon_size }}px;" aria-hidden="true"></i>
+
+  {%- when 'plus' -%}
+    <i class="ch-icon fa-solid fa-plus{% if class %} {{ class }}{% endif %}" style="font-size:{{ icon_size }}px;" aria-hidden="true"></i>
+
+  {%- when 'minus' -%}
+    <i class="ch-icon fa-solid fa-minus{% if class %} {{ class }}{% endif %}" style="font-size:{{ icon_size }}px;" aria-hidden="true"></i>
+
+  {%- when 'medal' or 'award' -%}
+    <i class="ch-icon fa-solid fa-medal{% if class %} {{ class }}{% endif %}" style="font-size:{{ icon_size }}px;" aria-hidden="true"></i>
+
+  {%- when 'eye' or 'transparency' -%}
+    <i class="ch-icon fa-solid fa-eye{% if class %} {{ class }}{% endif %}" style="font-size:{{ icon_size }}px;" aria-hidden="true"></i>
+
+  {%- when 'dna' or 'science' -%}
+    <i class="ch-icon fa-solid fa-dna{% if class %} {{ class }}{% endif %}" style="font-size:{{ icon_size }}px;" aria-hidden="true"></i>
+
+  {%- when 'sun' -%}
+    <i class="ch-icon fa-solid fa-sun{% if class %} {{ class }}{% endif %}" style="font-size:{{ icon_size }}px;" aria-hidden="true"></i>
+
+  {%- when 'fire' -%}
+    <i class="ch-icon fa-solid fa-fire{% if class %} {{ class }}{% endif %}" style="font-size:{{ icon_size }}px;" aria-hidden="true"></i>
+
+  {%- when 'pills' -%}
+    <i class="ch-icon fa-solid fa-pills{% if class %} {{ class }}{% endif %}" style="font-size:{{ icon_size }}px;" aria-hidden="true"></i>
+
+  {%- else -%}
+    <i class="ch-icon fa-solid fa-circle-info{% if class %} {{ class }}{% endif %}" style="font-size:{{ icon_size }}px;" aria-hidden="true"></i>
+
+{%- endcase -%}

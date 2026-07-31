@@ -1,0 +1,581 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "custom_hero": {
+      "type": "custom-hero-banner",
+      "blocks": {
+        "slide_1": {
+          "type": "slide",
+          "settings": {}
+        },
+        "slide_2": {
+          "type": "slide",
+          "settings": {}
+        },
+        "slide_3": {
+          "type": "slide",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "slide_1",
+        "slide_2",
+        "slide_3"
+      ],
+      "settings": {
+        "slide_interval": 5000,
+        "youtube_url": "",
+        "overlay_direction": "to right",
+        "overlay_opacity": 55,
+        "min_height": 85,
+        "min_height_mobile": 70,
+        "content_position": "left",
+        "eyebrow": "Ancient Wisdom. Modern Science.",
+        "heading": "<p>Your Cue to <em>Healthy Life</em></p>",
+        "description": "FSSAI approved Ayurvedic supplements — rooted in 5,000 years of tradition, validated by modern science. No fillers, no compromise.",
+        "btn1_label": "Shop Ayurvedic Products",
+        "btn1_link": "shopify://collections/all",
+        "btn2_label": "Free Consultation",
+        "btn2_link": "shopify://pages/contact",
+        "show_trust_strip": true,
+        "show_scroll_indicator": true
+      }
+    },
+    "trust_badges": {
+      "type": "trust-badges-row",
+      "blocks": {
+        "badge_1": {
+          "type": "badge",
+          "settings": {
+            "icon": "shield",
+            "label": "FSSAI Approved"
+          }
+        },
+        "badge_2": {
+          "type": "badge",
+          "settings": {
+            "icon": "flask",
+            "label": "Lab Tested"
+          }
+        },
+        "badge_3": {
+          "type": "badge",
+          "settings": {
+            "icon": "leaf",
+            "label": "100% Ayurvedic"
+          }
+        },
+        "badge_4": {
+          "type": "badge",
+          "settings": {
+            "icon": "truck",
+            "label": "Free Shipping ₹499+"
+          }
+        },
+        "badge_5": {
+          "type": "badge",
+          "settings": {
+            "icon": "return",
+            "label": "7-Day Returns"
+          }
+        },
+        "badge_6": {
+          "type": "badge",
+          "settings": {
+            "icon": "check-circle",
+            "label": "GMP Certified"
+          }
+        }
+      },
+      "block_order": [
+        "badge_1",
+        "badge_2",
+        "badge_3",
+        "badge_4",
+        "badge_5",
+        "badge_6"
+      ],
+      "settings": {}
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "all",
+        "products_to_show": 8,
+        "title": "Our Bestselling Formulas",
+        "heading_size": "h1",
+        "description": "<p>Clinically studied Ayurvedic formulas trusted by thousands across India</p>",
+        "show_description": true,
+        "description_style": "body",
+        "columns_desktop": 4,
+        "enable_desktop_slider": true,
+        "full_width": true,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "quick_add": "standard",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 60,
+        "padding_bottom": 36
+      }
+    },
+    "ayurvedic_ingredients": {
+      "type": "ayurvedic-ingredients",
+      "blocks": {
+        "i1": {
+          "type": "ingredient",
+          "settings": {
+            "fa_icon": "fa-seedling",
+            "name": "Ashwagandha",
+            "sanskrit": "Withania somnifera",
+            "benefit": "India's most powerful adaptogen — reduces cortisol, builds strength, and restores vitality naturally.",
+            "tags": "Stress Relief, Energy, Strength"
+          }
+        },
+        "i2": {
+          "type": "ingredient",
+          "settings": {
+            "fa_icon": "fa-mortar-pestle",
+            "name": "Turmeric",
+            "sanskrit": "Curcuma longa",
+            "benefit": "Golden spice with potent anti-inflammatory and antioxidant properties, supporting joint health and immunity.",
+            "tags": "Anti-inflammatory, Joints, Immunity"
+          }
+        },
+        "i3": {
+          "type": "ingredient",
+          "settings": {
+            "fa_icon": "fa-brain",
+            "name": "Brahmi",
+            "sanskrit": "Bacopa monnieri",
+            "benefit": "Sacred brain tonic — enhances memory, focus, and cognitive function while calming the nervous system.",
+            "tags": "Brain Health, Memory, Focus"
+          }
+        },
+        "i4": {
+          "type": "ingredient",
+          "settings": {
+            "fa_icon": "fa-mountain",
+            "name": "Shilajit",
+            "sanskrit": "Asphaltum punjabianum",
+            "benefit": "Himalayan mineral resin rich in fulvic acid — boosts energy, stamina, and vitality.",
+            "tags": "Energy, Vitality, Men's Health"
+          }
+        },
+        "i5": {
+          "type": "ingredient",
+          "settings": {
+            "fa_icon": "fa-spa",
+            "name": "Shatavari",
+            "sanskrit": "Asparagus racemosus",
+            "benefit": "Queen of Ayurvedic herbs for women — balances hormones, supports fertility, and enhances vitality.",
+            "tags": "Women's Health, Hormones, Fertility"
+          }
+        },
+        "i6": {
+          "type": "ingredient",
+          "settings": {
+            "fa_icon": "fa-apple-whole",
+            "name": "Triphala",
+            "sanskrit": "Three Sacred Fruits",
+            "benefit": "Ancient tridoshic formula of Amalaki, Bibhitaki & Haritaki for complete digestive health and detox.",
+            "tags": "Gut Health, Digestion, Detox"
+          }
+        }
+      },
+      "block_order": [
+        "i1",
+        "i2",
+        "i3",
+        "i4",
+        "i5",
+        "i6"
+      ],
+      "settings": {
+        "eyebrow": "The Power of Nature",
+        "heading": "Key Ayurvedic Ingredients",
+        "subheading": "Time-tested herbs, scientifically validated for modern wellness",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "how_it_works": {
+      "type": "how-it-works",
+      "blocks": {
+        "s1": {
+          "type": "step",
+          "settings": {
+            "icon": "leaf",
+            "title": "Ethically Sourced",
+            "description": "Premium herbs sourced directly from certified organic farms across the Himalayas and South India."
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "icon": "flask",
+            "title": "Precision Extracted",
+            "description": "Active compounds carefully extracted using traditional cold-press methods combined with modern standardization."
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "icon": "microscope",
+            "title": "Lab Certified",
+            "description": "Every batch third-party tested for heavy metals, microbials, potency, and purity before leaving the facility."
+          }
+        },
+        "s4": {
+          "type": "step",
+          "settings": {
+            "icon": "truck",
+            "title": "Delivered with Care",
+            "description": "Packaged in eco-friendly materials and shipped pan-India in 3–7 working days, free on orders above ₹499."
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ],
+      "settings": {
+        "eyebrow": "Our Promise",
+        "heading": "From Nature to Your Doorstep",
+        "subheading": "Every CueHealth supplement goes through a rigorous 4-step journey to reach you",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "shop_by_concern": {
+      "type": "shop-by-concern",
+      "blocks": {
+        "c1": {
+          "type": "concern",
+          "settings": {
+            "label": "Sleep & Recovery",
+            "fa_icon": "fa-moon",
+            "link": "shopify://collections/sleep"
+          }
+        },
+        "c2": {
+          "type": "concern",
+          "settings": {
+            "label": "Immunity",
+            "fa_icon": "fa-shield-halved",
+            "link": "shopify://collections/immunity"
+          }
+        },
+        "c3": {
+          "type": "concern",
+          "settings": {
+            "label": "Women's Health",
+            "fa_icon": "fa-venus",
+            "link": "shopify://collections/womens-health"
+          }
+        },
+        "c4": {
+          "type": "concern",
+          "settings": {
+            "label": "Gut Health",
+            "fa_icon": "fa-leaf",
+            "link": "shopify://collections/gut-health"
+          }
+        },
+        "c5": {
+          "type": "concern",
+          "settings": {
+            "label": "Energy & Focus",
+            "fa_icon": "fa-bolt",
+            "link": "shopify://collections/energy"
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5"
+      ],
+      "settings": {
+        "heading": "Shop by Health Concern",
+        "subheading": "Find the right Ayurvedic formula for your wellness goal",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "why_choose_us": {
+      "type": "why-choose-us",
+      "blocks": {
+        "u1": {
+          "type": "usp_item",
+          "settings": {
+            "icon": "leaf",
+            "title": "100% Ayurvedic",
+            "description": "Authentic herbs from certified sources — no synthetic compounds, no artificial fillers."
+          }
+        },
+        "u2": {
+          "type": "usp_item",
+          "settings": {
+            "icon": "flask",
+            "title": "Clinically Standardised",
+            "description": "Every herb extract standardised to guaranteed active compound levels for consistent efficacy."
+          }
+        },
+        "u3": {
+          "type": "usp_item",
+          "settings": {
+            "icon": "shield",
+            "title": "FSSAI & GMP Certified",
+            "description": "Manufactured in FSSAI-licensed, GMP-certified facilities under strict quality protocols."
+          }
+        },
+        "u4": {
+          "type": "usp_item",
+          "settings": {
+            "icon": "microscope",
+            "title": "Third-Party Lab Tested",
+            "description": "Independent lab testing for heavy metals, microbials, and potency — results published transparently."
+          }
+        },
+        "u5": {
+          "type": "usp_item",
+          "settings": {
+            "icon": "truck",
+            "title": "Fast Pan-India Delivery",
+            "description": "Free shipping on orders above ₹499. Delivered across India in 3–7 working days."
+          }
+        },
+        "u6": {
+          "type": "usp_item",
+          "settings": {
+            "icon": "return",
+            "title": "7-Day Easy Returns",
+            "description": "Not satisfied? Return within 7 days for a full, hassle-free refund — no questions asked."
+          }
+        }
+      },
+      "block_order": [
+        "u1",
+        "u2",
+        "u3",
+        "u4",
+        "u5",
+        "u6"
+      ],
+      "settings": {
+        "heading": "Why Thousands Choose CueHealth",
+        "subheading": "Authentic Ayurveda meets modern scientific rigour",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "expert_consultation": {
+      "type": "ayurvedic-expert",
+      "settings": {
+        "eyebrow": "Free Ayurvedic Consultation",
+        "heading": "<p>Not Sure Which Supplement <em>is Right for You?</em></p>",
+        "description": "Our certified Ayurvedic wellness advisors are here to guide you — completely free, no obligation. Get personalised supplement recommendations tailored to your prakriti and health goals.",
+        "btn_wa_label": "Chat with an Expert",
+        "whatsapp_message": "Hi! I'd like a free Ayurvedic consultation to find the right CueHealth supplements for me.",
+        "btn_learn_label": "Explore Products",
+        "btn_learn_link": "shopify://collections/all"
+      }
+    },
+    "customer_testimonials": {
+      "type": "customer-testimonials",
+      "blocks": {
+        "t1": {
+          "type": "testimonial",
+          "settings": {
+            "customer_name": "Priya S.",
+            "customer_location": "Mumbai",
+            "product_name": "",
+            "rating": 5,
+            "review_text": "The Ashwagandha capsules changed my life. My stress levels dropped noticeably in 2 weeks and my energy is through the roof. Pure, authentic Ayurveda!"
+          }
+        },
+        "t2": {
+          "type": "testimonial",
+          "settings": {
+            "customer_name": "Rahul M.",
+            "customer_location": "Delhi",
+            "product_name": "",
+            "rating": 5,
+            "review_text": "Been using Shilajit for 3 months. The quality is exceptional — you can tell the difference immediately. Fast delivery too."
+          }
+        },
+        "t3": {
+          "type": "testimonial",
+          "settings": {
+            "customer_name": "Ananya K.",
+            "customer_location": "Bangalore",
+            "product_name": "",
+            "rating": 5,
+            "review_text": "Shatavari has done wonders for my hormonal balance. Love that CueHealth is transparent about ingredients and dosages."
+          }
+        },
+        "t4": {
+          "type": "testimonial",
+          "settings": {
+            "customer_name": "Vikram R.",
+            "customer_location": "Hyderabad",
+            "product_name": "",
+            "rating": 4,
+            "review_text": "Brahmi supplement genuinely improved my focus at work. FSSAI approved and lab tested — exactly what I was looking for."
+          }
+        },
+        "t5": {
+          "type": "testimonial",
+          "settings": {
+            "customer_name": "Meera P.",
+            "customer_location": "Jaipur",
+            "product_name": "",
+            "rating": 5,
+            "review_text": "Triphala has completely fixed my digestion. 3 months in and no more bloating. The free expert consultation was incredibly helpful!"
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4",
+        "t5"
+      ],
+      "settings": {
+        "heading": "Real Results, Real People",
+        "subheading": "Over 1,000+ customers across India trust CueHealth",
+        "bg_color": "#f5edd8",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "video_testimonials": {
+      "type": "video-testimonials",
+      "blocks": {
+        "v1": {
+          "type": "video_testimonial",
+          "settings": {
+            "video_url": "",
+            "customer_name": "Priya S.",
+            "customer_location": "Mumbai",
+            "rating": 5,
+            "quote": "My sleep routine finally feels consistent, and I wake up fresher."
+          }
+        },
+        "v2": {
+          "type": "video_testimonial",
+          "settings": {
+            "video_url": "",
+            "customer_name": "Rahul M.",
+            "customer_location": "Delhi",
+            "rating": 5,
+            "quote": "The product quality feels premium, and delivery was quick."
+          }
+        },
+        "v3": {
+          "type": "video_testimonial",
+          "settings": {
+            "video_url": "",
+            "customer_name": "Meera P.",
+            "customer_location": "Jaipur",
+            "rating": 5,
+            "quote": "The consultation helped me choose the right supplement."
+          }
+        }
+      },
+      "block_order": [
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "settings": {
+        "eyebrow": "Customer video stories",
+        "heading": "Real people. Real wellness wins.",
+        "subheading": "Hear how CueHealth customers use Ayurveda in their everyday routines.",
+        "footer_text": "Want to share your story? Send us your CueHealth experience on WhatsApp.",
+        "bg_color": "#fdf8f0",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
+    "featured_blog": {
+      "type": "featured-blog",
+      "settings": {
+        "blog": "news",
+        "post_limit": 3,
+        "heading": "Ayurvedic Wellness Insights",
+        "heading_size": "h2",
+        "columns_desktop": 3,
+        "show_view_all": true,
+        "show_image": true,
+        "show_date": true,
+        "show_author": false,
+        "color_scheme": "scheme-2",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Join the Ayurvedic Wellness Community",
+            "heading_size": "h1"
+          }
+        },
+        "subtext": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Get ancient wisdom delivered to your inbox — Ayurvedic tips, herb spotlights, and exclusive offers.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "subtext"
+      ],
+      "settings": {
+        "color_scheme": "scheme-4",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "custom_hero",
+    "trust_badges",
+    "featured_collection",
+    "ayurvedic_ingredients",
+    "how_it_works",
+    "shop_by_concern",
+    "why_choose_us",
+    "expert_consultation",
+    "customer_testimonials",
+    "video_testimonials",
+    "featured_blog",
+    "newsletter"
+  ]
+}

@@ -1,0 +1,140 @@
+{{ 'custom-cuehealth.css' | asset_url | stylesheet_tag }}
+
+<div class="ch-page-hero">
+  <div class="ch-page-hero__inner">
+    <p class="ch-page-hero__eyebrow">We're here to help</p>
+    <h1 class="ch-page-hero__heading">Contact Us</h1>
+    <p class="ch-page-hero__sub">Reach out via WhatsApp, email, or the form below. We respond within 24 hours.</p>
+  </div>
+</div>
+
+<div class="ch-contact-wrapper page-width">
+  <!-- Contact Details -->
+  <div class="ch-contact-details">
+    <h2>Get in Touch</h2>
+
+    <div class="ch-contact-card">
+      <div class="ch-contact-card__icon">
+        {%- render 'ch-icon', icon: 'mail', size: 22 -%}
+      </div>
+      <div>
+        <strong>Email Us</strong>
+        <a href="mailto:hello@cuehealth.in">hello@cuehealth.in</a>
+        <span>We reply within 24 hours</span>
+      </div>
+    </div>
+
+    <div class="ch-contact-card ch-contact-card--whatsapp">
+      <div class="ch-contact-card__icon">
+        {%- render 'ch-icon', icon: 'whatsapp', size: 22 -%}
+      </div>
+      <div>
+        <strong>WhatsApp</strong>
+        <a href="https://wa.me/917455918832?text=Hi%21+I+have+a+query+about+CueHealth+products." target="_blank" rel="noopener">
+          +91 7455918832
+        </a>
+        <span>Mon–Sat, 10am–7pm IST</span>
+      </div>
+    </div>
+
+    <div class="ch-contact-card">
+      <div class="ch-contact-card__icon">
+        {%- render 'ch-icon', icon: 'location', size: 22 -%}
+      </div>
+      <div>
+        <strong>Our Office</strong>
+        <span>Upper Ground Floor, 003,</span>
+        <span>Kh No 485/Marwah Homes, Sector 73,</span>
+        <span>Noida, Gautambuddha Nagar, UP – 201301</span>
+      </div>
+    </div>
+
+    <div class="ch-contact-card">
+      <div class="ch-contact-card__icon">
+        {%- render 'ch-icon', icon: 'clock', size: 22 -%}
+      </div>
+      <div>
+        <strong>Business Hours</strong>
+        <span>Monday – Saturday</span>
+        <span>10:00 AM – 7:00 PM IST</span>
+      </div>
+    </div>
+
+    <a
+      href="https://wa.me/917455918832?text=Hi%21+I+have+a+query+about+CueHealth+products."
+      target="_blank"
+      rel="noopener"
+      class="ch-whatsapp-cta-btn"
+    >
+      {%- render 'ch-icon', icon: 'whatsapp', size: 20 -%}
+      Chat with us on WhatsApp
+    </a>
+  </div>
+
+  <!-- Contact Form -->
+  <div class="ch-contact-form">
+    <h2>Send a Message</h2>
+    {%- form 'contact', id: 'CueHealthContactForm' -%}
+      {%- if form.posted_successfully? -%}
+        <div class="ch-form-success">
+          <span>{%- render 'ch-icon', icon: 'check-circle', size: 28 -%}</span>
+          <div>
+            <strong>Thank you for reaching out!</strong>
+            <p>We'll get back to you within 24 hours.</p>
+          </div>
+        </div>
+      {%- endif -%}
+      {%- if form.errors -%}
+        <div class="ch-form-error">Please correct the errors below and try again.</div>
+      {%- endif -%}
+
+      <div class="ch-form-row">
+        <div class="ch-form-group">
+          <label for="contact-name">Your Name *</label>
+          <input type="text" id="contact-name" name="contact[name]" autocomplete="name" required placeholder="Priya Sharma" value="{% if form.name %}{{ form.name }}{% endif %}">
+        </div>
+        <div class="ch-form-group">
+          <label for="contact-email">Email Address *</label>
+          <input type="email" id="contact-email" name="contact[email]" autocomplete="email" required autocorrect="off" autocapitalize="off" placeholder="priya@example.com" value="{% if form.email %}{{ form.email }}{% endif %}" {%- if form.errors contains 'email' %} aria-invalid="true"{% endif %}>
+        </div>
+      </div>
+
+      <div class="ch-form-group">
+        <label for="contact-phone">Phone / WhatsApp (optional)</label>
+        <input type="tel" id="contact-phone" name="contact[phone]" autocomplete="tel" placeholder="+91 98765 43210">
+      </div>
+
+      <div class="ch-form-group">
+        <label for="contact-subject">Subject *</label>
+        <select id="contact-subject" name="contact[subject]" required>
+          <option value="">Select a topic…</option>
+          <option value="Order Enquiry">Order Enquiry</option>
+          <option value="Product Question">Product Question</option>
+          <option value="Return / Refund">Return / Refund</option>
+          <option value="Bulk / Wholesale">Bulk / Wholesale</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="ch-form-group">
+        <label for="contact-message">Message *</label>
+        <textarea id="contact-message" name="contact[body]" rows="5" required placeholder="Tell us how we can help you…">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+      </div>
+
+      <button type="submit" class="ch-form-submit">
+        Send Message
+        {%- render 'ch-icon', icon: 'arrow-right', size: 16 -%}
+      </button>
+    {%- endform -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Contact CueHealth",
+  "tag": "section",
+  "class": "ch-contact-section",
+  "settings": [],
+  "presets": [{ "name": "Contact CueHealth" }]
+}
+{% endschema %}

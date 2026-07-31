@@ -1,0 +1,195 @@
+{{ 'custom-cuehealth.css' | asset_url | stylesheet_tag }}
+
+<!-- Hero -->
+<div class="ch-page-hero ch-page-hero--green">
+  <div class="ch-page-hero__inner">
+    <p class="ch-page-hero__eyebrow">Who We Are</p>
+    <h1 class="ch-page-hero__heading">About CueHealth</h1>
+    <p class="ch-page-hero__sub">Born in Noida. Committed to India's wellness revolution.</p>
+  </div>
+</div>
+
+<!-- Brand Story -->
+<section class="ch-about-story">
+  <div class="ch-about-story__inner page-width">
+    <div class="ch-about-story__text">
+      <h2>Our Story</h2>
+      <p>CueHealth was founded with a simple yet powerful belief: <strong>every Indian deserves access to science-backed, honest wellness supplements</strong>. We were tired of seeing shelves filled with products loaded with fillers, misleading labels, and zero clinical backing.</p>
+      <p>So in 2026, three passionate individuals — <strong>Tarun Srivastava, Srashti Khare, and Ashutosh</strong> — came together under <strong>VOXPLY LIFE SCIENCES LLP</strong> to build CueHealth from the ground up, right here in Noida, Uttar Pradesh.</p>
+      <p>Our name says it all: <em>CueHealth</em> is your cue — your signal, your nudge — to make the choices that lead to a healthier, fuller life.</p>
+      <div class="ch-about-story__stats">
+        <div class="ch-about-story__stat">
+          <strong>5+</strong>
+          <span>Products Launched</span>
+        </div>
+        <div class="ch-about-story__stat">
+          <strong>100%</strong>
+          <span>Natural Ingredients</span>
+        </div>
+        <div class="ch-about-story__stat">
+          <strong>FSSAI</strong>
+          <span>Approved Facility</span>
+        </div>
+      </div>
+    </div>
+    <div class="ch-about-story__image-wrap">
+      {% comment %}theme-check-disable RemoteAsset{% endcomment %}
+      <img
+        src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80&auto=format&fit=crop"
+        alt="CueHealth wellness supplements"
+        width="600" height="440"
+        loading="lazy"
+        class="ch-about-story__img"
+      >
+      {% comment %}theme-check-enable RemoteAsset{% endcomment %}
+      <div class="ch-about-story__img-badge">
+        {%- render 'ch-icon', icon: 'shield', size: 20 -%}
+        FSSAI Approved
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Mission -->
+<section class="ch-about-mission">
+  <div class="page-width">
+    <div class="ch-about-mission__card">
+      <div class="ch-about-mission__icon">
+        {%- render 'ch-icon', icon: 'heart', size: 40 -%}
+      </div>
+      <h2>Our Mission</h2>
+      <p>To make science-backed supplementation accessible, transparent, and trustworthy for every Indian — from the gym-goer in Delhi to the busy professional in Hyderabad.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Values -->
+<section class="ch-about-values">
+  <div class="page-width">
+    <h2 class="ch-section-heading" style="text-align:center;">Our Core Values</h2>
+    <div class="ch-about-values__grid">
+      <div class="ch-about-value">
+        <div class="ch-about-value__icon">
+          {%- render 'ch-icon', icon: 'microscope', size: 32 -%}
+        </div>
+        <h3>Science First</h3>
+        <p>Every formula is backed by peer-reviewed research and clinical data. We never compromise on efficacy.</p>
+      </div>
+      <div class="ch-about-value">
+        <div class="ch-about-value__icon">
+          {%- render 'ch-icon', icon: 'leaf', size: 32 -%}
+        </div>
+        <h3>Clean Ingredients</h3>
+        <p>No artificial colours, no fillers, no proprietary blends that hide dosages. Just clean, effective ingredients.</p>
+      </div>
+      <div class="ch-about-value">
+        <div class="ch-about-value__icon">
+          {%- render 'ch-icon', icon: 'check-circle', size: 32 -%}
+        </div>
+        <h3>Full Transparency</h3>
+        <p>We display every ingredient and its exact dosage. No secrets, no surprises — ever.</p>
+      </div>
+      <div class="ch-about-value">
+        <div class="ch-about-value__icon">
+          {%- render 'ch-icon', icon: 'flask', size: 32 -%}
+        </div>
+        <h3>Quality Assured</h3>
+        <p>All products are manufactured in FSSAI-licensed facilities and third-party lab tested for purity and potency.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Team -->
+<section class="ch-about-team">
+  <div class="page-width">
+    <h2 class="ch-section-heading" style="text-align:center;">Meet the Founders</h2>
+    <p class="ch-section-subheading" style="text-align:center;">The people behind your cue to healthy life</p>
+    {% comment %}theme-check-disable RemoteAsset{% endcomment %}
+    <div class="ch-about-team__grid">
+      <div class="ch-about-team__card">
+        <img
+          src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&q=80&auto=format&fit=crop&crop=face"
+          alt="Tarun Srivastava"
+          class="ch-about-team__photo"
+          width="88" height="88" loading="lazy"
+        >
+        <h3>Tarun Srivastava</h3>
+        <p class="ch-about-team__role">Designated Partner</p>
+        <p>Tarun brings deep business acumen and a passion for building consumer brands that genuinely improve lives.</p>
+      </div>
+      <div class="ch-about-team__card">
+        <img
+          src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=200&h=200&q=80&auto=format&fit=crop&crop=face"
+          alt="Srashti Khare"
+          class="ch-about-team__photo"
+          width="88" height="88" loading="lazy"
+        >
+        <h3>Srashti Khare</h3>
+        <p class="ch-about-team__role">Designated Partner</p>
+        <p>Srashti drives operations and customer experience, ensuring every CueHealth interaction feels personal and trustworthy.</p>
+      </div>
+      <div class="ch-about-team__card">
+        <img
+          src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&q=80&auto=format&fit=crop&crop=face"
+          alt="Ashutosh"
+          class="ch-about-team__photo"
+          width="88" height="88" loading="lazy"
+        >
+        <h3>Ashutosh</h3>
+        <p class="ch-about-team__role">Designated Partner</p>
+        <p>Ashutosh leads technology and product strategy, turning data and science into formulas that actually work.</p>
+      </div>
+    </div>
+    {% comment %}theme-check-enable RemoteAsset{% endcomment %}
+  </div>
+</section>
+
+<!-- Legal -->
+<section class="ch-about-legal">
+  <div class="page-width">
+    <h2 class="ch-section-heading" style="text-align:center;">Legal &amp; Compliance</h2>
+    <div class="ch-about-legal__grid">
+      <div class="ch-about-legal__item">
+        <span class="ch-about-legal__label">Legal Entity</span>
+        <span class="ch-about-legal__value">VOXPLY LIFE SCIENCES LLP</span>
+      </div>
+      <div class="ch-about-legal__item">
+        <span class="ch-about-legal__label">GSTIN</span>
+        <span class="ch-about-legal__value">09ABBFV9747M1Z9 (Uttar Pradesh)</span>
+      </div>
+      <div class="ch-about-legal__item">
+        <span class="ch-about-legal__label">FSSAI License</span>
+        <span class="ch-about-legal__value">Application in progress</span>
+      </div>
+      <div class="ch-about-legal__item">
+        <span class="ch-about-legal__label">Registered Address</span>
+        <span class="ch-about-legal__value">Upper Ground Floor, 003, Kh No 485, Sector 73, Noida, UP – 201301</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="ch-about-cta">
+  <div class="page-width" style="text-align:center;">
+    <h2>Ready to Start Your Wellness Journey?</h2>
+    <p>Explore our range of science-backed supplements and take your first step toward a healthier you.</p>
+    <div class="ch-hero__cta-group" style="justify-content:center;margin-top:28px;">
+      <a href="{{ routes.all_products_collection_url }}" class="ch-hero__btn ch-hero__btn--primary">
+        Shop All Products {%- render 'ch-icon', icon: 'arrow-right', size: 16 -%}
+      </a>
+      <a href="/pages/contact" class="ch-hero__btn ch-hero__btn--secondary">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "About Us Page",
+  "tag": "section",
+  "class": "ch-about-section",
+  "settings": [],
+  "presets": [{ "name": "About Us Page" }]
+}
+{% endschema %}

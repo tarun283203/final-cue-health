@@ -1,0 +1,98 @@
+{{ 'custom-cuehealth.css' | asset_url | stylesheet_tag }}
+
+<div class="ch-page-hero">
+  <div class="ch-page-hero__inner">
+    <p class="ch-page-hero__eyebrow">CueHealth Policies</p>
+    <h1 class="ch-page-hero__heading">Shipping Policy</h1>
+    <p class="ch-page-hero__sub">Fast, reliable delivery across India. Last updated: May 2026.</p>
+  </div>
+</div>
+
+<div class="ch-policy-wrapper page-width">
+  <div class="ch-policy-content">
+
+    <div class="ch-policy-highlight">
+      <span>🚚</span>
+      <div>
+        <strong>Free Shipping on orders above ₹499</strong>
+        <p>Standard delivery across India in 3–7 working days.</p>
+      </div>
+    </div>
+
+    <h2>1. Order Processing Time</h2>
+    <p>Orders are processed within <strong>1–2 working days</strong> (Monday to Saturday, excluding public holidays) after payment confirmation. You will receive an order confirmation email immediately after placing your order, and a dispatch notification with tracking details once your order is shipped.</p>
+
+    <h2>2. Shipping Rates</h2>
+    <table class="ch-policy-table">
+      <thead>
+        <tr>
+          <th>Order Value</th>
+          <th>Shipping Charge</th>
+          <th>Estimated Delivery</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Below ₹499</td>
+          <td>₹49</td>
+          <td>3–7 working days</td>
+        </tr>
+        <tr>
+          <td>₹499 and above</td>
+          <td><strong>FREE</strong></td>
+          <td>3–7 working days</td>
+        </tr>
+        <tr>
+          <td>Express (select pincodes)</td>
+          <td>₹99</td>
+          <td>1–2 working days</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>3. Delivery Locations</h2>
+    <p>We deliver <strong>pan-India</strong> — all states and union territories. Remote areas and certain island territories may require additional 2–3 days.</p>
+
+    <h2>4. Cash on Delivery (COD)</h2>
+    <p>COD is available on orders up to <strong>₹3,000</strong> in most serviceable pincodes. A nominal COD handling fee of ₹30 applies. COD availability is subject to your pincode — you will be notified at checkout if COD is unavailable for your location.</p>
+
+    <h2>5. Order Tracking</h2>
+    <p>Once your order is dispatched, you will receive:</p>
+    <ul>
+      <li>An email with your tracking number and carrier details</li>
+      <li>An SMS/WhatsApp notification with a tracking link</li>
+    </ul>
+    <p>You can also track your order by contacting us at <a href="mailto:hello@cuehealth.in">hello@cuehealth.in</a> or WhatsApp at <a href="https://wa.me/917455918832">7455918832</a>.</p>
+
+    <h2>6. Delays & Exceptions</h2>
+    <p>CueHealth is not responsible for delays caused by:</p>
+    <ul>
+      <li>Incorrect or incomplete shipping addresses provided by the customer</li>
+      <li>Natural disasters, strikes, or other force majeure events</li>
+      <li>Delays by third-party courier partners</li>
+    </ul>
+    <p>If your order is delayed by more than 10 working days, please contact us immediately and we will investigate.</p>
+
+    <h2>7. Damaged / Lost Shipments</h2>
+    <p>If your order arrives damaged or is lost in transit, please contact us within <strong>48 hours of delivery</strong> with photos of the damaged package. We will arrange a free replacement or full refund at our discretion.</p>
+
+    <div class="ch-policy-contact-bar">
+      <p>Have a shipping question?</p>
+      <div>
+        <a href="mailto:hello@cuehealth.in" class="ch-hero__btn ch-hero__btn--primary">Email Us</a>
+        <a href="https://wa.me/917455918832" target="_blank" class="ch-hero__btn ch-hero__btn--secondary">WhatsApp</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Shipping Policy Page",
+  "tag": "section",
+  "class": "ch-policy-section",
+  "settings": [],
+  "presets": [{ "name": "Shipping Policy Page" }]
+}
+{% endschema %}

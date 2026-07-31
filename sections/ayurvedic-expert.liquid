@@ -1,0 +1,71 @@
+{{ 'custom-cuehealth.css' | asset_url | stylesheet_tag }}
+
+<section class="ch-expert">
+  <div class="ch-expert__inner">
+    <div class="ch-expert__icon">
+      {%- render 'ch-icon', icon: 'heart', size: 40 -%}
+    </div>
+
+    <p class="ch-expert__eyebrow">
+      {%- render 'ch-icon', icon: 'star-filled', size: 12 -%}
+      {{ section.settings.eyebrow }}
+    </p>
+
+    <h2 class="ch-expert__heading">{{ section.settings.heading }}</h2>
+    <p class="ch-expert__desc">{{ section.settings.description }}</p>
+
+    <div class="ch-expert__cta-group">
+      <a
+        href="https://wa.me/917455918832?text={{ section.settings.whatsapp_message | url_encode }}"
+        target="_blank"
+        rel="noopener"
+        class="ch-expert__btn-wa"
+      >
+        {%- render 'ch-icon', icon: 'whatsapp', size: 20 -%}
+        {{ section.settings.btn_wa_label }}
+      </a>
+      {%- if section.settings.btn_learn_label != blank -%}
+        <a href="{{ section.settings.btn_learn_link | default: '/collections/all' }}" class="ch-expert__btn-learn">
+          {{ section.settings.btn_learn_label }}
+          {%- render 'ch-icon', icon: 'arrow-right', size: 16 -%}
+        </a>
+      {%- endif -%}
+    </div>
+
+    <div class="ch-expert__trust">
+      <span>{%- render 'ch-icon', icon: 'check-circle', size: 14 -%} Free Consultation</span>
+      <span>{%- render 'ch-icon', icon: 'clock', size: 14 -%} Mon–Sat, 10am–7pm IST</span>
+      <span>{%- render 'ch-icon', icon: 'shield', size: 14 -%} Certified Ayurvedic Advisors</span>
+      <span>{%- render 'ch-icon', icon: 'lock', size: 14 -%} 100% Confidential</span>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Expert Consultation CTA",
+  "tag": "section",
+  "class": "ch-expert-section",
+  "settings": [
+    { "type": "text",    "id": "eyebrow",           "label": "Eyebrow",            "default": "Free Ayurvedic Consultation" },
+    { "type": "richtext","id": "heading",            "label": "Heading",            "default": "<p>Not Sure Which Supplement <em>is Right for You?</em></p>" },
+    { "type": "text",    "id": "description",        "label": "Description",        "default": "Our certified Ayurvedic wellness advisors are here to guide you — completely free, no obligation. Get personalised supplement recommendations tailored to your prakriti (body type) and health goals." },
+    { "type": "text",    "id": "btn_wa_label",       "label": "WhatsApp Button",    "default": "Chat with an Expert" },
+    { "type": "text",    "id": "whatsapp_message",   "label": "WhatsApp Pre-fill",  "default": "Hi! I'd like a free Ayurvedic consultation to find the right CueHealth supplements for me." },
+    { "type": "text",    "id": "btn_learn_label",    "label": "Secondary Button",   "default": "Explore Products" },
+    { "type": "url",     "id": "btn_learn_link",     "label": "Secondary Button Link" }
+  ],
+  "presets": [
+    {
+      "name": "Expert Consultation CTA",
+      "settings": {
+        "eyebrow": "Free Ayurvedic Consultation",
+        "heading": "<p>Not Sure Which Supplement <em>is Right for You?</em></p>",
+        "description": "Our certified Ayurvedic wellness advisors are here to guide you — completely free, no obligation. Get personalised supplement recommendations tailored to your prakriti and health goals.",
+        "btn_wa_label": "Chat with an Expert",
+        "btn_learn_label": "Explore Products"
+      }
+    }
+  ]
+}
+{% endschema %}

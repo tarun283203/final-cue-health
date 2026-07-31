@@ -1,0 +1,438 @@
+{{ 'custom-cuehealth.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign slide_blocks = section.blocks | where: 'type', 'slide'
+  assign has_slides = false
+  if slide_blocks.size > 0
+    assign has_slides = true
+  endif
+
+  assign has_image  = false
+  assign has_video  = false
+  assign has_yt     = false
+
+  if has_slides == false
+    if section.settings.image != blank
+      assign has_image = true
+    endif
+    if section.settings.video != blank
+      assign has_video = true
+    endif
+    if section.settings.youtube_url != blank
+      assign yt_url = section.settings.youtube_url
+      if yt_url contains 'v='
+        assign yt_id = yt_url | split: 'v=' | last | split: '&' | first
+      elsif yt_url contains 'youtu.be/'
+        assign yt_id = yt_url | split: 'youtu.be/' | last | split: '?' | first
+      endif
+      if yt_id != blank
+        assign has_yt = true
+      endif
+    endif
+  endif
+-%}
+
+{%- style -%}
+  .ch-hero-{{ section.id }} {
+    min-height: {{ section.settings.min_height_mobile }}vh;
+  }
+  @media screen and (min-width: 750px) {
+    .ch-hero-{{ section.id }} { min-height: {{ section.settings.min_height }}vh; }
+  }
+  .ch-hero-{{ section.id }} .ch-hero__overlay {
+    background: linear-gradient(
+      to right,
+      rgba(5,23,14,0.88) 0%,
+      rgba(5,23,14,0.78) 36%,
+      rgba(5,23,14,0.48) 68%,
+      rgba(5,23,14,0.28) 100%
+    );
+  }
+  .ch-hero-{{ section.id }} .ch-hero__img {
+    filter: brightness(0.62) saturate(1.05) contrast(1.08);
+    object-position: center center;
+  }
+{%- endstyle -%}
+
+<section
+  class="ch-hero ch-hero-{{ section.id }}{% if has_slides %} ch-hero--slideshow{% endif %}"
+  aria-label="{{ section.settings.heading | strip_html | escape }}"
+  {% if has_slides %}
+    data-ch-slideshow
+    data-interval="{{ section.settings.slide_interval | default: 5000 }}"
+  {% endif %}
+>
+  <!-- Background layer -->
+  {%- if has_slides -%}
+    <div class="ch-hero__slides" aria-hidden="true">
+      {%- for block in slide_blocks -%}
+        {%- liquid
+          assign slide_loading = 'lazy'
+          assign slide_fetchpriority = 'auto'
+          assign fallback_image = 'cuehealth-hero-ayurvedic-spices.jpg'
+          assign fallback_alt = 'Ayurvedic herbs and spices arranged in spoons'
+          if forloop.first
+            assign slide_loading = 'eager'
+            assign slide_fetchpriority = 'high'
+          endif
+          if forloop.index == 2
+            assign fallback_image = 'cuehealth-hero-turmeric.jpg'
+            assign fallback_alt = 'Turmeric powder with fresh ayurvedic roots and leaves'
+          elsif forloop.index == 3
+            assign fallback_image = 'cuehealth-hero-ashwagandha.jpg'
+            assign fallback_alt = 'Ashwagandha supplement powder and capsules'
+          endif
+        -%}
+        <div
+          class="ch-hero__slide{% if forloop.first %} ch-hero__slide--active{% endif %}"
+          data-slide-index="{{ forloop.index0 }}"
+          {{ block.shopify_attributes }}
+        >
+          {%- if block.settings.image != blank and forloop.index > 3 -%}
+            {{
+              block.settings.image
+              | image_url: width: 2000
+              | image_tag:
+                loading: slide_loading,
+                fetchpriority: slide_fetchpriority,
+                widths: '750, 1100, 1500, 1780, 2000',
+                sizes: '100vw',
+                class: 'ch-hero__img'
+            }}
+          {%- else -%}
+            <img
+              src="{{ fallback_image | asset_url }}"
+              alt="{{ fallback_alt | escape }}"
+              width="1280"
+              height="720"
+              loading="{{ slide_loading }}"
+              fetchpriority="{{ slide_fetchpriority }}"
+              class="ch-hero__img ch-hero__img--fallback"
+            >
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+
+  {%- elsif has_yt -%}
+    <div class="ch-hero__media ch-hero__media--video">
+      <iframe
+        class="ch-hero__yt-iframe"
+        src="https://www.youtube-nocookie.com/embed/{{ yt_id }}?autoplay=1&mute=1&loop=1&playlist={{ yt_id }}&controls=0&showinfo=0&rel=0&iv_load_policy=3&disablekb=1&playsinline=1"
+        allow="autoplay; encrypted-media"
+        allowfullscreen
+        frameborder="0"
+        title="Hero background video"
+        loading="lazy"
+      ></iframe>
+    </div>
+
+  {%- elsif has_video -%}
+    <div class="ch-hero__media ch-hero__media--video">
+      {{
+        section.settings.video
+        | video_tag:
+          image_size: '1100x',
+          autoplay: true,
+          loop: true,
+          controls: false,
+          muted: true,
+          playsinline: true,
+          class: 'ch-hero__video-tag'
+      }}
+    </div>
+
+  {%- elsif has_image -%}
+    <div class="ch-hero__media">
+      {{
+        section.settings.image
+        | image_url: width: 2000
+        | image_tag:
+          loading: 'eager',
+          fetchpriority: 'high',
+          widths: '750, 1100, 1500, 1780, 2000',
+          sizes: '100vw',
+          class: 'ch-hero__img'
+      }}
+    </div>
+
+  {%- else -%}
+    <div class="ch-hero__media">
+      <img
+        src="{{ 'cuehealth-hero-ayurvedic-spices.jpg' | asset_url }}"
+        alt="Ayurvedic herbs and spices arranged in spoons"
+        width="1280"
+        height="720"
+        loading="eager"
+        fetchpriority="high"
+        class="ch-hero__img ch-hero__img--fallback"
+      >
+    </div>
+  {%- endif -%}
+
+  <div class="ch-hero__overlay"></div>
+
+  <!-- Content -->
+  <div class="ch-hero__content ch-hero__content--{{ section.settings.content_position }}">
+    <div class="ch-hero__inner">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="ch-hero__eyebrow">
+          {%- render 'ch-icon', icon: 'leaf', size: 14 -%}
+          {{ section.settings.eyebrow | escape }}
+        </p>
+      {%- endif -%}
+
+      {%- if section.settings.heading != blank -%}
+        <h1 class="ch-hero__heading">{{ section.settings.heading }}</h1>
+      {%- endif -%}
+
+      {%- if section.settings.description != blank -%}
+        <p class="ch-hero__desc">{{ section.settings.description | escape }}</p>
+      {%- endif -%}
+
+      <div class="ch-hero__cta-group">
+        {%- if section.settings.btn1_label != blank -%}
+          <a href="{{ section.settings.btn1_link | default: '/collections/all' }}" class="ch-hero__btn ch-hero__btn--primary">
+            {{ section.settings.btn1_label | escape }}
+            {%- render 'ch-icon', icon: 'arrow-right', size: 16 -%}
+          </a>
+        {%- endif -%}
+        {%- if section.settings.btn2_label != blank -%}
+          <a href="{{ section.settings.btn2_link | default: '/pages/about-us' }}" class="ch-hero__btn ch-hero__btn--secondary">
+            {{ section.settings.btn2_label | escape }}
+          </a>
+        {%- endif -%}
+      </div>
+
+      {%- if section.settings.show_trust_strip -%}
+        <div class="ch-hero__trust-strip">
+          <span>{%- render 'ch-icon', icon: 'shield', size: 13 -%} FSSAI Approved</span>
+          <span>{%- render 'ch-icon', icon: 'flask',  size: 13 -%} Lab Tested</span>
+          <span>{%- render 'ch-icon', icon: 'leaf',   size: 13 -%} No Fillers</span>
+          <span>{%- render 'ch-icon', icon: 'truck',  size: 13 -%} Free Shipping &#8377;499+</span>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+
+  <!-- Slideshow navigation (only when slides are active) -->
+  {%- if has_slides and slide_blocks.size > 1 -%}
+    <div class="ch-hero__slideshow-nav" aria-label="Slideshow navigation">
+      <button class="ch-hero__slide-btn ch-hero__slide-btn--prev" type="button" aria-label="Previous slide">
+        <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+      </button>
+
+      <div class="ch-hero__slide-dots" role="tablist" aria-label="Select slide">
+        {%- for block in slide_blocks -%}
+          <button
+            class="ch-hero__slide-dot{% if forloop.first %} active{% endif %}"
+            type="button"
+            role="tab"
+            aria-label="Slide {{ forloop.index }}"
+            aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+            data-dot-index="{{ forloop.index0 }}"
+          ></button>
+        {%- endfor -%}
+      </div>
+
+      <button class="ch-hero__slide-btn ch-hero__slide-btn--next" type="button" aria-label="Next slide">
+        <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+      </button>
+    </div>
+  {%- endif -%}
+
+  <!-- Scroll indicator -->
+  {%- if section.settings.show_scroll_indicator -%}
+    <div class="ch-hero__scroll-indicator" aria-hidden="true">
+      <div class="ch-hero__scroll-mouse">
+        <div class="ch-hero__scroll-wheel"></div>
+      </div>
+    </div>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Custom Hero Banner",
+  "tag": "section",
+  "class": "ch-hero-section",
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Background Image (2000×900px recommended)"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Slideshow (add Slide blocks above)"
+    },
+    {
+      "type": "range",
+      "id": "slide_interval",
+      "min": 2000,
+      "max": 8000,
+      "step": 500,
+      "unit": "ms",
+      "label": "Auto-play Interval",
+      "default": 5000
+    },
+    {
+      "type": "header",
+      "content": "Single Background (used if no Slide blocks)"
+    },
+    {
+      "type": "text",
+      "id": "youtube_url",
+      "label": "YouTube Video URL",
+      "info": "Paste a YouTube URL. Plays muted & looped. Overrides image if set.",
+      "placeholder": "https://www.youtube.com/watch?v=..."
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Upload Background Video"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background Image"
+    },
+    {
+      "type": "header",
+      "content": "Overlay"
+    },
+    {
+      "type": "select",
+      "id": "overlay_direction",
+      "label": "Overlay Direction",
+      "options": [
+        { "value": "to right",  "label": "Left to Right" },
+        { "value": "to left",   "label": "Right to Left" },
+        { "value": "to bottom", "label": "Top to Bottom" },
+        { "value": "135deg",    "label": "Diagonal" }
+      ],
+      "default": "to right"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0, "max": 85, "step": 5, "unit": "%",
+      "label": "Overlay Darkness",
+      "default": 55
+    },
+    {
+      "type": "header",
+      "content": "Height"
+    },
+    {
+      "type": "range",
+      "id": "min_height",
+      "min": 40, "max": 100, "step": 5, "unit": "vh",
+      "label": "Desktop Height",
+      "default": 85
+    },
+    {
+      "type": "range",
+      "id": "min_height_mobile",
+      "min": 40, "max": 100, "step": 5, "unit": "vh",
+      "label": "Mobile Height",
+      "default": 70
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "select",
+      "id": "content_position",
+      "label": "Content Position",
+      "options": [
+        { "value": "left",   "label": "Left" },
+        { "value": "center", "label": "Centre" },
+        { "value": "right",  "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "Science-backed wellness"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p>Your Cue to <em>Healthy Life</em></p>"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Subtext",
+      "default": "FSSAI approved supplements with no fillers, no compromises. Crafted for real, lasting results."
+    },
+    {
+      "type": "text",
+      "id": "btn1_label",
+      "label": "Primary Button",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "btn1_link",
+      "label": "Primary Button Link"
+    },
+    {
+      "type": "text",
+      "id": "btn2_label",
+      "label": "Secondary Button",
+      "default": "Our Story"
+    },
+    {
+      "type": "url",
+      "id": "btn2_link",
+      "label": "Secondary Button Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_trust_strip",
+      "label": "Show trust strip below buttons",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_scroll_indicator",
+      "label": "Show scroll indicator",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Hero Banner",
+      "settings": {
+        "eyebrow": "Science-backed wellness",
+        "heading": "<p>Your Cue to <em>Healthy Life</em></p>",
+        "description": "FSSAI approved supplements with no fillers, no compromises. Crafted for real, lasting results.",
+        "btn1_label": "Shop Now",
+        "btn2_label": "Our Story",
+        "overlay_opacity": 55,
+        "overlay_direction": "to right",
+        "min_height": 85,
+        "min_height_mobile": 70,
+        "content_position": "left",
+        "show_trust_strip": true,
+        "show_scroll_indicator": true,
+        "slide_interval": 5000
+      }
+    }
+  ]
+}
+{% endschema %}

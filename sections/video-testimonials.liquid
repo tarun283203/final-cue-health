@@ -1,0 +1,231 @@
+{{ 'custom-cuehealth.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .ch-video-testimonials-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background: {{ section.settings.bg_color }};
+  }
+{%- endstyle -%}
+
+<section class="ch-video-testimonials ch-video-testimonials-{{ section.id }}">
+  <div class="ch-video-testimonials__inner">
+    <div class="ch-video-testimonials__header">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="ch-video-testimonials__eyebrow">
+          <i class="fa-solid fa-circle-play" aria-hidden="true"></i>
+          {{ section.settings.eyebrow | escape }}
+        </p>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="ch-video-testimonials__heading">{{ section.settings.heading | escape }}</h2>
+      {%- endif -%}
+      {%- if section.settings.subheading != blank -%}
+        <p class="ch-video-testimonials__subheading">{{ section.settings.subheading | escape }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="ch-video-testimonials__grid">
+      {%- for block in section.blocks -%}
+        <article class="ch-video-testimonials__card" {{ block.shopify_attributes }}>
+          <div class="ch-video-testimonials__media">
+            {%- if block.settings.video_url != blank -%}
+              {{
+                block.settings.video_url
+                | external_video_tag:
+                  class: 'ch-video-testimonials__iframe',
+                  loading: 'lazy'
+              }}
+            {%- elsif block.settings.poster != blank -%}
+              {{
+                block.settings.poster
+                | image_url: width: 900
+                | image_tag:
+                  loading: 'lazy',
+                  widths: '360, 540, 720, 900',
+                  sizes: '(max-width: 749px) 88vw, 33vw',
+                  class: 'ch-video-testimonials__poster'
+              }}
+              <span class="ch-video-testimonials__play" aria-hidden="true">
+                <i class="fa-solid fa-play"></i>
+              </span>
+            {%- else -%}
+              <div class="ch-video-testimonials__placeholder" aria-hidden="true">
+                <span class="ch-video-testimonials__play">
+                  <i class="fa-solid fa-play"></i>
+                </span>
+              </div>
+            {%- endif -%}
+
+            <span class="ch-video-testimonials__tag">
+              <i class="fa-solid fa-check" aria-hidden="true"></i>
+              Verified customer
+            </span>
+          </div>
+
+          <div class="ch-video-testimonials__body">
+            <div class="ch-video-testimonials__stars" aria-label="{{ block.settings.rating }} out of 5 stars">
+              {%- assign rating = block.settings.rating | times: 1 -%}
+              {%- for i in (1..5) -%}
+                <i class="fa-solid fa-star{% if i > rating %} ch-video-testimonials__star--muted{% endif %}" aria-hidden="true"></i>
+              {%- endfor -%}
+            </div>
+
+            {%- if block.settings.quote != blank -%}
+              <p class="ch-video-testimonials__quote">"{{ block.settings.quote | escape }}"</p>
+            {%- endif -%}
+
+            <div class="ch-video-testimonials__author">
+              <strong>{{ block.settings.customer_name | escape }}</strong>
+              <span>{{ block.settings.customer_location | escape }}</span>
+            </div>
+          </div>
+        </article>
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.footer_text != blank -%}
+      <p class="ch-video-testimonials__footer">{{ section.settings.footer_text | escape }}</p>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Video Testimonials",
+  "tag": "section",
+  "class": "ch-video-testimonials-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Customer video stories"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Real people. Real wellness wins."
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Hear how CueHealth customers use Ayurveda in their everyday routines."
+    },
+    {
+      "type": "text",
+      "id": "footer_text",
+      "label": "Footer text",
+      "default": "Want to share your story? Send us your CueHealth experience on WhatsApp."
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background",
+      "default": "#FDF8F0"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 20,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 20,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 64
+    }
+  ],
+  "blocks": [
+    {
+      "type": "video_testimonial",
+      "name": "Video testimonial",
+      "settings": [
+        {
+          "type": "video_url",
+          "id": "video_url",
+          "label": "YouTube or Vimeo video URL",
+          "accept": ["youtube", "vimeo"]
+        },
+        {
+          "type": "image_picker",
+          "id": "poster",
+          "label": "Poster image"
+        },
+        {
+          "type": "text",
+          "id": "customer_name",
+          "label": "Customer name",
+          "default": "Priya S."
+        },
+        {
+          "type": "text",
+          "id": "customer_location",
+          "label": "Location",
+          "default": "Mumbai"
+        },
+        {
+          "type": "range",
+          "id": "rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "label": "Rating",
+          "default": 5
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Short quote",
+          "default": "I felt the difference within a few weeks. The routine is simple and the quality feels trustworthy."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video Testimonials",
+      "blocks": [
+        {
+          "type": "video_testimonial",
+          "settings": {
+            "customer_name": "Priya S.",
+            "customer_location": "Mumbai",
+            "rating": 5,
+            "quote": "My sleep routine finally feels consistent, and I wake up fresher."
+          }
+        },
+        {
+          "type": "video_testimonial",
+          "settings": {
+            "customer_name": "Rahul M.",
+            "customer_location": "Delhi",
+            "rating": 5,
+            "quote": "The product quality feels premium, and delivery was quick."
+          }
+        },
+        {
+          "type": "video_testimonial",
+          "settings": {
+            "customer_name": "Meera P.",
+            "customer_location": "Jaipur",
+            "rating": 5,
+            "quote": "The consultation helped me choose the right supplement."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
