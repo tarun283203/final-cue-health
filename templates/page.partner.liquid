@@ -1,0 +1,720 @@
+{% layout none %}
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CueHealth Partner Program — घर बैठे लाखों कमाएं | Earn Lakhs From Home</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Noto+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --green:#1B4332;
+  --green-light:#2D6A4F;
+  --green-pale:#D8F3DC;
+  --green-bg:#F0FFF4;
+  --gold:#C8860A;
+  --gold-light:#F5C842;
+  --gold-bg:#FFFBEB;
+  --saffron:#E8622A;
+  --cream:#FDFCF7;
+  --dark:#111111;
+  --body:#374151;
+  --muted:#6B7280;
+  --border:#E5DDD0;
+  --card:#FFFFFF;
+  --shadow:0 2px 16px rgba(27,67,50,0.10);
+  --shadow-lg:0 8px 40px rgba(27,67,50,0.16);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans',sans-serif;background:var(--cream);color:var(--body);line-height:1.7;overflow-x:hidden}
+.hindi{font-family:'Noto Sans Devanagari','Baloo 2',sans-serif}
+h1,h2,h3,.display{font-family:'Baloo 2',sans-serif;line-height:1.2}
+
+/* ===== NAV ===== */
+.nav{position:sticky;top:0;z-index:200;background:var(--green);padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:60px;box-shadow:0 2px 12px rgba(0,0,0,0.15)}
+.nav-logo{color:#fff;font-family:'Baloo 2',sans-serif;font-size:1.2rem;font-weight:800;display:flex;align-items:center;gap:8px;text-decoration:none}
+.nav-logo span{background:var(--gold);color:#fff;border-radius:6px;padding:2px 8px;font-size:.85rem}
+.nav-cta{background:var(--gold);color:#fff;border:none;padding:8px 20px;border-radius:24px;font-weight:700;cursor:pointer;font-family:'Baloo 2',sans-serif;font-size:.9rem;text-decoration:none;transition:.2s}
+.nav-cta:hover{background:var(--gold-light);color:var(--dark)}
+
+/* ===== HERO ===== */
+.hero{background:linear-gradient(135deg,#0D2B1D 0%,#1B4332 45%,#2D6A4F 100%);min-height:92vh;display:flex;align-items:center;justify-content:center;padding:4rem 5%;position:relative;overflow:hidden;text-align:center}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M40 40c0-11 9-20 20-20s20 9 20 20-9 20-20 20-20-9-20-20zm-40 0c0-11 9-20 20-20s20 9 20 20-9 20-20 20S0 51 0 40z'/%3E%3C/g%3E%3C/svg%3E");pointer-events:none}
+.hero-inner{max-width:800px;position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(200,134,10,0.2);border:1px solid rgba(200,134,10,0.4);padding:6px 18px;border-radius:24px;color:var(--gold-light);font-size:.82rem;font-weight:600;margin-bottom:1.5rem;font-family:'Baloo 2',sans-serif}
+.hero h1{font-size:clamp(2rem,5vw,3.5rem);font-weight:800;color:#fff;margin-bottom:1rem;line-height:1.15}
+.hero h1 .gold{color:var(--gold-light)}
+.hero h1 .big{font-size:clamp(2.5rem,6vw,4.2rem);display:block}
+.hero-sub{font-size:clamp(.95rem,2vw,1.15rem);color:rgba(255,255,255,0.8);max-width:600px;margin:0 auto 2rem;font-family:'Noto Sans Devanagari',sans-serif;line-height:1.8}
+.hero-numbers{display:flex;gap:1.5rem;justify-content:center;margin-bottom:2.5rem;flex-wrap:wrap}
+.hero-num{text-align:center}
+.hero-num .n{font-family:'Baloo 2',sans-serif;font-size:2.2rem;font-weight:800;color:var(--gold-light);line-height:1}
+.hero-num .l{font-size:.75rem;color:rgba(255,255,255,0.65);margin-top:2px}
+.hero-divider{width:1px;background:rgba(255,255,255,0.15);align-self:stretch}
+.hero-btn{display:inline-block;background:linear-gradient(135deg,var(--gold),#E8A020);color:#fff;padding:16px 40px;border-radius:50px;font-family:'Baloo 2',sans-serif;font-size:1.15rem;font-weight:800;text-decoration:none;box-shadow:0 6px 30px rgba(200,134,10,0.4);transition:.3s;border:none;cursor:pointer}
+.hero-btn:hover{transform:translateY(-2px);box-shadow:0 10px 40px rgba(200,134,10,0.5)}
+.hero-note{margin-top:1rem;color:rgba(255,255,255,0.5);font-size:.8rem}
+.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.4);font-size:.75rem;display:flex;flex-direction:column;align-items:center;gap:6px;animation:bounce 2s infinite}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
+
+/* ===== SECTION BASE ===== */
+.section{padding:5rem 5%}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-eyebrow{font-size:.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem;font-family:'Baloo 2',sans-serif}
+.section-title{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:800;color:var(--dark);margin-bottom:.5rem}
+.section-sub{color:var(--muted);font-size:1rem;max-width:600px;margin-bottom:2.5rem}
+
+/* ===== CALCULATOR ===== */
+.calc-section{background:var(--green);padding:5rem 5%}
+.calc-inner{max-width:850px;margin:0 auto;text-align:center}
+.calc-title{color:#fff;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;margin-bottom:.5rem}
+.calc-sub{color:rgba(255,255,255,0.7);margin-bottom:3rem;font-family:'Noto Sans Devanagari',sans-serif;font-size:1rem}
+.calc-box{background:#fff;border-radius:20px;padding:2.5rem;box-shadow:var(--shadow-lg)}
+.calc-label{font-size:1rem;font-weight:600;color:var(--body);margin-bottom:.75rem;font-family:'Noto Sans Devanagari',sans-serif}
+.calc-label span{color:var(--green);font-weight:800}
+.slider-wrap{position:relative;margin-bottom:2rem}
+.calc-slider{width:100%;-webkit-appearance:none;height:8px;border-radius:8px;background:linear-gradient(to right,var(--green) 0%,var(--green) 50%,#E5E7EB 50%,#E5E7EB 100%);outline:none;cursor:pointer}
+.calc-slider::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;border-radius:50%;background:var(--green);cursor:pointer;box-shadow:0 2px 8px rgba(27,67,50,0.4)}
+.slider-marks{display:flex;justify-content:space-between;margin-top:6px;font-size:.7rem;color:var(--muted)}
+.calc-result{background:linear-gradient(135deg,var(--green-bg),#fff);border:2px solid var(--green-pale);border-radius:16px;padding:2rem;margin-top:1.5rem}
+.result-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.result-item{text-align:center;padding:1rem;border-radius:12px;background:#fff;border:1px solid var(--border)}
+.result-num{font-family:'Baloo 2',sans-serif;font-size:1.8rem;font-weight:800;color:var(--green)}
+.result-label{font-size:.75rem;color:var(--muted);margin-top:2px;font-family:'Noto Sans Devanagari',sans-serif}
+.result-highlight{background:linear-gradient(135deg,var(--green),var(--green-light));color:#fff;border:none}
+.result-highlight .result-num{color:#fff;font-size:2.2rem}
+.result-highlight .result-label{color:rgba(255,255,255,0.8)}
+
+/* ===== PRODUCTS ===== */
+.products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2rem}
+.product-card{background:var(--card);border:1px solid var(--border);border-radius:18px;overflow:hidden;transition:.25s;box-shadow:var(--shadow)}
+.product-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.product-img{height:180px;display:flex;align-items:center;justify-content:center;font-size:5rem}
+.product-img.shilajit{background:linear-gradient(135deg,#1B4332,#2D6A4F)}
+.product-img.women{background:linear-gradient(135deg,#7C3AED,#9D5DE0)}
+.product-img.young{background:linear-gradient(135deg,#D97706,#F59E0B)}
+.product-body{padding:1.5rem}
+.product-name{font-family:'Baloo 2',sans-serif;font-size:1.15rem;font-weight:700;color:var(--dark);margin-bottom:.25rem}
+.product-hindi{font-family:'Noto Sans Devanagari',sans-serif;font-size:.82rem;color:var(--muted);margin-bottom:.75rem}
+.product-benefit{font-size:.82rem;color:var(--body);margin-bottom:1rem;line-height:1.6}
+.product-earn{background:var(--green-bg);border:1px solid var(--green-pale);border-radius:10px;padding:.75rem 1rem;display:flex;align-items:center;justify-content:space-between}
+.earn-label{font-size:.75rem;color:var(--green);font-weight:600;font-family:'Noto Sans Devanagari',sans-serif}
+.earn-amount{font-family:'Baloo 2',sans-serif;font-size:1.4rem;font-weight:800;color:var(--green)}
+.product-price{font-size:.75rem;color:var(--muted);margin-top:.5rem;text-align:right}
+
+/* ===== HOW IT WORKS ===== */
+.how-section{background:var(--green-bg);padding:5rem 5%}
+.steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;margin-top:2.5rem}
+.step-card{background:#fff;border-radius:16px;padding:1.75rem;text-align:center;border:1px solid var(--border);position:relative;overflow:hidden}
+.step-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--green),var(--gold))}
+.step-num{width:48px;height:48px;background:linear-gradient(135deg,var(--green),var(--green-light));border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-family:'Baloo 2',sans-serif;font-size:1.3rem;font-weight:800;color:#fff}
+.step-title{font-family:'Baloo 2',sans-serif;font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:.25rem}
+.step-hindi{font-family:'Noto Sans Devanagari',sans-serif;font-size:.82rem;color:var(--muted);margin-bottom:.5rem}
+.step-desc{font-size:.82rem;color:var(--body);line-height:1.6}
+
+/* ===== WHO IS THIS FOR ===== */
+.qualify-section{padding:5rem 5%}
+.qualify-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2rem}
+.qualify-card{border-radius:16px;padding:2rem}
+.qualify-yes{background:var(--green-bg);border:2px solid var(--green-pale)}
+.qualify-no{background:#FEF2F2;border:2px solid #FECACA}
+.qualify-card h3{font-family:'Baloo 2',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.qualify-card ul{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.qualify-card li{font-size:.88rem;display:flex;align-items:flex-start;gap:.5rem;font-family:'Noto Sans Devanagari',sans-serif;line-height:1.5}
+
+/* ===== TESTIMONIALS ===== */
+.testi-section{background:linear-gradient(135deg,#1B4332 0%,#2D6A4F 100%);padding:5rem 5%}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2.5rem}
+.testi-card{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:1.75rem}
+.testi-quote{font-size:.92rem;color:rgba(255,255,255,0.85);margin-bottom:1rem;line-height:1.8;font-family:'Noto Sans Devanagari',sans-serif}
+.testi-quote::before{content:'"';font-family:'Baloo 2',sans-serif;font-size:2rem;color:var(--gold-light);line-height:0;vertical-align:-0.4rem;margin-right:4px}
+.testi-author{display:flex;align-items:center;gap:.75rem}
+.testi-avatar{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.testi-name{font-family:'Baloo 2',sans-serif;font-size:.9rem;font-weight:700;color:#fff}
+.testi-location{font-size:.72rem;color:rgba(255,255,255,0.55)}
+.testi-earn{margin-top:.75rem;display:inline-block;background:rgba(200,134,10,0.2);border:1px solid rgba(200,134,10,0.3);padding:4px 12px;border-radius:20px;font-size:.75rem;color:var(--gold-light);font-weight:600}
+
+/* ===== EARNINGS TABLE ===== */
+.table-section{padding:5rem 5%;background:var(--gold-bg)}
+.earnings-table{width:100%;border-collapse:separate;border-spacing:0;border-radius:16px;overflow:hidden;box-shadow:var(--shadow-lg);margin-top:2rem}
+.earnings-table th{background:var(--green);color:#fff;padding:1rem 1.25rem;text-align:center;font-family:'Baloo 2',sans-serif;font-size:.88rem;font-weight:700}
+.earnings-table td{padding:1rem 1.25rem;text-align:center;font-family:'Baloo 2',sans-serif;font-size:1rem;background:#fff;border-bottom:1px solid var(--border)}
+.earnings-table tr:last-child td{border-bottom:none}
+.earnings-table tr:nth-child(even) td{background:#F9F9F7}
+.earnings-table .highlight-row td{background:linear-gradient(135deg,var(--green-bg),#fff);font-weight:700;color:var(--green);font-size:1.1rem}
+.earnings-table .sales-col{font-weight:700;color:var(--dark)}
+.earnings-table .money{color:var(--green);font-weight:800}
+
+/* ===== APPLICATION FORM ===== */
+.form-section{padding:5rem 5%}
+.form-wrap{max-width:700px;margin:0 auto}
+.form-card{background:#fff;border-radius:20px;padding:3rem;box-shadow:var(--shadow-lg);border:1px solid var(--border)}
+.form-group{margin-bottom:1.5rem}
+.form-label{display:block;font-size:.88rem;font-weight:600;color:var(--dark);margin-bottom:.5rem;font-family:'Noto Sans Devanagari',sans-serif}
+.form-label span{color:var(--muted);font-size:.78rem;font-weight:400}
+.form-input,.form-select,.form-textarea{width:100%;padding:.85rem 1rem;border:1.5px solid var(--border);border-radius:10px;font-family:'Noto Sans Devanagari','Noto Sans',sans-serif;font-size:.92rem;color:var(--dark);background:#fff;transition:.2s;outline:none}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(27,67,50,0.08)}
+.form-textarea{resize:vertical;min-height:100px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.radio-group{display:flex;flex-direction:column;gap:.5rem}
+.radio-option{display:flex;align-items:center;gap:.6rem;cursor:pointer;padding:.6rem .75rem;border:1.5px solid var(--border);border-radius:8px;transition:.2s}
+.radio-option:hover{border-color:var(--green);background:var(--green-bg)}
+.radio-option input[type=radio]{accent-color:var(--green);width:16px;height:16px}
+.radio-option label{font-size:.88rem;cursor:pointer;font-family:'Noto Sans Devanagari',sans-serif}
+.form-submit{width:100%;background:linear-gradient(135deg,var(--green),var(--green-light));color:#fff;border:none;padding:1.1rem;border-radius:12px;font-family:'Baloo 2',sans-serif;font-size:1.1rem;font-weight:800;cursor:pointer;transition:.2s;margin-top:.5rem}
+.form-submit:hover{opacity:.92;transform:translateY(-1px)}
+.form-disclaimer{text-align:center;font-size:.75rem;color:var(--muted);margin-top:.75rem;font-family:'Noto Sans Devanagari',sans-serif}
+
+/* ===== WHATSAPP FLOAT ===== */
+.wa-float{position:fixed;bottom:1.5rem;right:1.5rem;z-index:999;background:#25D366;color:#fff;border-radius:50%;width:60px;height:60px;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,0.5);transition:.25s;font-size:1.6rem}
+.wa-float:hover{transform:scale(1.1);box-shadow:0 6px 28px rgba(37,211,102,0.6)}
+
+/* ===== FAQ ===== */
+.faq-section{background:var(--green-bg);padding:5rem 5%}
+.faq-list{max-width:750px;margin:2rem auto 0;display:flex;flex-direction:column;gap:.75rem}
+.faq-item{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.faq-q{width:100%;background:none;border:none;padding:1.1rem 1.25rem;text-align:left;font-family:'Baloo 2',sans-serif;font-size:.95rem;font-weight:700;color:var(--dark);cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.faq-q:after{content:'＋';font-size:1.2rem;color:var(--green);transition:.2s;flex-shrink:0}
+.faq-item.open .faq-q:after{content:'－'}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.faq-item.open .faq-a{max-height:300px}
+.faq-a-inner{padding:.25rem 1.25rem 1.1rem;font-size:.88rem;color:var(--body);font-family:'Noto Sans Devanagari',sans-serif;line-height:1.7}
+
+/* ===== FOOTER ===== */
+.footer{background:var(--dark);color:rgba(255,255,255,0.6);padding:2.5rem 5%;text-align:center;font-size:.82rem}
+.footer-logo{font-family:'Baloo 2',sans-serif;font-size:1.3rem;font-weight:800;color:#fff;margin-bottom:.5rem}
+.footer-links{display:flex;gap:1.5rem;justify-content:center;margin-top:1rem;flex-wrap:wrap}
+.footer-links a{color:rgba(255,255,255,0.5);text-decoration:none;font-size:.78rem}
+.footer-links a:hover{color:#fff}
+
+/* ===== URGENCY BANNER ===== */
+.urgency{background:linear-gradient(90deg,var(--saffron),#D94F00);color:#fff;text-align:center;padding:.65rem 1rem;font-family:'Baloo 2',sans-serif;font-size:.88rem;font-weight:600}
+.urgency span{background:rgba(255,255,255,0.2);padding:2px 10px;border-radius:12px;margin:0 6px}
+
+/* ===== SUCCESS MSG ===== */
+.success-msg{display:none;background:var(--green-bg);border:2px solid var(--green-pale);border-radius:12px;padding:2rem;text-align:center;margin-top:1rem}
+.success-msg h3{font-family:'Baloo 2',sans-serif;color:var(--green);font-size:1.3rem;margin-bottom:.5rem}
+.success-msg p{font-family:'Noto Sans Devanagari',sans-serif;font-size:.9rem;color:var(--body)}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+  .qualify-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .result-grid{grid-template-columns:1fr}
+  .hero-numbers{gap:1rem}
+  .hero-num .n{font-size:1.6rem}
+  .form-card{padding:1.75rem 1.25rem}
+  .section{padding:3.5rem 5%}
+  .calc-section,.how-section,.testi-section,.table-section,.faq-section{padding:3.5rem 5%}
+  .nav-logo span{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- URGENCY BANNER -->
+<div class="urgency">
+  🔥 सीमित सीटें बची हैं — <span id="seats">47</span> partner slots बाकी हैं इस महीने के लिए | Limited Partner Slots Left This Month!
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="#" class="nav-logo">🌿 CueHealth <span>Partner</span></a>
+  <a href="#apply" class="nav-cta">अभी अप्लाई करें →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">🌿 Voxply Life Sciences — Official Partner Program</div>
+    <h1>
+      <span class="gold">आयुर्वेद अपनाएं,</span>
+      <span class="big">अपना बिज़नेस चालू करें</span>
+      घर बैठे अपने शहर से <span class="gold">लाखों कमाएं</span>
+    </h1>
+    <p class="hero-sub">
+      CueHealth के साथ जुड़ें — India का तेज़ी से बढ़ता Ayurvedic brand — और हर product sale पर ₹200 सीधे अपनी जेब में डालें। कोई investment नहीं। कोई risk नहीं। बस आपका नेटवर्क और हमारे trusted products.
+    </p>
+    <div class="hero-numbers">
+      <div class="hero-num">
+        <div class="n">₹200</div>
+        <div class="l">हर sale पर आपकी कमाई</div>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-num">
+        <div class="n">₹60,000+</div>
+        <div class="l">monthly potential (top partners)</div>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-num">
+        <div class="n">3 Products</div>
+        <div class="l">sell करने के लिए</div>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-num">
+        <div class="n">₹0</div>
+        <div class="l">investment required</div>
+      </div>
+    </div>
+    <a href="#apply" class="hero-btn">🚀 Partner बनें — आज से शुरू करें</a>
+    <p class="hero-note">✅ 2 मिनट में form भरें • ✅ 24 घंटे में approval • ✅ अगले दिन से earning शुरू</p>
+  </div>
+  <div class="scroll-hint">
+    <span>नीचे देखें</span>
+    <span style="font-size:1.2rem">↓</span>
+  </div>
+</section>
+
+<!-- EARNINGS CALCULATOR -->
+<section class="calc-section">
+  <div class="calc-inner">
+    <div class="section-eyebrow" style="color:var(--gold-light)">💰 EARNING CALCULATOR</div>
+    <h2 class="calc-title">आप कितना कमा सकते हैं?</h2>
+    <p class="calc-sub">नीचे slider को move करें और देखें आपकी monthly income — बिल्कुल सच्चे numbers</p>
+
+    <div class="calc-box">
+      <div class="calc-label">आप रोज़ कितने products sell करेंगे? — <span id="slider-val">5</span> products/day</div>
+      <div class="slider-wrap">
+        <input type="range" class="calc-slider" id="earnSlider" min="1" max="30" value="5" oninput="updateCalc(this.value)">
+        <div class="slider-marks">
+          <span>1 (Part time)</span>
+          <span>10</span>
+          <span>20</span>
+          <span>30 (Full time)</span>
+        </div>
+      </div>
+
+      <div class="calc-result">
+        <div class="result-grid">
+          <div class="result-item">
+            <div class="result-num" id="daily-earn">₹1,000</div>
+            <div class="result-label">रोज़ की कमाई<br>Daily Earning</div>
+          </div>
+          <div class="result-item">
+            <div class="result-num" id="weekly-earn">₹7,000</div>
+            <div class="result-label">हफ़्ते की कमाई<br>Weekly Earning</div>
+          </div>
+          <div class="result-item result-highlight">
+            <div class="result-num" id="monthly-earn">₹30,000</div>
+            <div class="result-label">महीने की कमाई<br>Monthly Earning 🎉</div>
+          </div>
+        </div>
+      </div>
+
+      <p style="text-align:center;margin-top:1.25rem;font-size:.82rem;color:var(--muted);font-family:'Noto Sans Devanagari',sans-serif">
+        ये सिर्फ अनुमान है — actual earning आपकी मेहनत और network पर निर्भर करती है। कोई guarantee नहीं, लेकिन potential unlimited है।
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-eyebrow">🌿 OUR PRODUCTS</div>
+    <h2 class="section-title">ये 3 Products आप Sell करेंगे</h2>
+    <p class="section-sub">हर product पर आपको मिलेंगे ₹200 — directly आपके account में. Products trusted, FSSAI approved और high demand वाले हैं।</p>
+
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-img shilajit">⚡</div>
+        <div class="product-body">
+          <div class="product-name">Himalayan Shilajit Capsules</div>
+          <div class="product-hindi">हिमालयी शिलाजीत कैप्सूल</div>
+          <div class="product-benefit">Energy, stamina और immunity के लिए। Men's health का #1 Ayurvedic product। 60% Fulvic Acid — pure Himalayan source.</div>
+          <div class="product-earn">
+            <span class="earn-label">आपकी कमाई / sale</span>
+            <span class="earn-amount">₹200</span>
+          </div>
+          <div class="product-price">MRP ₹899 | Partner Price ₹599</div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img women">🌸</div>
+        <div class="product-body">
+          <div class="product-name">Women's Daily Comfort Kit</div>
+          <div class="product-hindi">महिला स्वास्थ्य किट</div>
+          <div class="product-benefit">Periods pain, PCOS और hormonal balance के लिए। हर घर की महिला को चाहिए। Shatavari + Ashoka + Lodhra formula.</div>
+          <div class="product-earn">
+            <span class="earn-label">आपकी कमाई / sale</span>
+            <span class="earn-amount">₹200</span>
+          </div>
+          <div class="product-price">MRP ₹999 | Partner Price ₹699</div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img young">✨</div>
+        <div class="product-body">
+          <div class="product-name">EverYoung Wellness Blend</div>
+          <div class="product-hindi">एवरयंग वेलनेस ब्लेंड</div>
+          <div class="product-benefit">Anti-aging, skin glow और joint health के लिए। 35+ age group में बेहद popular। Collagen + Ayurvedic herbs combination.</div>
+          <div class="product-earn">
+            <span class="earn-label">आपकी कमाई / sale</span>
+            <span class="earn-amount">₹200</span>
+          </div>
+          <div class="product-price">MRP ₹1,099 | Partner Price ₹799</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section">
+  <div class="section-inner">
+    <div class="section-eyebrow">📋 PROCESS</div>
+    <h2 class="section-title" style="color:var(--dark)">Partner बनने के बाद क्या होता है?</h2>
+    <p class="section-sub">4 simple steps — और आपका business ready</p>
+
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <div class="step-title">Form भरें</div>
+        <div class="step-hindi">Apply करें</div>
+        <div class="step-desc">2 मिनट का form — नाम, शहर, आप कैसे sell करेंगे। Serious लोगों को ही approve किया जाएगा।</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <div class="step-title">Onboarding Call</div>
+        <div class="step-hindi">Training और Product Knowledge</div>
+        <div class="step-desc">24 घंटे में हमारी team आपको call करेगी। Products, pricing, selling tips — सब कुछ बताएंगे।</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <div class="step-title">अपना Link पाएं</div>
+        <div class="step-hindi">Unique Partner Code</div>
+        <div class="step-desc">आपका personal discount code और link मिलेगा। WhatsApp, Instagram, Facebook — जहाँ चाहें share करें।</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <div class="step-title">हर Sale = ₹200</div>
+        <div class="step-hindi">Weekly पैसे आपके account में</div>
+        <div class="step-desc">हर sale track होगी real-time dashboard में। हर हफ्ते सीधे आपके bank account में payment।</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EARNINGS TABLE -->
+<section class="table-section">
+  <div class="section-inner">
+    <div class="section-eyebrow">📊 EARNING POTENTIAL</div>
+    <h2 class="section-title">Real Numbers — Real Earning</h2>
+    <p class="section-sub">देखें कैसे बढ़ती है income आपकी sales के साथ</p>
+
+    <table class="earnings-table">
+      <thead>
+        <tr>
+          <th>रोज़ Sales</th>
+          <th>रोज़ कमाई</th>
+          <th>हफ़्ते कमाई</th>
+          <th>महीने कमाई 🏆</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="sales-col">2 products</td>
+          <td>₹400</td>
+          <td>₹2,800</td>
+          <td class="money">₹12,000</td>
+        </tr>
+        <tr>
+          <td class="sales-col">5 products</td>
+          <td>₹1,000</td>
+          <td>₹7,000</td>
+          <td class="money">₹30,000</td>
+        </tr>
+        <tr class="highlight-row">
+          <td class="sales-col">10 products ⭐</td>
+          <td>₹2,000</td>
+          <td>₹14,000</td>
+          <td class="money">₹60,000</td>
+        </tr>
+        <tr>
+          <td class="sales-col">15 products</td>
+          <td>₹3,000</td>
+          <td>₹21,000</td>
+          <td class="money">₹90,000</td>
+        </tr>
+        <tr>
+          <td class="sales-col">20 products</td>
+          <td>₹4,000</td>
+          <td>₹28,000</td>
+          <td class="money">₹1,20,000</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="text-align:center;margin-top:1rem;font-size:.8rem;color:var(--muted);font-family:'Noto Sans Devanagari',sans-serif">*Earning estimates based on ₹200 commission per product. Actual results depend on your effort and network.</p>
+  </div>
+</section>
+
+<!-- WHO IS THIS FOR -->
+<section class="qualify-section">
+  <div class="section-inner">
+    <div class="section-eyebrow">✅ QUALIFICATION</div>
+    <h2 class="section-title">ये Program किसके लिए है?</h2>
+    <p class="section-sub">हम सिर्फ serious लोगों के साथ काम करते हैं जो actually grow करना चाहते हैं</p>
+
+    <div class="qualify-grid">
+      <div class="qualify-card qualify-yes">
+        <h3 style="color:var(--green)">✅ आप PERFECT FIT हैं अगर...</h3>
+        <ul>
+          <li><span>🟢</span>आप genuinely health और wellness में believe करते हैं</li>
+          <li><span>🟢</span>आपके पास WhatsApp group, Instagram या local network है</li>
+          <li><span>🟢</span>आप हर हफ्ते minimum 2-3 hours दे सकते हैं</li>
+          <li><span>🟢</span>आप seriously ₹20,000+ per month extra कमाना चाहते हैं</li>
+          <li><span>🟢</span>Housewife, Student, Teacher, Gym trainer, Doctor — सब welcome हैं</li>
+          <li><span>🟢</span>आप अपने शहर में CueHealth का नाम बड़ा करना चाहते हैं</li>
+        </ul>
+      </div>
+      <div class="qualify-card qualify-no">
+        <h3 style="color:#DC2626">❌ Please Apply मत करें अगर...</h3>
+        <ul>
+          <li><span>🔴</span>आप "try karke dekhenge" वाले attitude से आ रहे हैं</li>
+          <li><span>🔴</span>आप overnight millionaire बनने की सोच रहे हैं</li>
+          <li><span>🔴</span>आप बिना effort किए पैसा चाहते हैं</li>
+          <li><span>🔴</span>आपको health products में कोई belief नहीं है</li>
+          <li><span>🔴</span>आप अपने customers को mislead करेंगे</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi-section">
+  <div class="section-inner">
+    <div class="section-eyebrow" style="color:var(--gold-light)">💬 PARTNER STORIES</div>
+    <h2 class="section-title" style="color:#fff">इन्होंने शुरू किया — आप भी कर सकते हैं</h2>
+
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-quote">मैं घर पर बैठी housewife थी। CueHealth Partner बनने के बाद पहले महीने ही ₹18,000 कमाए। अब मेरे WhatsApp groups में हर कोई products ऑर्डर करता है।</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:rgba(200,134,10,0.2)">👩</div>
+          <div>
+            <div class="testi-name">Priya Sharma</div>
+            <div class="testi-location">Jaipur, Rajasthan</div>
+          </div>
+        </div>
+        <div class="testi-earn">₹18,000 first month ↗</div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">Gym trainer हूँ मैं। अपने clients को Shilajit recommend किया। वो खुद खुश हुए और अपने family को बताया। बिना extra time लगाए ₹35,000 महीने के आ रहे हैं।</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:rgba(200,134,10,0.2)">💪</div>
+          <div>
+            <div class="testi-name">Rahul Verma</div>
+            <div class="testi-location">Lucknow, UP</div>
+          </div>
+        </div>
+        <div class="testi-earn">₹35,000 monthly ↗</div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-quote">College student हूँ। Side income के लिए join किया था। अब ₹22,000 महीने कमा रहा हूँ और यही मेरा पूरा खर्चा निकल जाता है। Products बिकते हैं क्योंकि genuinely काम करते हैं।</div>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:rgba(200,134,10,0.2)">📚</div>
+          <div>
+            <div class="testi-name">Ankit Gupta</div>
+            <div class="testi-location">Agra, UP</div>
+          </div>
+        </div>
+        <div class="testi-earn">₹22,000 per month ↗</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPLICATION FORM -->
+<section class="form-section" id="apply">
+  <div class="form-wrap">
+    <div style="text-align:center;margin-bottom:2rem">
+      <div class="section-eyebrow" style="text-align:center">📝 PARTNER APPLICATION</div>
+      <h2 class="section-title">अभी Apply करें — Free में</h2>
+      <p style="color:var(--muted);font-family:'Noto Sans Devanagari',sans-serif;font-size:.92rem">हम हर application review करते हैं। Serious applicants को 24 घंटे में call आएगा।</p>
+    </div>
+
+    <div class="form-card">
+      <form id="partnerForm" onsubmit="submitForm(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">आपका पूरा नाम *<br><span>Full Name as on Aadhaar</span></label>
+            <input type="text" class="form-input" placeholder="जैसे: Priya Sharma" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">WhatsApp Number *<br><span>हम यहीं contact करेंगे</span></label>
+            <input type="tel" class="form-input" placeholder="+91 98765 43210" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">आपका शहर *</label>
+            <input type="text" class="form-input" placeholder="जैसे: Agra, Jaipur, Lucknow" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">आप क्या करते हैं? *</label>
+            <select class="form-select" required>
+              <option value="">Select करें</option>
+              <option>Housewife / Homemaker</option>
+              <option>Student</option>
+              <option>Job करते हैं (Part-time earn करना है)</option>
+              <option>Gym Trainer / Yoga Teacher</option>
+              <option>Doctor / Compounder / Pharmacist</option>
+              <option>Social Media Influencer</option>
+              <option>Small Business Owner</option>
+              <option>कुछ और</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">आप products कैसे sell करेंगे? *<br><span>जितने लागू हों, सब select करें</span></label>
+          <div class="radio-group">
+            <label class="radio-option"><input type="checkbox" name="sell"> <label>WhatsApp groups / Family और Friends के through</label></label>
+            <label class="radio-option"><input type="checkbox" name="sell"> <label>Instagram / Facebook से</label></label>
+            <label class="radio-option"><input type="checkbox" name="sell"> <label>Gym / Clinic / Store में personally</label></label>
+            <label class="radio-option"><input type="checkbox" name="sell"> <label>अपने local community / society में</label></label>
+            <label class="radio-option"><input type="checkbox" name="sell"> <label>YouTube / Content creation के through</label></label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">आप monthly कितना earn करना चाहते हैं? *</label>
+          <select class="form-select" required>
+            <option value="">Select करें</option>
+            <option>₹10,000 - ₹20,000 (Part time income)</option>
+            <option>₹20,000 - ₹50,000 (Serious side business)</option>
+            <option>₹50,000+ (Full time business बनाना है)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">आप CueHealth Partner क्यों बनना चाहते हैं?<br><span>2-3 lines में बताएं — ये हमें आपको समझने में help करेगा</span></label>
+          <textarea class="form-textarea" placeholder="जैसे: मुझे health products में believe है और मेरे पास बड़ा network है जिन्हें इन products की ज़रूरत है..."></textarea>
+        </div>
+
+        <button type="submit" class="form-submit">🚀 Partner बनने के लिए Apply करें — Free</button>
+        <p class="form-disclaimer">✅ कोई investment नहीं &nbsp;|&nbsp; ✅ कोई risk नहीं &nbsp;|&nbsp; ✅ 24 घंटे में reply guaranteed</p>
+      </form>
+
+      <div class="success-msg" id="successMsg">
+        <div style="font-size:3rem;margin-bottom:.75rem">🎉</div>
+        <h3>Application Submit हो गई!</h3>
+        <p>बहुत अच्छा! हमारी team 24 घंटे में आपको WhatsApp पर contact करेगी। तब तक अपना phone check करते रहें।<br><br>
+        जल्दी connect करना हो तो WhatsApp करें: <strong>+91 74559 18832</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="section-inner">
+    <div class="section-eyebrow" style="text-align:center">❓ FAQs</div>
+    <h2 class="section-title" style="text-align:center">अक्सर पूछे जाने वाले सवाल</h2>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">क्या मुझे कोई पैसा invest करना होगा?</button>
+        <div class="faq-a"><div class="faq-a-inner">बिल्कुल नहीं! CueHealth Partner Program 100% free है। कोई joining fee नहीं, कोई deposit नहीं। आप सिर्फ अपने network को products recommend करते हैं और हर sale पर ₹200 पाते हैं।</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">पैसे कब और कैसे मिलेंगे?</button>
+        <div class="faq-a"><div class="faq-a-inner">हर हफ्ते Monday को previous week की सभी confirmed sales का payment directly आपके bank account में भेजा जाएगा। आपको कुछ नहीं करना — automatically आएगा।</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">अगर मेरे पास Instagram या website नहीं है तो?</button>
+        <div class="faq-a"><div class="faq-a-inner">कोई बात नहीं! बहुत से partners सिर्फ WhatsApp से ही ₹30,000+ महीना कमा रहे हैं। आपको बस अपने family, friends और local contacts को products के बारे में बताना है। हम आपको ready-made messages और images देंगे।</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Products safe हैं? FSSAI approved हैं?</button>
+        <div class="faq-a"><div class="faq-a-inner">हाँ! CueHealth के सभी products FSSAI certified हैं, GMP-compliant facility में बनते हैं और third-party lab tested हैं। आप पूरे confidence के साथ recommend कर सकते हैं।</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">मुझे selling की knowledge नहीं है — क्या मैं कर सकता/सकती हूँ?</button>
+        <div class="faq-a"><div class="faq-a-inner">बिल्कुल! हम आपको complete training देंगे — products के बारे में, कैसे बात करें customers से, कौन से messages भेजें। आपको कुछ "sell" नहीं करना, बस genuinely recommend करना है। जब product अच्छा होता है तो खुद बिकता है।</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Approval में कितना time लगेगा?</button>
+        <div class="faq-a"><div class="faq-a-inner">Form submit करने के 24 घंटे के अंदर हमारी team आपको WhatsApp पर call करेगी। उस call में आपकी onboarding हो जाएगी और आप उसी दिन से selling शुरू कर सकते हैं।</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section style="background:linear-gradient(135deg,#0D2B1D,#1B4332);padding:5rem 5%;text-align:center">
+  <div class="section-eyebrow" style="color:var(--gold-light)">अभी निर्णय लें</div>
+  <h2 style="font-family:'Baloo 2',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);color:#fff;margin-bottom:1rem">हर दिन की देरी = खोया हुआ ₹1,000+</h2>
+  <p style="color:rgba(255,255,255,0.7);max-width:500px;margin:0 auto 2rem;font-family:'Noto Sans Devanagari',sans-serif;font-size:1rem">जो लोग आज join करेंगे वो कल से earn करेंगे। जो इंतज़ार करेंगे, वो सिर्फ देखते रह जाएंगे।</p>
+  <a href="#apply" class="hero-btn">🌿 अभी Apply करें — यह Free है</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-logo">🌿 CueHealth</div>
+  <p>Voxply Life Sciences LLP | cuehealth.in | Ancient Wisdom. Modern Science.</p>
+  <div class="footer-links">
+    <a href="https://cuehealth.in">Website</a>
+    <a href="https://cuehealth.in/privacy">Privacy Policy</a>
+    <a href="https://cuehealth.in/terms">Terms & Conditions</a>
+    <a href="mailto:partners@cuehealth.in">partners@cuehealth.in</a>
+  </div>
+  <p style="margin-top:1rem;font-size:.72rem">*Earning estimates are based on ₹200 commission per product sold. Actual results vary based on individual effort. CueHealth does not guarantee income.</p>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/917455918832?text=Namaste! Main CueHealth Partner Program ke baare mein janna chahta/chahti hoon." class="wa-float" title="WhatsApp पर बात करें">💬</a>
+
+<script>
+// Earnings Calculator
+function updateCalc(val){
+  const v=parseInt(val);
+  const earn=v*200;
+  document.getElementById('slider-val').textContent=v;
+  document.getElementById('daily-earn').textContent='₹'+earn.toLocaleString('en-IN');
+  document.getElementById('weekly-earn').textContent='₹'+(earn*7).toLocaleString('en-IN');
+  document.getElementById('monthly-earn').textContent='₹'+(earn*30).toLocaleString('en-IN');
+  // update slider gradient
+  const slider=document.getElementById('earnSlider');
+  const pct=(v-1)/(30-1)*100;
+  slider.style.background=`linear-gradient(to right,var(--green) 0%,var(--green) ${pct}%,#E5E7EB ${pct}%,#E5E7EB 100%)`;
+}
+
+// FAQ toggle
+function toggleFaq(btn){
+  const item=btn.closest('.faq-item');
+  const wasOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+  if(!wasOpen) item.classList.add('open');
+}
+
+// Form submit
+function submitForm(e){
+  e.preventDefault();
+  document.getElementById('partnerForm').style.display='none';
+  document.getElementById('successMsg').style.display='block';
+  window.scrollTo({top:document.getElementById('successMsg').getBoundingClientRect().top+window.scrollY-80,behavior:'smooth'});
+}
+
+// Countdown seats (demo)
+let seats=47;
+setInterval(()=>{
+  if(seats>38 && Math.random()>0.85){
+    seats--;
+    document.getElementById('seats').textContent=seats;
+  }
+},8000);
+
+// Init calculator
+updateCalc(5);
+</script>
+</body>
+</html>
