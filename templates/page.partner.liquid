@@ -545,22 +545,22 @@ h1,h2,h3,.display{font-family:'Baloo 2',sans-serif;line-height:1.2}
         <div class="form-row">
           <div class="form-group">
             <label class="form-label">आपका पूरा नाम *<br><span>Full Name as on Aadhaar</span></label>
-            <input type="text" class="form-input" placeholder="जैसे: Priya Sharma" required>
+            <input type="text" name="name" class="form-input" placeholder="जैसे: Priya Sharma" required>
           </div>
           <div class="form-group">
             <label class="form-label">WhatsApp Number *<br><span>हम यहीं contact करेंगे</span></label>
-            <input type="tel" class="form-input" placeholder="+91 98765 43210" required>
+            <input type="tel" name="whatsapp" class="form-input" placeholder="+91 98765 43210" required>
           </div>
         </div>
 
         <div class="form-row">
           <div class="form-group">
             <label class="form-label">आपका शहर *</label>
-            <input type="text" class="form-input" placeholder="जैसे: Agra, Jaipur, Lucknow" required>
+            <input type="text" name="city" class="form-input" placeholder="जैसे: Agra, Jaipur, Lucknow" required>
           </div>
           <div class="form-group">
             <label class="form-label">आप क्या करते हैं? *</label>
-            <select class="form-select" required>
+            <select name="occupation" class="form-select" required>
               <option value="">Select करें</option>
               <option>Housewife / Homemaker</option>
               <option>Student</option>
@@ -577,17 +577,17 @@ h1,h2,h3,.display{font-family:'Baloo 2',sans-serif;line-height:1.2}
         <div class="form-group">
           <label class="form-label">आप products कैसे sell करेंगे? *<br><span>जितने लागू हों, सब select करें</span></label>
           <div class="radio-group">
-            <label class="radio-option"><input type="checkbox" name="sell"> <label>WhatsApp groups / Family और Friends के through</label></label>
-            <label class="radio-option"><input type="checkbox" name="sell"> <label>Instagram / Facebook से</label></label>
-            <label class="radio-option"><input type="checkbox" name="sell"> <label>Gym / Clinic / Store में personally</label></label>
-            <label class="radio-option"><input type="checkbox" name="sell"> <label>अपने local community / society में</label></label>
-            <label class="radio-option"><input type="checkbox" name="sell"> <label>YouTube / Content creation के through</label></label>
+            <label class="radio-option"><input type="checkbox" name="sell" value="WhatsApp groups / Family और Friends"> <label>WhatsApp groups / Family और Friends के through</label></label>
+            <label class="radio-option"><input type="checkbox" name="sell" value="Instagram / Facebook"> <label>Instagram / Facebook से</label></label>
+            <label class="radio-option"><input type="checkbox" name="sell" value="Gym / Clinic / Store"> <label>Gym / Clinic / Store में personally</label></label>
+            <label class="radio-option"><input type="checkbox" name="sell" value="Local community / society"> <label>अपने local community / society में</label></label>
+            <label class="radio-option"><input type="checkbox" name="sell" value="YouTube / Content creation"> <label>YouTube / Content creation के through</label></label>
           </div>
         </div>
 
         <div class="form-group">
           <label class="form-label">आप monthly कितना earn करना चाहते हैं? *</label>
-          <select class="form-select" required>
+          <select name="earningGoal" class="form-select" required>
             <option value="">Select करें</option>
             <option>₹10,000 - ₹20,000 (Part time income)</option>
             <option>₹20,000 - ₹50,000 (Serious side business)</option>
@@ -597,7 +597,7 @@ h1,h2,h3,.display{font-family:'Baloo 2',sans-serif;line-height:1.2}
 
         <div class="form-group">
           <label class="form-label">आप CueHealth Partner क्यों बनना चाहते हैं?<br><span>2-3 lines में बताएं — ये हमें आपको समझने में help करेगा</span></label>
-          <textarea class="form-textarea" placeholder="जैसे: मुझे health products में believe है और मेरे पास बड़ा network है जिन्हें इन products की ज़रूरत है..."></textarea>
+          <textarea name="whyPartner" class="form-textarea" placeholder="जैसे: मुझे health products में believe है और मेरे पास बड़ा network है जिन्हें इन products की ज़रूरत है..."></textarea>
         </div>
 
         <button type="submit" class="form-submit">🚀 Partner बनने के लिए Apply करें — Free</button>
@@ -697,11 +697,37 @@ function toggleFaq(btn){
 }
 
 // Form submit
+var PARTNER_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwXKU5k9mL5r2LIyiVLi4fzJJ5DLlJ_hNodD1AvqV5EiOwTTbMXm92HDe5vFix3XNJq/exec';
+
 function submitForm(e){
   e.preventDefault();
-  document.getElementById('partnerForm').style.display='none';
-  document.getElementById('successMsg').style.display='block';
-  window.scrollTo({top:document.getElementById('successMsg').getBoundingClientRect().top+window.scrollY-80,behavior:'smooth'});
+  var form = document.getElementById('partnerForm');
+  var btn = form.querySelector('.form-submit');
+  var sellMethods = Array.prototype.slice.call(form.querySelectorAll('input[name="sell"]:checked')).map(function(cb){ return cb.value; }).join(', ');
+
+  var data = new URLSearchParams({
+    name: form.name.value,
+    whatsapp: form.whatsapp.value,
+    city: form.city.value,
+    occupation: form.occupation.value,
+    sellMethods: sellMethods,
+    earningGoal: form.earningGoal.value,
+    whyPartner: form.whyPartner.value,
+    pageUrl: window.location.href
+  });
+
+  btn.disabled = true;
+  btn.textContent = 'भेजा जा रहा है...';
+
+  fetch(PARTNER_WEBHOOK_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    body: data
+  }).catch(function(){}).finally(function(){
+    form.style.display='none';
+    document.getElementById('successMsg').style.display='block';
+    window.scrollTo({top:document.getElementById('successMsg').getBoundingClientRect().top+window.scrollY-80,behavior:'smooth'});
+  });
 }
 
 // Countdown seats (demo)
