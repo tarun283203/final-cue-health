@@ -33,6 +33,12 @@ body{font-family:'Noto Sans',sans-serif;background:var(--cream);color:var(--body
 .hindi{font-family:'Noto Sans Devanagari','Baloo 2',sans-serif}
 h1,h2,h3,.display{font-family:'Baloo 2',sans-serif;line-height:1.2}
 
+/* ===== ICONS ===== */
+.icon{width:1em;height:1em;display:inline-block;vertical-align:-0.15em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.icon-fill{fill:currentColor;stroke:none}
+.icon-lg{width:2.75rem;height:2.75rem;stroke-width:1.5}
+.icon-avatar{width:1.3rem;height:1.3rem}
+
 /* ===== SCROLL PROGRESS + REVEAL ===== */
 .scroll-progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-light));z-index:300;width:0%;transition:width .1s linear}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
@@ -253,17 +259,40 @@ h1,h2,h3,.display{font-family:'Baloo 2',sans-serif;line-height:1.2}
 </head>
 <body>
 
+<svg style="display:none" aria-hidden="true">
+<symbol id="i-leaf" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></symbol>
+<symbol id="i-flame" viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></symbol>
+<symbol id="i-rocket" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16V8"/><path d="M8 12l4-4 4 4"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></symbol>
+<symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+<symbol id="i-wallet" viewBox="0 0 24 24"><path d="M21 7H7a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2z"/><path d="M16 3H5a2 2 0 0 0-2 2v9"/><circle cx="17" cy="13" r="1" class="icon-fill"/></symbol>
+<symbol id="i-zap" viewBox="0 0 24 24"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></symbol>
+<symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8z"/></symbol>
+<symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6L22 9.3l-5 4.9 1.2 7-6.2-3.6L5.8 21.2 7 14.2l-5-4.9 7.1-.7L12 2z"/></symbol>
+<symbol id="i-clipboard" viewBox="0 0 24 24"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M9 4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-4"/></symbol>
+<symbol id="i-bar-chart" viewBox="0 0 24 24"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></symbol>
+<symbol id="i-trophy" viewBox="0 0 24 24"><path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 4h10v4a5 5 0 0 1-10 0V4z"/><path d="M17 5h3a2 2 0 0 1-2 4h-1"/><path d="M7 5H4a2 2 0 0 0 2 4h1"/></symbol>
+<symbol id="i-x-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6"/><path d="M9 9l6 6"/></symbol>
+<symbol id="i-message" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></symbol>
+<symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a7 7 0 0 1 7-7h2a7 7 0 0 1 7 7v1"/></symbol>
+<symbol id="i-activity" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></symbol>
+<symbol id="i-book" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></symbol>
+<symbol id="i-trending-up" viewBox="0 0 24 24"><path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/></symbol>
+<symbol id="i-edit" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></symbol>
+<symbol id="i-help-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></symbol>
+</svg>
+
 <div class="scroll-progress" id="scrollProgress"></div>
 
 <!-- URGENCY BANNER -->
 <div class="urgency">
-  🔥 सीमित सीटें बची हैं — <span id="seats">47</span> partner slots बाकी हैं इस महीने के लिए | Limited Partner Slots Left This Month!
+  <svg class="icon"><use href="#i-flame"/></svg> सीमित सीटें बची हैं — <span id="seats">47</span> partner slots बाकी हैं इस महीने के लिए | Limited Partner Slots Left This Month!
 </div>
 
 <!-- NAV -->
 <nav class="nav" id="mainNav">
-  <a href="#" class="nav-logo">🌿 CueHealth <span>Partner</span></a>
-  <a href="#apply" class="nav-cta">अभी अप्लाई करें →</a>
+  <a href="#" class="nav-logo"><svg class="icon"><use href="#i-leaf"/></svg> CueHealth <span>Partner</span></a>
+  <a href="#apply" class="nav-cta">अभी अप्लाई करें <svg class="icon" style="transform:rotate(-90deg)"><use href="#i-chevron-down"/></svg></a>
 </nav>
 
 <!-- HERO -->
@@ -272,7 +301,7 @@ h1,h2,h3,.display{font-family:'Baloo 2',sans-serif;line-height:1.2}
   <div class="hero-blob b2"></div>
   <div class="hero-blob b3"></div>
   <div class="hero-inner">
-    <div class="hero-badge"><span class="dot"></span> 🌿 Voxply Life Sciences — Official Partner Program</div>
+    <div class="hero-badge"><span class="dot"></span> <svg class="icon"><use href="#i-leaf"/></svg> Voxply Life Sciences — Official Partner Program</div>
     <h1>
       <span class="gold">आयुर्वेद अपनाएं,</span>
       <span class="big">अपना बिज़नेस चालू करें</span>
@@ -302,19 +331,19 @@ h1,h2,h3,.display{font-family:'Baloo 2',sans-serif;line-height:1.2}
         <div class="l">investment required</div>
       </div>
     </div>
-    <a href="#apply" class="hero-btn">🚀 Partner बनें — आज से शुरू करें</a>
-    <p class="hero-note">✅ 2 मिनट में form भरें • ✅ 24 घंटे में approval • ✅ अगले दिन से earning शुरू</p>
+    <a href="#apply" class="hero-btn"><svg class="icon"><use href="#i-rocket"/></svg> Partner बनें — आज से शुरू करें</a>
+    <p class="hero-note"><svg class="icon"><use href="#i-check"/></svg> 2 मिनट में form भरें • <svg class="icon"><use href="#i-check"/></svg> 24 घंटे में approval • <svg class="icon"><use href="#i-check"/></svg> अगले दिन से earning शुरू</p>
   </div>
   <div class="scroll-hint">
     <span>नीचे देखें</span>
-    <span style="font-size:1.2rem">↓</span>
+    <svg class="icon" style="width:1.2rem;height:1.2rem"><use href="#i-chevron-down"/></svg>
   </div>
 </section>
 
 <!-- EARNINGS CALCULATOR -->
 <section class="calc-section">
   <div class="calc-inner">
-    <div class="section-eyebrow" style="color:var(--gold-light)">💰 EARNING CALCULATOR</div>
+    <div class="section-eyebrow" style="color:var(--gold-light)"><svg class="icon"><use href="#i-wallet"/></svg> EARNING CALCULATOR</div>
     <h2 class="calc-title">आप कितना कमा सकते हैं?</h2>
     <p class="calc-sub">नीचे slider को move करें और देखें आपकी monthly income — बिल्कुल सच्चे numbers</p>
 
@@ -342,7 +371,7 @@ h1,h2,h3,.display{font-family:'Baloo 2',sans-serif;line-height:1.2}
           </div>
           <div class="result-item result-highlight">
             <div class="result-num" id="monthly-earn">₹30,000</div>
-            <div class="result-label">महीने की कमाई<br>Monthly Earning 🎉</div>
+            <div class="result-label">महीने की कमाई<br>Monthly Earning <svg class="icon"><use href="#i-star"/></svg></div>
           </div>
         </div>
       </div>
@@ -357,13 +386,13 @@ h1,h2,h3,.display{font-family:'Baloo 2',sans-serif;line-height:1.2}
 <!-- PRODUCTS -->
 <section class="section">
   <div class="section-inner">
-    <div class="section-eyebrow">🌿 OUR PRODUCTS</div>
+    <div class="section-eyebrow"><svg class="icon"><use href="#i-leaf"/></svg> OUR PRODUCTS</div>
     <h2 class="section-title">ये 3 Products आप Sell करेंगे</h2>
     <p class="section-sub">हर product पर आपको मिलेंगे ₹200 — directly आपके account में. Products trusted, FSSAI approved और high demand वाले हैं।</p>
 
     <div class="products-grid">
       <div class="product-card">
-        <div class="product-img shilajit">⚡</div>
+        <div class="product-img shilajit"><svg class="icon icon-lg"><use href="#i-zap"/></svg></div>
         <div class="product-body">
           <div class="product-name">Himalayan Shilajit Capsules</div>
           <div class="product-hindi">हिमालयी शिलाजीत कैप्सूल</div>
@@ -377,7 +406,7 @@ h1,h2,h3,.display{font-family:'Baloo 2',sans-serif;line-height:1.2}
       </div>
 
       <div class="product-card">
-        <div class="product-img women">🌸</div>
+        <div class="product-img women"><svg class="icon icon-lg"><use href="#i-heart"/></svg></div>
         <div class="product-body">
           <div class="product-name">Women's Daily Comfort Kit</div>
           <div class="product-hindi">महिला स्वास्थ्य किट</div>
@@ -391,7 +420,7 @@ h1,h2,h3,.display{font-family:'Baloo 2',sans-serif;line-height:1.2}
       </div>
 
       <div class="product-card">
-        <div class="product-img young">✨</div>
+        <div class="product-img young"><svg class="icon icon-lg"><use href="#i-star"/></svg></div>
         <div class="product-body">
           <div class="product-name">EverYoung Wellness Blend</div>
           <div class="product-hindi">एवरयंग वेलनेस ब्लेंड</div>
@@ -410,7 +439,7 @@ h1,h2,h3,.display{font-family:'Baloo 2',sans-serif;line-height:1.2}
 <!-- HOW IT WORKS -->
 <section class="how-section">
   <div class="section-inner">
-    <div class="section-eyebrow">📋 PROCESS</div>
+    <div class="section-eyebrow"><svg class="icon"><use href="#i-clipboard"/></svg> PROCESS</div>
     <h2 class="section-title" style="color:var(--dark)">Partner बनने के बाद क्या होता है?</h2>
     <p class="section-sub">4 simple steps — और आपका business ready</p>
 
@@ -446,7 +475,7 @@ h1,h2,h3,.display{font-family:'Baloo 2',sans-serif;line-height:1.2}
 <!-- EARNINGS TABLE -->
 <section class="table-section">
   <div class="section-inner">
-    <div class="section-eyebrow">📊 EARNING POTENTIAL</div>
+    <div class="section-eyebrow"><svg class="icon"><use href="#i-bar-chart"/></svg> EARNING POTENTIAL</div>
     <h2 class="section-title">Real Numbers — Real Earning</h2>
     <p class="section-sub">देखें कैसे बढ़ती है income आपकी sales के साथ</p>
 
@@ -456,7 +485,7 @@ h1,h2,h3,.display{font-family:'Baloo 2',sans-serif;line-height:1.2}
           <th>रोज़ Sales</th>
           <th>रोज़ कमाई</th>
           <th>हफ़्ते कमाई</th>
-          <th>महीने कमाई 🏆</th>
+          <th>महीने कमाई <svg class="icon"><use href="#i-trophy"/></svg></th>
         </tr>
       </thead>
       <tbody>
@@ -499,30 +528,30 @@ h1,h2,h3,.display{font-family:'Baloo 2',sans-serif;line-height:1.2}
 <!-- WHO IS THIS FOR -->
 <section class="qualify-section">
   <div class="section-inner">
-    <div class="section-eyebrow">✅ QUALIFICATION</div>
+    <div class="section-eyebrow"><svg class="icon"><use href="#i-check"/></svg> QUALIFICATION</div>
     <h2 class="section-title">ये Program किसके लिए है?</h2>
     <p class="section-sub">हम सिर्फ serious लोगों के साथ काम करते हैं जो actually grow करना चाहते हैं</p>
 
     <div class="qualify-grid">
       <div class="qualify-card qualify-yes">
-        <h3 style="color:var(--green)">✅ आप PERFECT FIT हैं अगर...</h3>
+        <h3 style="color:var(--green)"><svg class="icon"><use href="#i-check"/></svg> आप PERFECT FIT हैं अगर...</h3>
         <ul>
-          <li><span>🟢</span>आप genuinely health और wellness में believe करते हैं</li>
-          <li><span>🟢</span>आपके पास WhatsApp group, Instagram या local network है</li>
-          <li><span>🟢</span>आप हर हफ्ते minimum 2-3 hours दे सकते हैं</li>
-          <li><span>🟢</span>आप seriously ₹20,000+ per month extra कमाना चाहते हैं</li>
-          <li><span>🟢</span>Housewife, Student, Teacher, Gym trainer, Doctor — सब welcome हैं</li>
-          <li><span>🟢</span>आप अपने शहर में CueHealth का नाम बड़ा करना चाहते हैं</li>
+          <li><span><svg class="icon" style="color:#16A34A"><use href="#i-check"/></svg></span>आप genuinely health और wellness में believe करते हैं</li>
+          <li><span><svg class="icon" style="color:#16A34A"><use href="#i-check"/></svg></span>आपके पास WhatsApp group, Instagram या local network है</li>
+          <li><span><svg class="icon" style="color:#16A34A"><use href="#i-check"/></svg></span>आप हर हफ्ते minimum 2-3 hours दे सकते हैं</li>
+          <li><span><svg class="icon" style="color:#16A34A"><use href="#i-check"/></svg></span>आप seriously ₹20,000+ per month extra कमाना चाहते हैं</li>
+          <li><span><svg class="icon" style="color:#16A34A"><use href="#i-check"/></svg></span>Housewife, Student, Teacher, Gym trainer, Doctor — सब welcome हैं</li>
+          <li><span><svg class="icon" style="color:#16A34A"><use href="#i-check"/></svg></span>आप अपने शहर में CueHealth का नाम बड़ा करना चाहते हैं</li>
         </ul>
       </div>
       <div class="qualify-card qualify-no">
-        <h3 style="color:#DC2626">❌ Please Apply मत करें अगर...</h3>
+        <h3 style="color:#DC2626"><svg class="icon"><use href="#i-x-circle"/></svg> Please Apply मत करें अगर...</h3>
         <ul>
-          <li><span>🔴</span>आप "try karke dekhenge" वाले attitude से आ रहे हैं</li>
-          <li><span>🔴</span>आप overnight millionaire बनने की सोच रहे हैं</li>
-          <li><span>🔴</span>आप बिना effort किए पैसा चाहते हैं</li>
-          <li><span>🔴</span>आपको health products में कोई belief नहीं है</li>
-          <li><span>🔴</span>आप अपने customers को mislead करेंगे</li>
+          <li><span><svg class="icon" style="color:#DC2626"><use href="#i-x-circle"/></svg></span>आप "try karke dekhenge" वाले attitude से आ रहे हैं</li>
+          <li><span><svg class="icon" style="color:#DC2626"><use href="#i-x-circle"/></svg></span>आप overnight millionaire बनने की सोच रहे हैं</li>
+          <li><span><svg class="icon" style="color:#DC2626"><use href="#i-x-circle"/></svg></span>आप बिना effort किए पैसा चाहते हैं</li>
+          <li><span><svg class="icon" style="color:#DC2626"><use href="#i-x-circle"/></svg></span>आपको health products में कोई belief नहीं है</li>
+          <li><span><svg class="icon" style="color:#DC2626"><use href="#i-x-circle"/></svg></span>आप अपने customers को mislead करेंगे</li>
         </ul>
       </div>
     </div>
@@ -532,44 +561,44 @@ h1,h2,h3,.display{font-family:'Baloo 2',sans-serif;line-height:1.2}
 <!-- TESTIMONIALS -->
 <section class="testi-section">
   <div class="section-inner">
-    <div class="section-eyebrow" style="color:var(--gold-light)">💬 PARTNER STORIES</div>
+    <div class="section-eyebrow" style="color:var(--gold-light)"><svg class="icon"><use href="#i-message"/></svg> PARTNER STORIES</div>
     <h2 class="section-title" style="color:#fff">इन्होंने शुरू किया — आप भी कर सकते हैं</h2>
 
     <div class="testi-grid">
       <div class="testi-card">
         <div class="testi-quote">मैं घर पर बैठी housewife थी। CueHealth Partner बनने के बाद पहले महीने ही ₹18,000 कमाए। अब मेरे WhatsApp groups में हर कोई products ऑर्डर करता है।</div>
         <div class="testi-author">
-          <div class="testi-avatar" style="background:rgba(200,134,10,0.2)">👩</div>
+          <div class="testi-avatar" style="background:rgba(200,134,10,0.2)"><svg class="icon icon-avatar" style="color:var(--gold)"><use href="#i-user"/></svg></div>
           <div>
             <div class="testi-name">Priya Sharma</div>
             <div class="testi-location">Jaipur, Rajasthan</div>
           </div>
         </div>
-        <div class="testi-earn">₹18,000 first month ↗</div>
+        <div class="testi-earn">₹18,000 first month <svg class="icon"><use href="#i-trending-up"/></svg></div>
       </div>
 
       <div class="testi-card">
         <div class="testi-quote">Gym trainer हूँ मैं। अपने clients को Shilajit recommend किया। वो खुद खुश हुए और अपने family को बताया। बिना extra time लगाए ₹35,000 महीने के आ रहे हैं।</div>
         <div class="testi-author">
-          <div class="testi-avatar" style="background:rgba(200,134,10,0.2)">💪</div>
+          <div class="testi-avatar" style="background:rgba(200,134,10,0.2)"><svg class="icon icon-avatar" style="color:var(--gold)"><use href="#i-activity"/></svg></div>
           <div>
             <div class="testi-name">Rahul Verma</div>
             <div class="testi-location">Lucknow, UP</div>
           </div>
         </div>
-        <div class="testi-earn">₹35,000 monthly ↗</div>
+        <div class="testi-earn">₹35,000 monthly <svg class="icon"><use href="#i-trending-up"/></svg></div>
       </div>
 
       <div class="testi-card">
         <div class="testi-quote">College student हूँ। Side income के लिए join किया था। अब ₹22,000 महीने कमा रहा हूँ और यही मेरा पूरा खर्चा निकल जाता है। Products बिकते हैं क्योंकि genuinely काम करते हैं।</div>
         <div class="testi-author">
-          <div class="testi-avatar" style="background:rgba(200,134,10,0.2)">📚</div>
+          <div class="testi-avatar" style="background:rgba(200,134,10,0.2)"><svg class="icon icon-avatar" style="color:var(--gold)"><use href="#i-book"/></svg></div>
           <div>
             <div class="testi-name">Ankit Gupta</div>
             <div class="testi-location">Agra, UP</div>
           </div>
         </div>
-        <div class="testi-earn">₹22,000 per month ↗</div>
+        <div class="testi-earn">₹22,000 per month <svg class="icon"><use href="#i-trending-up"/></svg></div>
       </div>
     </div>
   </div>
@@ -579,7 +608,7 @@ h1,h2,h3,.display{font-family:'Baloo 2',sans-serif;line-height:1.2}
 <section class="form-section" id="apply">
   <div class="form-wrap">
     <div style="text-align:center;margin-bottom:2rem">
-      <div class="section-eyebrow" style="text-align:center">📝 PARTNER APPLICATION</div>
+      <div class="section-eyebrow" style="text-align:center"><svg class="icon"><use href="#i-edit"/></svg> PARTNER APPLICATION</div>
       <h2 class="section-title">अभी Apply करें — Free में</h2>
       <p style="color:var(--muted);font-family:'Noto Sans Devanagari',sans-serif;font-size:.92rem">हम हर application review करते हैं। Serious applicants को 24 घंटे में call आएगा।</p>
     </div>
@@ -644,12 +673,12 @@ h1,h2,h3,.display{font-family:'Baloo 2',sans-serif;line-height:1.2}
           <textarea name="whyPartner" class="form-textarea" placeholder="जैसे: मुझे health products में believe है और मेरे पास बड़ा network है जिन्हें इन products की ज़रूरत है..."></textarea>
         </div>
 
-        <button type="submit" class="form-submit">🚀 Partner बनने के लिए Apply करें — Free</button>
-        <p class="form-disclaimer">✅ कोई investment नहीं &nbsp;|&nbsp; ✅ कोई risk नहीं &nbsp;|&nbsp; ✅ 24 घंटे में reply guaranteed</p>
+        <button type="submit" class="form-submit"><svg class="icon"><use href="#i-rocket"/></svg> Partner बनने के लिए Apply करें — Free</button>
+        <p class="form-disclaimer"><svg class="icon"><use href="#i-check"/></svg> कोई investment नहीं &nbsp;|&nbsp; <svg class="icon"><use href="#i-check"/></svg> कोई risk नहीं &nbsp;|&nbsp; <svg class="icon"><use href="#i-check"/></svg> 24 घंटे में reply guaranteed</p>
       </form>
 
       <div class="success-msg" id="successMsg">
-        <div style="font-size:3rem;margin-bottom:.75rem">🎉</div>
+        <div style="margin-bottom:.75rem"><svg class="icon icon-lg" style="color:var(--green)"><use href="#i-check"/></svg></div>
         <h3>Application Submit हो गई!</h3>
         <p>बहुत अच्छा! हमारी team 24 घंटे में आपको WhatsApp पर contact करेगी। तब तक अपना phone check करते रहें।<br><br>
         जल्दी connect करना हो तो WhatsApp करें: <strong>+91 74559 18832</strong></p>
@@ -661,7 +690,7 @@ h1,h2,h3,.display{font-family:'Baloo 2',sans-serif;line-height:1.2}
 <!-- FAQ -->
 <section class="faq-section">
   <div class="section-inner">
-    <div class="section-eyebrow" style="text-align:center">❓ FAQs</div>
+    <div class="section-eyebrow" style="text-align:center"><svg class="icon"><use href="#i-help-circle"/></svg> FAQs</div>
     <h2 class="section-title" style="text-align:center">अक्सर पूछे जाने वाले सवाल</h2>
 
     <div class="faq-list">
@@ -698,12 +727,12 @@ h1,h2,h3,.display{font-family:'Baloo 2',sans-serif;line-height:1.2}
   <div class="section-eyebrow" style="color:var(--gold-light)">अभी निर्णय लें</div>
   <h2 style="font-family:'Baloo 2',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);color:#fff;margin-bottom:1rem">हर दिन की देरी = खोया हुआ ₹1,000+</h2>
   <p style="color:rgba(255,255,255,0.7);max-width:500px;margin:0 auto 2rem;font-family:'Noto Sans Devanagari',sans-serif;font-size:1rem">जो लोग आज join करेंगे वो कल से earn करेंगे। जो इंतज़ार करेंगे, वो सिर्फ देखते रह जाएंगे।</p>
-  <a href="#apply" class="hero-btn">🌿 अभी Apply करें — यह Free है</a>
+  <a href="#apply" class="hero-btn"><svg class="icon"><use href="#i-leaf"/></svg> अभी Apply करें — यह Free है</a>
 </section>
 
 <!-- FOOTER -->
 <footer class="footer">
-  <div class="footer-logo">🌿 CueHealth</div>
+  <div class="footer-logo"><svg class="icon"><use href="#i-leaf"/></svg> CueHealth</div>
   <p>Voxply Life Sciences LLP | cuehealth.in | Ancient Wisdom. Modern Science.</p>
   <div class="footer-links">
     <a href="https://cuehealth.in">Website</a>
@@ -715,7 +744,7 @@ h1,h2,h3,.display{font-family:'Baloo 2',sans-serif;line-height:1.2}
 </footer>
 
 <!-- WHATSAPP FLOAT -->
-<a href="https://wa.me/917455918832?text=Namaste! Main CueHealth Partner Program ke baare mein janna chahta/chahti hoon." class="wa-float" title="WhatsApp पर बात करें">💬</a>
+<a href="https://wa.me/917455918832?text=Namaste! Main CueHealth Partner Program ke baare mein janna chahta/chahti hoon." class="wa-float" title="WhatsApp पर बात करें"><svg class="icon" style="width:1.6rem;height:1.6rem"><use href="#i-message"/></svg></a>
 
 <script>
 // Earnings Calculator
