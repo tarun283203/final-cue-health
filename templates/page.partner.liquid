@@ -303,7 +303,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- NAV -->
 <nav class="nav" id="mainNav">
   <a href="#" class="nav-logo"><svg class="icon"><use href="#i-leaf"/></svg> CueHealth <span>Partner</span></a>
-  <a href="#apply" class="nav-cta">अभी अप्लाई करें <svg class="icon" style="transform:rotate(-90deg)"><use href="#i-chevron-down"/></svg></a>
+  <a href="#apply" class="nav-cta" data-gtm-cta="nav_apply">अभी अप्लाई करें <svg class="icon" style="transform:rotate(-90deg)"><use href="#i-chevron-down"/></svg></a>
 </nav>
 
 <!-- HERO -->
@@ -342,7 +342,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="l">investment required</div>
       </div>
     </div>
-    <a href="#apply" class="hero-btn"><svg class="icon"><use href="#i-rocket"/></svg> Partner बनें — आज से शुरू करें</a>
+    <a href="#apply" class="hero-btn" data-gtm-cta="hero_apply"><svg class="icon"><use href="#i-rocket"/></svg> Partner बनें — आज से शुरू करें</a>
     <p class="hero-note"><svg class="icon"><use href="#i-check"/></svg> 2 मिनट में form भरें • <svg class="icon"><use href="#i-check"/></svg> 24 घंटे में approval • <svg class="icon"><use href="#i-check"/></svg> अगले दिन से earning शुरू</p>
   </div>
   <div class="scroll-hint">
@@ -738,7 +738,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="section-eyebrow" style="color:var(--gold-light)">अभी निर्णय लें</div>
   <h2 style="font-family:'Baloo 2',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);color:#fff;margin-bottom:1rem">हर दिन की देरी = खोया हुआ ₹1,000+</h2>
   <p style="color:rgba(255,255,255,0.7);max-width:500px;margin:0 auto 2rem;font-family:'Noto Sans Devanagari',sans-serif;font-size:1rem">जो लोग आज join करेंगे वो कल से earn करेंगे। जो इंतज़ार करेंगे, वो सिर्फ देखते रह जाएंगे।</p>
-  <a href="#apply" class="hero-btn"><svg class="icon"><use href="#i-leaf"/></svg> अभी Apply करें — यह Free है</a>
+  <a href="#apply" class="hero-btn" data-gtm-cta="final_cta_apply"><svg class="icon"><use href="#i-leaf"/></svg> अभी Apply करें — यह Free है</a>
 </section>
 
 <!-- FOOTER -->
@@ -755,7 +755,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </footer>
 
 <!-- WHATSAPP FLOAT -->
-<a href="https://wa.me/917455918832?text=Namaste! Main CueHealth Partner Program ke baare mein janna chahta/chahti hoon." class="wa-float" title="WhatsApp पर बात करें"><svg class="icon" style="width:1.6rem;height:1.6rem"><use href="#i-message"/></svg></a>
+<a href="https://wa.me/917455918832?text=Namaste! Main CueHealth Partner Program ke baare mein janna chahta/chahti hoon." class="wa-float" title="WhatsApp पर बात करें" data-gtm-cta="whatsapp_float"><svg class="icon" style="width:1.6rem;height:1.6rem"><use href="#i-message"/></svg></a>
 
 <script>
 // Earnings Calculator
@@ -803,6 +803,15 @@ function submitForm(e){
   btn.disabled = true;
   btn.textContent = 'भेजा जा रहा है...';
 
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: 'generate_lead',
+    form_id: 'partner_application',
+    city: form.city.value,
+    occupation: form.occupation.value,
+    earning_goal: form.earningGoal.value
+  });
+
   fetch(PARTNER_WEBHOOK_URL, {
     method: 'POST',
     mode: 'no-cors',
@@ -813,6 +822,18 @@ function submitForm(e){
     window.scrollTo({top:document.getElementById('successMsg').getBoundingClientRect().top+window.scrollY-80,behavior:'smooth'});
   });
 }
+
+// GTM click tracking for CTAs (Apply buttons, WhatsApp float)
+document.addEventListener('click', function(e){
+  var el = e.target.closest('[data-gtm-cta]');
+  if(!el) return;
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: 'cta_click',
+    cta_id: el.getAttribute('data-gtm-cta'),
+    cta_text: el.textContent.trim()
+  });
+});
 
 // Countdown seats (demo)
 let seats=47;
