@@ -1,6 +1,15 @@
 <!doctype html>
 <html class="js" lang="{{ request.locale.iso_code }}">
   <head>
+
+    {%- if request.page_type == 'index' and request.design_mode == false -%}
+    <script>
+      if (window.location.pathname === '/') {
+        window.location.replace('/collections/all' + window.location.search);
+      }
+    </script>
+  {%- endif -%}
+
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
