@@ -93,6 +93,7 @@ h1,h2,h3,.display{font-family:'Baloo 2',sans-serif;line-height:1.2}
 .scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.4);font-size:.75rem;display:flex;flex-direction:column;align-items:center;gap:6px;animation:bounce 2s infinite}
 @keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
 
+
 /* hero stats layout */
 .hero-numbers{display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;gap:1.25rem;align-items:center;max-width:820px;margin-left:auto;margin-right:auto}
 @media(max-width:700px){.hero-numbers{grid-template-columns:1fr 1fr;gap:1.25rem 1rem}.hero-divider{display:none}}
@@ -242,6 +243,9 @@ h1,h2,h3,.display{font-family:'Baloo 2',sans-serif;line-height:1.2}
 
 /* ===== URGENCY BANNER ===== */
 .urgency{background:linear-gradient(90deg,var(--saffron),#D94F00);color:#fff;text-align:center;padding:.65rem 1rem;font-family:'Baloo 2',sans-serif;font-size:.88rem;font-weight:600}
+.urgency span{background:rgba(255,255,255,0.2);padding:2px 10px;border-radius:12px;margin:0 6px;display:inline-block;transition:transform .3s var(--ease)}
+.urgency span.bump{animation:bump .4s var(--ease)}
+@keyframes bump{0%{transform:scale(1)}40%{transform:scale(1.25)}100%{transform:scale(1)}}
 
 /* ===== SUCCESS MSG ===== */
 .success-msg{display:none;background:var(--green-bg);border:2px solid var(--green-pale);border-radius:12px;padding:2rem;text-align:center;margin-top:1rem}
@@ -380,15 +384,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="calc-result">
         <div class="result-grid">
           <div class="result-item">
-            <div class="result-num" id="daily-earn">₹1,250</div>
+            <div class="result-num" id="daily-earn">₹1,000</div>
             <div class="result-label">रोज़ की कमाई<br>Daily Earning</div>
           </div>
           <div class="result-item">
-            <div class="result-num" id="weekly-earn">₹8,750</div>
+            <div class="result-num" id="weekly-earn">₹7,000</div>
             <div class="result-label">हफ़्ते की कमाई<br>Weekly Earning</div>
           </div>
           <div class="result-item result-highlight">
-            <div class="result-num" id="monthly-earn">₹37,500</div>
+            <div class="result-num" id="monthly-earn">₹30,000</div>
             <div class="result-label">महीने की कमाई<br>Monthly Earning <svg class="icon"><use href="#i-star"/></svg></div>
           </div>
         </div>
@@ -768,12 +772,45 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="form-group">
           <label class="form-label">आप लोगों तक कैसे पहुंचेंगे? *<br><span>जितने लागू हों, सब select करें</span></label>
           <div class="radio-group">
-            <label class="radio-option"><input type="checkbox" name="sell" value="WhatsApp पर personally message करके"> <label>WhatsApp पर personally message करके</label></label>
-            <label class="radio-option"><input type="checkbox" name="sell" value="Call करके / मिलकर बात करके"> <label>Call करके / मिलकर बात करके</label></label>
-            <label class="radio-option"><input type="checkbox" name="sell" value="दुकान / Gym / Clinic में customers को बताकर"> <label>अपनी दुकान / gym / clinic में customers को बताकर</label></label>
-            <label class="radio-option"><input type="checkbox" name="sell" value="Society / कॉलोनी में लोगों से बात करके"> <label>Society / कॉलोनी में लोगों से बात करके</label></label>
-            <label class="radio-option"><input type="checkbox" name="sell" value="Instagram / Facebook पर share करके"> <label>Instagram / Facebook पर share करके</label></label>
+            <label class="radio-option"><input type="checkbox" name="sell" value="Direct - मिलकर बात"> <label>लोगों से मिलकर सीधे बात करके</label></label>
+            <label class="radio-option"><input type="checkbox" name="sell" value="Direct - Call/WhatsApp personal"> <label>Call या personal WhatsApp message से</label></label>
+            <label class="radio-option"><input type="checkbox" name="sell" value="Gym / Clinic / Store"> <label>Gym / Clinic / दुकान में</label></label>
+            <label class="radio-option"><input type="checkbox" name="sell" value="Local community / society"> <label>सोसाइटी / कॉलोनी / community में</label></label>
+            <label class="radio-option"><input type="checkbox" name="sell" value="WhatsApp Status / Social post"> <label>WhatsApp status / Instagram पर post करके</label></label>
           </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">पहले कभी कुछ बेचा है? *</label>
+            <select name="soldBefore" class="form-select" required>
+              <option value="">Select करें</option>
+              <option>हाँ — Direct selling / Insurance / MLM</option>
+              <option>हाँ — दुकान या field sales job</option>
+              <option>हाँ — Online या social media पर</option>
+              <option>नहीं, पहली बार है</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">हर हफ्ते कितने लोगों से बात कर सकते हैं? *</label>
+            <select name="weeklyReach" class="form-select" required>
+              <option value="">Select करें</option>
+              <option>0 – 10 लोग</option>
+              <option>10 – 50 लोग</option>
+              <option>50 – 100 लोग</option>
+              <option>100+ लोग</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">रोज़ कितना समय दे सकते हैं? *</label>
+          <select name="dailyTime" class="form-select" required>
+            <option value="">Select करें</option>
+            <option>1 घंटा</option>
+            <option>2 घंटे</option>
+            <option>3+ घंटे</option>
+          </select>
         </div>
 
         <div class="form-group">
@@ -787,19 +824,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
 
         <div class="form-group">
-          <label class="form-label">आप CueHealth Partner क्यों बनना चाहते हैं?<br><span>2-3 lines में बताएं — ये हमें आपको समझने में help करेगा</span></label>
-          <textarea name="whyPartner" class="form-textarea" placeholder="जैसे: मुझे health products में believe है और मेरे पास बड़ा network है जिन्हें इन products की ज़रूरत है..."></textarea>
+          <label class="form-label">आप लोगों तक कैसे पहुंचेंगे, इसका एक उदाहरण दें<br><span>2-3 lines — किससे, कहाँ और कैसे बात करेंगे</span></label>
+          <textarea name="whyPartner" class="form-textarea" placeholder="जैसे: मैं पहले insurance में था, रोज़ 30 लोगों से मिलता हूँ, और मुझे health products बेचने का मौका चाहिए..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="radio-option" style="display:flex;gap:.6rem;align-items:flex-start"><input type="checkbox" name="claimsAgreed" required style="margin-top:.3rem"> <label style="cursor:pointer">मैं वादा करता/करती हूँ कि मैं "इलाज" या "cure" के दावे नहीं करूँगा/करूँगी, और सिर्फ approved बातें बताऊँगा/बताऊँगी।</label></label>
         </div>
 
         <button type="submit" class="form-submit"><svg class="icon"><use href="#i-rocket"/></svg> Partner बनने के लिए Apply करें — Free</button>
-        <p class="form-disclaimer"><svg class="icon"><use href="#i-check"/></svg> कोई investment नहीं &nbsp;|&nbsp; <svg class="icon"><use href="#i-check"/></svg> कोई risk नहीं &nbsp;|&nbsp; <svg class="icon"><use href="#i-check"/></svg> हर application review की जाती है</p>
+        <p class="form-disclaimer"><svg class="icon"><use href="#i-check"/></svg> कोई investment नहीं &nbsp;|&nbsp; <svg class="icon"><use href="#i-check"/></svg> कोई joining fee नहीं &nbsp;|&nbsp; <svg class="icon"><use href="#i-check"/></svg> हर application का जवाब मिलेगा</p>
       </form>
 
       <div class="success-msg" id="successMsg">
         <div style="margin-bottom:.75rem"><svg class="icon icon-lg" style="color:var(--green)"><use href="#i-check"/></svg></div>
         <h3>Application Submit हो गई!</h3>
-        <p>बहुत अच्छा! हमारी team जल्द ही आपको WhatsApp पर contact करेगी। तब तक अपना phone check करते रहें।<br><br>
-        जल्दी connect करना हो तो WhatsApp करें: <strong>+91 74559 18832</strong></p>
+        <p>अब आपको WhatsApp पर भेजा जा रहा है — वहाँ बस <strong>Send</strong> दबा दीजिए, हमारी team आपको जल्दी reply करेगी।</p>
+        <a id="waRedirectBtn" href="#" target="_blank" rel="noopener" class="form-submit" style="display:inline-flex;align-items:center;justify-content:center;gap:.5rem;text-decoration:none;margin-top:1rem">
+          <svg class="icon"><use href="#i-message"/></svg> WhatsApp नहीं खुला? यहाँ क्लिक करें
+        </a>
       </div>
     </div>
   </div>
@@ -814,7 +857,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="faq-list">
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">क्या मुझे कोई पैसा invest करना होगा?</button>
-        <div class="faq-a"><div class="faq-a-inner">बिल्कुल नहीं! CueHealth Partner Program 100% free है। कोई joining fee नहीं, कोई deposit नहीं। आप सिर्फ अपने network को products recommend करते हैं और हर sale पर ₹200-300 पाते हैं।</div></div>
+        <div class="faq-a"><div class="faq-a-inner">बिल्कुल नहीं! CueHealth Partner Program 100% free है। कोई joining fee नहीं, कोई deposit नहीं। आप सिर्फ अपने network को products recommend करते हैं और हर sale पर ₹200-300 पाते हैं (product के हिसाब से)।</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">क्या सिर्फ WhatsApp status पर video लगाने से कमाई होगी?</button>
+        <div class="faq-a"><div class="faq-a-inner">बहुत कम। Status देखकर लोग शायद ही order करते हैं। असली orders तब आते हैं जब आप किसी से पूछते हैं — "आपको कोई समस्या है?" — और हल बताते हैं। वीडियो सिर्फ आपकी मदद करता है।</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">पैसे कब और कैसे मिलेंगे?</button>
@@ -822,23 +869,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">अगर मेरे पास Instagram या website नहीं है तो?</button>
-        <div class="faq-a"><div class="faq-a-inner">कोई बात नहीं! बहुत से partners सिर्फ WhatsApp से ही ₹30,000+ महीना कमा रहे हैं। आपको बस अपने family, friends और local contacts को products के बारे में बताना है। हम आपको ready-made scripts और images देंगे।</div></div>
+        <div class="faq-a"><div class="faq-a-inner">कोई बात नहीं। सबसे अच्छा result उन्हें मिलता है जो लोगों से सीधे बात करते हैं — मिलकर, call पर या personal WhatsApp message से। Instagram या website ज़रूरी नहीं है। हम ready-made messages और scripts देंगे।</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">Products safe हैं? FSSAI approved हैं?</button>
         <div class="faq-a"><div class="faq-a-inner">हाँ! CueHealth के सभी products FSSAI certified हैं, GMP-compliant facility में बनते हैं और third-party lab tested हैं। आप पूरे confidence के साथ recommend कर सकते हैं।</div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">मुझे selling की knowledge नहीं है — क्या मैं कर सकता/सकती हूँ?</button>
-        <div class="faq-a"><div class="faq-a-inner">बिल्कुल! Onboarding के बाद हम Zoom training देते हैं — products के बारे में, कैसे बात करें customers से, कौन से scripts भेजें। आपको कुछ "sell" नहीं करना, बस genuinely recommend करना है। जब product अच्छा होता है तो खुद बिकता है।</div></div>
+        <button class="faq-q" onclick="toggleFaq(this)">मुझे लोगों से बात करने में हिचक होती है — क्या मैं कर सकता/सकती हूँ?</button>
+        <div class="faq-a"><div class="faq-a-inner">हाँ, अगर आप सीखने को तैयार हैं। हम Hindi में call script, pitch guide और Zoom training देते हैं। पर काम लोगों से बात करना ही है — बिना बात किए order नहीं आते।</div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">Application के बाद क्या होता है?</button>
-        <div class="faq-a"><div class="faq-a-inner">Form submit करने के बाद हमारी team हर application review करती है। जो लोग अपने network से सक्रिय रूप से बात करने को तैयार हैं, उन्हें पहले WhatsApp पर contact किया जाता है और उसी call में Zoom training schedule हो जाती है।</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">मैं customers को products के बारे में क्या बोल सकता/सकती हूँ?</button>
-        <div class="faq-a"><div class="faq-a-inner">आप products के traditional Ayurvedic benefits बता सकते हैं — जैसे energy, wellness, daily support। लेकिन "इलाज", "cure" या किसी बीमारी ठीक करने का दावा नहीं कर सकते। पूरी guideline ऊपर "PARTNER के नियम" section में दी गई है।</div></div>
+        <button class="faq-q" onclick="toggleFaq(this)">Approval में कितना time लगेगा?</button>
+        <div class="faq-a"><div class="faq-a-inner">Form submit करने के बाद हमारी team आपको WhatsApp पर contact करेगी। फिर Zoom orientation होगी और आपको partner kit और आपका personal code मिलेगा।</div></div>
       </div>
     </div>
   </div>
@@ -846,9 +889,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- FINAL CTA -->
 <section style="background:linear-gradient(135deg,#0D2B1D,#1B4332);padding:5rem 5%;text-align:center">
-  <div class="section-eyebrow" style="color:var(--gold-light)">अभी निर्णय लें</div>
-  <h2 style="font-family:'Baloo 2',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);color:#fff;margin-bottom:1rem">जितनी जल्दी शुरू करेंगे, उतनी जल्दी सीखेंगे और कमाएंगे</h2>
-  <p style="color:rgba(255,255,255,0.7);max-width:500px;margin:0 auto 2rem;font-family:'Noto Sans Devanagari',sans-serif;font-size:1rem">पहले 14 दिन का plan ready है — बस आपको शुरुआत करनी है।</p>
+  <div class="section-eyebrow" style="color:var(--gold-light)">शुरुआत आज से</div>
+  <h2 style="font-family:'Baloo 2',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);color:#fff;margin-bottom:1rem">आज 10 लोगों से बात कीजिए</h2>
+  <p style="color:rgba(255,255,255,0.7);max-width:500px;margin:0 auto 2rem;font-family:'Noto Sans Devanagari',sans-serif;font-size:1rem">आपकी पहली कमाई आपकी पहली बातचीत से शुरू होती है। Apply कीजिए, script लीजिए, बात शुरू कीजिए।</p>
   <a href="#apply" class="hero-btn" data-gtm-cta="final_cta_apply"><svg class="icon"><use href="#i-leaf"/></svg> अभी Apply करें — यह Free है</a>
 </section>
 
@@ -862,17 +905,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="https://cuehealth.in/terms">Terms & Conditions</a>
     <a href="mailto:partners@cuehealth.in">partners@cuehealth.in</a>
   </div>
-  <p style="margin-top:1rem;font-size:.72rem">*Earning estimates based on average ₹200-300 commission per product (avg ₹250). Actual results vary based on individual effort and network. CueHealth does not guarantee income.</p>
+  <p style="margin-top:1rem;font-size:.72rem">*Earning estimates are based on average ₹200-300 commission per product sold (varies by product). Actual results vary based on individual effort. CueHealth does not guarantee income. CueHealth products are traditional Ayurvedic wellness products and are not intended to diagnose, treat, cure or prevent any disease.</p>
 </footer>
 
 <!-- WHATSAPP FLOAT -->
 <a href="https://wa.me/917455918832?text=Namaste! Main CueHealth Partner Program ke baare mein janna chahta/chahti hoon." class="wa-float" title="WhatsApp पर बात करें" data-gtm-cta="whatsapp_float"><svg class="icon" style="width:1.6rem;height:1.6rem"><use href="#i-message"/></svg></a>
 
 <script>
-// Earnings Calculator (avg ₹250 commission per sale across the 3 products)
+// Earnings Calculator
 function updateCalc(val){
   const v=parseInt(val);
-  const earn=v*250;
+  const earn=v*250; // avg of ₹200-300 commission range
   document.getElementById('slider-val').textContent=v;
   document.getElementById('daily-earn').textContent='₹'+earn.toLocaleString('en-IN');
   document.getElementById('weekly-earn').textContent='₹'+(earn*7).toLocaleString('en-IN');
@@ -900,6 +943,12 @@ function submitForm(e){
   var btn = form.querySelector('.form-submit');
   var sellMethods = Array.prototype.slice.call(form.querySelectorAll('input[name="sell"]:checked')).map(function(cb){ return cb.value; }).join(', ');
 
+  // Simple lead score: Seller = has sold before AND can reach 50+ people/week
+  var soldBefore = !/नहीं/.test(form.soldBefore.value);
+  var reach = form.weeklyReach.value;
+  var bigReach = /50|100/.test(reach);
+  var leadType = (soldBefore && bigReach) ? 'Seller' : (bigReach || soldBefore) ? 'Maybe' : 'Poster';
+
   var data = new URLSearchParams({
     name: form.name.value,
     whatsapp: form.whatsapp.value,
@@ -907,6 +956,11 @@ function submitForm(e){
     occupation: form.occupation.value,
     sellMethods: sellMethods,
     earningGoal: form.earningGoal.value,
+    soldBefore: form.soldBefore.value,
+    weeklyReach: form.weeklyReach.value,
+    dailyTime: form.dailyTime.value,
+    leadType: leadType,
+    claimsAgreed: form.claimsAgreed.checked ? 'yes' : 'no',
     whyPartner: form.whyPartner.value,
     pageUrl: window.location.href
   });
@@ -920,8 +974,14 @@ function submitForm(e){
     form_id: 'partner_application',
     city: form.city.value,
     occupation: form.occupation.value,
-    earning_goal: form.earningGoal.value
+    earning_goal: form.earningGoal.value,
+    sold_before: form.soldBefore.value,
+    weekly_reach: form.weeklyReach.value,
+    lead_type: leadType
   });
+
+  var waMsg = 'Namaste! Mera naam ' + form.name.value + ' hai, ' + form.city.value + ' se. Maine CueHealth Partner Program ke liye apply kiya hai. Please mujhe next steps bataiye.';
+  var waLink = 'https://wa.me/917455918832?text=' + encodeURIComponent(waMsg);
 
   fetch(PARTNER_WEBHOOK_URL, {
     method: 'POST',
@@ -930,7 +990,9 @@ function submitForm(e){
   }).catch(function(){}).finally(function(){
     form.style.display='none';
     document.getElementById('successMsg').style.display='block';
+    document.getElementById('waRedirectBtn').href = waLink;
     window.scrollTo({top:document.getElementById('successMsg').getBoundingClientRect().top+window.scrollY-80,behavior:'smooth'});
+    setTimeout(function(){ window.location.href = waLink; }, 1200);
   });
 }
 
@@ -945,6 +1007,7 @@ document.addEventListener('click', function(e){
     cta_text: el.textContent.trim()
   });
 });
+
 
 // Init calculator
 updateCalc(5);
@@ -1012,5 +1075,6 @@ updateCalc(5);
   }
 })();
 </script>
+
 </body>
 </html>
