@@ -1614,6 +1614,8 @@ function orderDirect() {
   // window.location.href = 'https://cuehealth.in/products/periods-care-kit';
 }
 
+var CYCLE_CHECK_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwua77RhbD3X-Hu9At0YLLu_LPqN-1OzWOevnFDUhuhy52ZZ8UBBeKmhXa7bfMjAbVnIw/exec';
+
 function submitBooking(e) {
   e.preventDefault();
   const btn = document.getElementById('submitBtn');
@@ -1626,23 +1628,26 @@ function submitBooking(e) {
   const teamNames = ['Riya', 'Priya', 'Sneha', 'Anjali'];
   document.getElementById('successName').textContent = teamNames[Math.floor(Math.random() * teamNames.length)];
 
-  // In production, POST this to CRM:
-  const payload = {
+  const data = new URLSearchParams({
     name: document.getElementById('name').value,
     phone: document.getElementById('phone').value,
     time,
-    whatsappOnly: document.getElementById('whatsappOnly').checked,
+    whatsappOnly: document.getElementById('whatsappOnly').checked ? 'true' : 'false',
     periodType: document.getElementById('modalResultName').textContent,
-    quizAnswers: state.answers
-  };
-  console.log('LEAD CAPTURED:', payload);
+    quizAnswers: JSON.stringify(state.answers),
+    pageUrl: window.location.href
+  });
 
-  setTimeout(() => {
+  fetch(CYCLE_CHECK_WEBHOOK_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    body: data
+  }).catch(function(){}).finally(function(){
     document.getElementById('modalForm').style.display = 'none';
     document.getElementById('modalSuccess').classList.add('show');
     btn.disabled = false;
     btn.textContent = 'Book My Call';
-  }, 900);
+  });
 }
 
 document.addEventListener('keydown', e => {
