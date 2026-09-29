@@ -2,1639 +2,634 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-P9TM6ZQN');</script>
-<!-- End Google Tag Manager -->
 <meta charset="UTF-8">
+<!-- GTM -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P9TM6ZQN');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="color-scheme" content="light">
-<title>Cuehealth Cycle Check — Discover Your Period Type</title>
-<meta name="description" content="2-minute Cycle Check. 8 questions. Discover your Period Type and what your body needs. Made by Cuehealth — Ayurvedic period care for real Indian women.">
+<meta name="theme-color" content="#FBF6F0">
+<title>Cuehealth — Periods Ka Jawab Yahan Hai</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,400;9..144,0,500;9..144,0,600;9..144,0,700;9..144,1,400;9..144,1,500;9..144,1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,400;9..144,0,500;9..144,0,600;9..144,0,700;9..144,1,400;9..144,1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root {
-  --ivory: #FBF6F0;
-  --ivory-deep: #F5EDE2;
-  --pink-soft: #FCE7EC;
-  --pink-blush: #F2C8D0;
-  --rose: #E8B4BC;
-  --maroon: #7A1E3C;
-  --maroon-deep: #5A1329;
-  --gold: #B8935E;
-  --text: #2A1518;
-  --text-muted: #6B5560;
-  --border: #E8D6D9;
-  --white: #FFFFFF;
-  --safe-top: env(safe-area-inset-top, 0px);
-  --safe-bottom: env(safe-area-inset-bottom, 0px);
+:root{
+  --ma:#7A1E3C;--ma2:#5A1329;
+  --iv:#FBF6F0;--iv2:#F5EDE2;
+  --bl:#FCE7EC;--ro:#E8B4BC;
+  --go:#B8935E;--tx:#2A1518;--mu:#6B5560;--bd:#E8D6D9;--wh:#fff;
+  --st:env(safe-area-inset-top,0px);
+  --sb:env(safe-area-inset-bottom,0px);
 }
-:root { box-sizing: border-box; padding-top: var(--safe-top); padding-bottom: var(--safe-bottom); }
-*, *::before, *::after { box-sizing: inherit; }
-html { scroll-behavior: smooth; }
-body {
-  margin: 0;
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
-  color: var(--text);
-  background: var(--ivory);
-  -webkit-font-smoothing: antialiased;
-  min-height: 100vh;
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-tap-highlight-color:transparent;scroll-behavior:smooth}
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  font-size:15px;line-height:1.55;
+  color:var(--tx);background:var(--iv);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
 }
-img, svg { max-width: 100%; display: block; }
-button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
-a { color: var(--maroon); }
+button{font-family:inherit;cursor:pointer;border:none;background:none;-webkit-appearance:none}
+img{max-width:100%;display:block}
+a{color:var(--ma);text-decoration:none}
+.vw{display:none}.vw.on{display:block}
 
-/* ─── ANNOUNCE ─── */
-.announce {
-  background: var(--maroon-deep);
-  color: var(--ivory);
-  font-size: 12.5px;
-  text-align: center;
-  padding: 8px 16px;
-  font-weight: 500;
-  letter-spacing: 0.02em;
+/* ── HEADER ── */
+header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(251,246,240,.96);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--bd);
+  padding:13px 20px;
 }
-.announce span { margin: 0 8px; opacity: 0.9; }
-.announce span::before { content: '✦ '; color: var(--gold); }
+.hdr{max-width:960px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:'Fraunces',serif;font-weight:600;font-size:20px;color:var(--ma);line-height:1}
+.logo span{display:block;font-family:'Inter',sans-serif;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mu);font-weight:500;margin-top:2px}
+.hdr-wa{display:flex;align-items:center;gap:5px;font-size:12.5px;color:var(--mu);font-weight:500}
+.wa-dot{width:8px;height:8px;background:#25D366;border-radius:50%;flex-shrink:0}
+.hdr-wa b{color:var(--ma)}
 
-/* ─── HEADER ─── */
-header {
-  padding: 18px 24px;
-  background: rgba(251, 246, 240, 0.92);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
-  position: sticky;
-  top: var(--safe-top);
-  z-index: 30;
-}
-.header-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.brand {
-  font-family: 'Fraunces', serif;
-  font-weight: 600;
-  font-size: 22px;
-  color: var(--maroon);
-  letter-spacing: -0.01em;
-}
-.brand small {
-  font-family: 'Inter', sans-serif;
-  font-size: 10px;
-  color: var(--text-muted);
-  font-weight: 500;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  display: block;
-  line-height: 1;
-  margin-top: 2px;
-}
-.header-phone {
-  font-size: 13px;
-  color: var(--text-muted);
-  text-decoration: none;
-  font-weight: 500;
-}
-.header-phone strong { color: var(--maroon); font-weight: 600; }
-@media (max-width: 520px) { .header-phone { display: none; } }
+/* ── HERO — full bleed image + text below ── */
+.hero{background:var(--iv);position:relative}
 
-/* ─── APP VIEWS ─── */
-.view { display: none; }
-.view.active { display: block; }
-
-/* ─── INTRO (HERO + QUIZ INVITE) ─── */
-.intro {
-  padding: 48px 24px 72px;
-  max-width: 1200px;
-  margin: 0 auto;
+.hero-img-wrap{
+  width:100%;
+  position:relative;
+  overflow:hidden;
+  /* Height: show ~65% of viewport on mobile */
+  height:62svh;
+  max-height:520px;
 }
-.intro-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 40px;
-  align-items: center;
+.hero-img-wrap img{
+  width:100%;height:100%;
+  object-fit:cover;
+  object-position:center 15%;
+  display:block;
 }
-@media (min-width: 900px) {
-  .intro-grid { grid-template-columns: 1.15fr 1fr; gap: 64px; }
-  .intro { padding: 72px 24px 96px; }
+/* Gradient fade at bottom of image into page bg */
+.hero-img-wrap::after{
+  content:'';
+  position:absolute;bottom:0;left:0;right:0;
+  height:80px;
+  background:linear-gradient(to bottom, transparent, var(--iv));
+  pointer-events:none;
 }
 
-.hero-eyebrow {
-  font-family: 'Fraunces', serif;
-  font-style: italic;
-  font-size: 15px;
-  color: var(--maroon);
-  margin: 0 0 18px;
-  font-weight: 500;
+/* Text sits tight below image — no gap */
+.hero-text{
+  padding:16px 22px 28px;
+  max-width:560px;
 }
-.hero-eyebrow::before {
-  content: '';
-  display: inline-block;
-  width: 32px;
-  height: 1px;
-  background: var(--gold);
-  vertical-align: middle;
-  margin-right: 12px;
+.hero-tag{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--bl);color:var(--ma);
+  font-size:11px;font-weight:600;
+  letter-spacing:.05em;text-transform:uppercase;
+  padding:5px 12px;border-radius:20px;
+  margin-bottom:14px;
 }
-h1.hero-title {
-  font-family: 'Fraunces', serif;
-  font-weight: 500;
-  font-size: clamp(32px, 5.5vw, 52px);
-  line-height: 1.08;
-  letter-spacing: -0.02em;
-  margin: 0 0 20px;
+.hero-tag span{opacity:.6}
+h1.hero-h{
+  font-family:'Fraunces',serif;
+  font-size:clamp(28px,7vw,40px);
+  font-weight:600;line-height:1.08;
+  letter-spacing:-.02em;
+  color:var(--tx);
+  margin-bottom:10px;
 }
-h1.hero-title em {
-  font-style: italic;
-  font-weight: 400;
-  color: var(--maroon);
+h1.hero-h em{font-style:italic;font-weight:400;color:var(--ma)}
+.hero-sub{
+  font-size:14.5px;color:var(--mu);
+  line-height:1.55;margin-bottom:22px;
+  max-width:440px;
 }
-.hero-lede {
-  font-size: 17px;
-  line-height: 1.6;
-  color: var(--text-muted);
-  max-width: 520px;
-  margin: 0 0 28px;
+.hero-sub b{color:var(--tx);font-weight:600}
+
+.btn-main{
+  display:block;width:100%;
+  padding:17px 20px;
+  background:var(--ma);color:var(--iv);
+  font-size:15px;font-weight:600;
+  border-radius:10px;text-align:center;
+  box-shadow:0 4px 14px rgba(122,30,60,.22);
+  transition:background .15s;
+  max-width:480px;
+  -webkit-appearance:none;
+}
+.btn-main:active{background:var(--ma2)}
+.hero-meta{
+  display:flex;flex-wrap:wrap;gap:12px;
+  margin-top:14px;
+  font-size:12px;color:var(--mu);font-weight:500;
+}
+.hero-meta span{display:flex;align-items:center;gap:4px}
+
+/* Desktop: side-by-side */
+@media(min-width:700px){
+  .hero{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100svh - 54px)}
+  .hero-img-wrap{height:100%;max-height:none;order:2}
+  .hero-img-wrap::after{
+    background:linear-gradient(to right, var(--iv), transparent);
+    width:120px;height:100%;top:0;left:0;right:auto;bottom:auto;
+  }
+  .hero-text{
+    display:flex;flex-direction:column;justify-content:center;
+    padding:48px 40px 48px 48px;order:1;
+  }
+  .btn-main{max-width:360px}
 }
 
-.what-youll-get {
-  margin: 0 0 32px;
-  padding: 24px 22px;
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--maroon);
-  border-radius: 2px;
+/* ── STEPS ── */
+.steps-sec{
+  padding:28px 20px;
+  background:var(--wh);
+  border-top:1px solid var(--bd);
 }
-.what-youll-get h4 {
-  font-family: 'Fraunces', serif;
-  font-size: 14px;
-  font-style: italic;
-  color: var(--maroon);
-  margin: 0 0 12px;
-  font-weight: 500;
+.steps-sec-inner{max-width:900px;margin:0 auto}
+.steps-label{
+  font-family:'Fraunces',serif;font-style:italic;
+  font-size:13px;color:var(--ma);text-align:center;
+  margin-bottom:18px;letter-spacing:.02em;
 }
-.what-youll-get ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.steps-row{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:0;
 }
-.what-youll-get li {
-  font-size: 14.5px;
-  color: var(--text);
-  padding: 6px 0 6px 22px;
-  position: relative;
-  line-height: 1.5;
+.step{
+  display:flex;flex-direction:column;align-items:center;
+  text-align:center;padding:0 12px;
+  position:relative;
 }
-.what-youll-get li::before {
-  content: '✦';
-  position: absolute;
-  left: 0;
-  top: 6px;
-  color: var(--gold);
-  font-size: 11px;
+.step:not(:last-child)::after{
+  content:'';
+  position:absolute;top:18px;right:0;
+  width:1px;height:36px;
+  background:var(--bd);
+}
+.step-ic{font-size:22px;margin-bottom:6px}
+.step h3{font-family:'Fraunces',serif;font-size:13px;font-weight:600;color:var(--tx);margin-bottom:3px}
+.step p{font-size:11.5px;color:var(--mu);line-height:1.45}
+
+/* ── RELATE ── */
+.relate{padding:28px 20px;background:var(--iv)}
+.relate-inner{max-width:900px;margin:0 auto}
+.sec-title{
+  font-family:'Fraunces',serif;font-size:18px;font-weight:500;
+  text-align:center;margin-bottom:4px;color:var(--tx);line-height:1.2;
+}
+.sec-title em{color:var(--ma);font-style:italic}
+.sec-sub{text-align:center;font-size:12.5px;color:var(--mu);margin-bottom:18px}
+.syms{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+@media(min-width:520px){.syms{grid-template-columns:repeat(3,1fr)}}
+.sym{
+  display:flex;align-items:center;gap:8px;
+  padding:10px 12px;
+  background:var(--wh);border:1px solid var(--bd);border-radius:10px;
+  font-size:12.5px;font-weight:500;color:var(--tx);
+}
+.sym-ic{
+  width:32px;height:32px;flex-shrink:0;border-radius:7px;
+  background:var(--bl);display:flex;align-items:center;justify-content:center;font-size:16px;
 }
 
-.cta-primary {
-  padding: 18px 28px;
-  font-size: 16px;
-  font-weight: 600;
-  border-radius: 6px;
-  background: var(--maroon);
-  color: var(--ivory);
-  transition: transform 0.15s ease, background 0.2s;
-  box-shadow: 0 4px 14px rgba(122, 30, 60, 0.22);
-  min-width: 260px;
+/* ── PRIVACY ── */
+.priv{
+  padding:24px 20px;
+  background:var(--ma2);color:var(--iv);
+  display:flex;flex-direction:column;align-items:center;
+  text-align:center;gap:12px;
 }
-.cta-primary:hover { background: var(--maroon-deep); box-shadow: 0 6px 18px rgba(122, 30, 60, 0.3); }
-.cta-primary:active { transform: translateY(1px); }
+.priv-inner{max-width:560px}
+.priv h3{font-family:'Fraunces',serif;font-size:17px;font-weight:500;line-height:1.2;margin-bottom:4px}
+.priv p{font-size:12.5px;opacity:.8;line-height:1.5}
+.priv-tags{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:4px}
+.priv-tag{font-size:11px;padding:5px 12px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:16px;font-weight:500}
 
-.time-note {
-  margin: 14px 0 0;
-  font-size: 13px;
-  color: var(--text-muted);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.time-note::before {
-  content: '';
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--gold);
-}
+/* ── BOTTOM CTA ── */
+.btm{padding:24px 20px calc(28px + var(--sb));text-align:center;background:var(--iv)}
+.btm p{font-family:'Fraunces',serif;font-style:italic;font-size:13.5px;color:var(--mu);margin-bottom:14px}
+.btm .btn-main{margin:0 auto;max-width:480px}
 
-.hero-visual {
-  position: relative;
-  padding: 20px;
-  text-align: center;
+/* ── QUIZ ── */
+.q-wrap{padding-bottom:calc(60px + var(--sb))}
+.q-top{
+  padding:11px 20px;
+  display:flex;justify-content:space-between;align-items:center;
+  border-bottom:1px solid var(--bd);background:var(--iv);
+  position:sticky;top:54px;z-index:20;
 }
-.hero-visual-bg {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 50% 45%, var(--pink-soft) 0%, var(--ivory-deep) 55%, transparent 78%);
-  z-index: 0;
-}
-.hero-visual svg {
-  position: relative;
-  z-index: 1;
-  max-width: 380px;
-  width: 100%;
-  margin: 0 auto;
-}
-.hero-visual-caption {
-  position: relative;
-  z-index: 2;
-  font-family: 'Fraunces', serif;
-  font-style: italic;
-  font-size: 13.5px;
-  color: var(--maroon);
-  margin: 16px 0 0;
-  line-height: 1.5;
-}
+.q-back{font-size:13px;color:var(--mu);font-weight:500;padding:6px 0;min-width:44px}
+.q-back:disabled{opacity:.3}
+.q-lbl{font-family:'Fraunces',serif;font-style:italic;font-size:13px;color:var(--mu)}
+.q-prog{height:3px;background:var(--bd);position:sticky;top:calc(54px + 44px);z-index:19}
+.q-fill{height:100%;background:var(--ma);width:0%;transition:width .4s ease}
+.q-body{padding:26px 22px 20px;max-width:540px;margin:0 auto}
 
-/* ─── SECONDARY INTRO SECTIONS ─── */
-.intro-belt {
-  background: var(--ivory-deep);
-  padding: 40px 24px;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
+.ques{animation:fadeUp .32s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.q-title{font-family:'Fraunces',serif;font-size:clamp(20px,5vw,26px);font-weight:500;line-height:1.2;margin-bottom:5px;color:var(--tx)}
+.q-title em{color:var(--ma);font-style:italic;font-weight:400}
+.q-hint{font-size:12.5px;color:var(--mu);margin-bottom:22px;font-family:'Fraunces',serif;font-style:italic}
+.opts{display:flex;flex-direction:column;gap:9px}
+.opt{
+  padding:15px 16px;border:1.5px solid var(--bd);background:var(--wh);
+  border-radius:10px;text-align:left;transition:all .15s;
+  display:flex;align-items:center;gap:11px;
+  font-size:14px;font-weight:500;color:var(--tx);-webkit-appearance:none;
 }
-.belt-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 32px;
-  align-items: center;
-}
-@media (min-width: 800px) { .belt-inner { grid-template-columns: 2fr 1fr; gap: 48px; } }
-.belt-text {
-  font-family: 'Fraunces', serif;
-  font-style: italic;
-  font-size: 17px;
-  line-height: 1.55;
-  color: var(--text);
-  margin: 0;
-}
-.belt-text strong { color: var(--maroon); font-style: normal; font-weight: 600; }
-.belt-badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  justify-content: flex-start;
-}
-@media (min-width: 800px) { .belt-badges { justify-content: flex-end; } }
-.belt-badge {
-  font-size: 11px;
-  padding: 6px 12px;
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  color: var(--maroon);
-  font-weight: 600;
-  letter-spacing: 0.04em;
-}
+.opt:active,.opt:hover{border-color:var(--ma);background:var(--bl)}
+.opt-ic{width:36px;height:36px;flex-shrink:0;border-radius:7px;background:var(--iv2);display:flex;align-items:center;justify-content:center;font-size:19px}
+.opt:active .opt-ic{background:rgba(232,180,188,.5)}
 
-/* ─── QUIZ ─── */
-.quiz-shell {
-  min-height: 80vh;
-  padding: 24px 20px 60px;
-  max-width: 640px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-}
+/* Insight */
+.ins{animation:fadeUp .4s ease;text-align:center;padding:8px 0}
+.ins-mark{display:inline-block;background:var(--bl);color:var(--go);font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;padding:5px 12px;border-radius:16px;margin-bottom:18px}
+.ins-body{font-family:'Fraunces',serif;font-size:clamp(19px,5vw,24px);font-weight:400;line-height:1.35;color:var(--tx);margin:0 auto 8px;max-width:480px}
+.ins-body strong{color:var(--ma);font-weight:600}
+.ins-attr{font-size:12px;color:var(--mu);margin-bottom:28px;font-family:'Fraunces',serif;font-style:italic}
+.btn-sm{display:inline-block;padding:14px 30px;background:var(--ma);color:var(--iv);border-radius:8px;font-size:14px;font-weight:600}
+.btn-sm:active{background:var(--ma2)}
 
-.quiz-topbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px 4px;
-  margin-bottom: 24px;
-}
-.quiz-back {
-  font-size: 13px;
-  color: var(--text-muted);
-  font-weight: 500;
-  padding: 6px 10px;
-  border-radius: 4px;
-  transition: color 0.15s;
-}
-.quiz-back:hover { color: var(--maroon); }
-.quiz-back:disabled { opacity: 0.3; cursor: default; }
-.quiz-progress-label {
-  font-family: 'Fraunces', serif;
-  font-style: italic;
-  font-size: 13px;
-  color: var(--text-muted);
-}
+/* Pattern */
+.pat{animation:fadeUp .4s ease;text-align:center;padding:4px 0}
+.pat h3{font-family:'Fraunces',serif;font-size:19px;font-weight:500;margin-bottom:22px;line-height:1.2;color:var(--tx)}
+.pat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:320px;margin:0 auto 22px}
+.pat-ring{width:48px;height:48px;margin:0 auto 5px;border-radius:50%;border:2.5px solid var(--ma);display:flex;align-items:center;justify-content:center;font-size:18px;animation:pulse 1.6s ease infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+.pat-grid>div:nth-child(2) .pat-ring{border-color:var(--go);animation-delay:.2s}
+.pat-grid>div:nth-child(3) .pat-ring{border-color:var(--ro);animation-delay:.4s}
+.pat-grid>div:nth-child(4) .pat-ring{border-color:var(--go);animation-delay:.6s}
+.pat-nm{font-size:10px;color:var(--mu);font-weight:600}
+.pat-sub{font-family:'Fraunces',serif;font-style:italic;font-size:13.5px;color:var(--mu);margin-bottom:26px}
 
-.quiz-progress {
-  height: 3px;
-  background: var(--border);
-  border-radius: 2px;
-  overflow: hidden;
-  margin-bottom: 40px;
+/* ── RESULT ── */
+.r-top{
+  padding:28px 22px 22px;
+  background:linear-gradient(150deg,var(--ma2) 0%,var(--ma) 100%);
+  color:var(--iv);text-align:center;
 }
-.quiz-progress-fill {
-  height: 100%;
-  background: var(--maroon);
-  width: 0%;
-  transition: width 0.4s ease;
-  border-radius: 2px;
-}
+.r-eye{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;opacity:.65;margin-bottom:6px}
+.r-pre{font-family:'Fraunces',serif;font-style:italic;font-size:15px;opacity:.8;margin-bottom:3px}
+.r-type{font-family:'Fraunces',serif;font-size:clamp(34px,9vw,50px);font-weight:600;line-height:1.05;letter-spacing:-.02em;margin-bottom:12px}
+.r-type::after{content:'';display:block;width:44px;height:2px;background:var(--go);margin:10px auto 0}
+.r-sum{font-family:'Fraunces',serif;font-style:italic;font-size:14.5px;line-height:1.5;opacity:.9;max-width:480px;margin:0 auto}
 
-.question {
-  animation: fadeIn 0.4s ease;
-}
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: none; }
-}
+.r-body{padding:16px 18px 0;max-width:700px;margin:0 auto}
+.r-card{background:var(--wh);border:1px solid var(--bd);border-radius:12px;padding:18px;margin-bottom:14px}
+.r-card h4{font-family:'Fraunces',serif;font-size:16px;font-weight:600;color:var(--ma2);margin-bottom:3px}
+.r-card .sub{font-family:'Fraunces',serif;font-style:italic;font-size:12px;color:var(--mu);margin-bottom:14px}
+.sig-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+@media(min-width:440px){.sig-grid{grid-template-columns:repeat(4,1fr)}}
+.sig{text-align:center;padding:12px 6px;background:var(--iv);border-radius:8px}
+.sig-ic{font-size:20px;margin-bottom:5px}
+.sig b{display:block;font-size:11px;color:var(--tx);line-height:1.3}
 
-.question-title {
-  font-family: 'Fraunces', serif;
-  font-size: clamp(24px, 4vw, 32px);
-  font-weight: 500;
-  line-height: 1.2;
-  color: var(--text);
-  margin: 0 0 12px;
-  letter-spacing: -0.01em;
-}
-.question-title em { font-style: italic; color: var(--maroon); font-weight: 400; }
-.question-hint {
-  font-size: 14px;
-  color: var(--text-muted);
-  margin: 0 0 32px;
-  font-family: 'Fraunces', serif;
-  font-style: italic;
-}
+.meaning{background:var(--bl);border-radius:12px;padding:16px 18px;margin-bottom:14px}
+.meaning h4{font-family:'Fraunces',serif;font-size:15px;font-weight:600;color:var(--ma2);margin-bottom:5px}
+.meaning p{font-size:13px;color:var(--tx);margin-bottom:6px;line-height:1.55}
+.meaning .good{font-family:'Fraunces',serif;font-style:italic;color:var(--ma);font-size:13px}
 
-.options {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.option {
-  padding: 18px 20px;
-  border: 1.5px solid var(--border);
-  background: var(--white);
-  border-radius: 8px;
-  font-size: 15px;
-  color: var(--text);
-  text-align: left;
-  cursor: pointer;
-  transition: all 0.15s ease;
-  font-weight: 500;
-  line-height: 1.4;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-.option:hover {
-  border-color: var(--maroon);
-  background: var(--pink-soft);
-  transform: translateY(-1px);
-}
-.option:active { transform: translateY(0); }
-.option-marker {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  border: 1.5px solid var(--border);
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.15s;
-}
-.option:hover .option-marker {
-  border-color: var(--maroon);
-  background: var(--maroon);
-  color: var(--white);
-}
-.option:hover .option-marker::after {
-  content: '→';
-  font-size: 13px;
-  font-weight: 700;
-}
+.ing-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+@media(min-width:440px){.ing-grid{grid-template-columns:repeat(4,1fr)}}
+.ing{text-align:center;padding:12px 6px;background:var(--iv);border:1px solid var(--bd);border-radius:8px}
+.ing-ic{font-size:19px;margin-bottom:5px}
+.ing b{font-family:'Fraunces',serif;font-size:12.5px;display:block;margin-bottom:2px}
+.ing span{font-size:10px;color:var(--mu);display:block;line-height:1.35}
 
-/* ─── INSIGHT INTERSTITIAL ─── */
-.insight {
-  animation: fadeIn 0.5s ease;
-  text-align: center;
-  padding: 40px 0;
-}
-.insight-mark {
-  display: inline-block;
-  font-family: 'Fraunces', serif;
-  font-style: italic;
-  font-size: 14px;
-  color: var(--gold);
-  margin: 0 0 20px;
-  letter-spacing: 0.05em;
-}
-.insight-mark::before, .insight-mark::after {
-  content: '';
-  display: inline-block;
-  width: 24px;
-  height: 1px;
-  background: var(--gold);
-  vertical-align: middle;
-  margin: 0 12px;
-}
-.insight-body {
-  font-family: 'Fraunces', serif;
-  font-size: clamp(22px, 3.5vw, 28px);
-  font-weight: 400;
-  line-height: 1.35;
-  color: var(--text);
-  margin: 0 auto 36px;
-  max-width: 560px;
-  letter-spacing: -0.01em;
-}
-.insight-body strong { color: var(--maroon); font-weight: 600; }
-.insight-attrib {
-  font-size: 13px;
-  color: var(--text-muted);
-  margin: 0 0 40px;
-  font-family: 'Fraunces', serif;
-  font-style: italic;
-}
-.insight-cta {
-  padding: 14px 32px;
-  background: var(--maroon);
-  color: var(--ivory);
-  border-radius: 6px;
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-}
-.insight-cta:hover { background: var(--maroon-deep); }
+.prod{display:flex;gap:14px;align-items:center;background:var(--iv2);border:1px solid var(--bd);border-radius:12px;padding:14px;margin-bottom:14px}
+@media(max-width:380px){.prod{flex-direction:column;text-align:center}}
+.prod-img-box{width:80px;height:80px;flex-shrink:0;border-radius:8px;overflow:hidden;background:var(--wh)}
+.prod-img-box img{width:100%;height:100%;object-fit:cover}
+.prod-name{font-family:'Fraunces',serif;font-size:14px;font-weight:600;color:var(--ma2);margin-bottom:3px}
+.prod-desc{font-size:12px;color:var(--tx);line-height:1.5;margin-bottom:7px}
+.prod-tags{display:flex;flex-wrap:wrap;gap:5px}
+.prod-tag{font-size:9.5px;padding:3px 7px;background:var(--wh);border-radius:10px;color:var(--mu);font-weight:500;border:1px solid var(--bd)}
 
-/* ─── RESULT ─── */
-.result-shell {
-  max-width: 860px;
-  margin: 0 auto;
-  padding: 32px 20px 80px;
-}
+.r-cta{background:var(--ma2);border-radius:12px;padding:22px 18px;margin-bottom:14px;text-align:center;color:var(--iv)}
+.r-cta h3{font-family:'Fraunces',serif;font-size:18px;font-weight:500;margin-bottom:7px;line-height:1.2}
+.r-cta p{font-size:13px;opacity:.85;margin-bottom:18px;line-height:1.5}
+.r-cta-feats{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:18px}
+.r-cta-feat{font-size:11px;opacity:.9;display:flex;align-items:center;gap:4px}
+.btn-solid{display:block;padding:15px;background:var(--iv);color:var(--ma2);border-radius:8px;font-weight:700;font-size:14.5px;-webkit-appearance:none}
+.btn-solid:active{background:var(--bl)}
+.order-link{display:block;margin:12px auto 0;font-size:12px;color:var(--ro);text-decoration:underline;opacity:.8}
+.guar{font-family:'Fraunces',serif;font-style:italic;font-size:11.5px;color:var(--ro);margin-top:12px}
 
-.result-header {
-  text-align: center;
-  padding: 40px 0 32px;
-  animation: fadeIn 0.6s ease;
-}
-.result-eyebrow {
-  font-family: 'Fraunces', serif;
-  font-style: italic;
-  font-size: 14px;
-  color: var(--maroon);
-  margin: 0 0 8px;
-  letter-spacing: 0.03em;
-}
-.result-you-are {
-  font-family: 'Fraunces', serif;
-  font-size: 18px;
-  color: var(--text-muted);
-  margin: 0 0 6px;
-  font-style: italic;
-}
-.result-type {
-  font-family: 'Fraunces', serif;
-  font-size: clamp(40px, 7vw, 68px);
-  font-weight: 600;
-  color: var(--maroon-deep);
-  margin: 0 0 20px;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-}
-.result-type::after {
-  content: '';
-  display: block;
-  width: 60px;
-  height: 2px;
-  background: var(--gold);
-  margin: 20px auto 0;
-}
-.result-summary {
-  font-family: 'Fraunces', serif;
-  font-size: 19px;
-  line-height: 1.55;
-  color: var(--text);
-  max-width: 640px;
-  margin: 0 auto;
-  font-style: italic;
-}
+.trust-strip{padding:16px 18px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;border-top:1px solid var(--bd)}
+.t-badge{font-size:10.5px;padding:5px 10px;border:1px solid var(--bd);border-radius:4px;background:var(--wh);font-weight:600;color:var(--ma)}
 
-.result-block {
-  background: var(--white);
-  border: 1px solid var(--border);
-  padding: 36px 28px;
-  margin-top: 32px;
-  border-radius: 2px;
-  animation: fadeIn 0.6s ease 0.2s both;
-}
-@media (min-width: 700px) { .result-block { padding: 44px 44px; } }
-.result-block h3 {
-  font-family: 'Fraunces', serif;
-  font-size: 22px;
-  color: var(--maroon-deep);
-  margin: 0 0 8px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-}
-.result-block h3 + p {
-  font-family: 'Fraunces', serif;
-  font-style: italic;
-  color: var(--text-muted);
-  font-size: 14px;
-  margin: 0 0 24px;
-}
+.r-footer{background:var(--ma2);color:var(--iv);padding:18px 20px calc(16px + var(--sb));text-align:center;font-size:11px;line-height:1.55}
+.r-footer .brand{font-family:'Fraunces',serif;font-size:15px;font-weight:600;color:var(--wh);margin-bottom:4px}
+.r-footer a{color:var(--ro)}
+.r-footer-legal{opacity:.45;font-size:9.5px;margin-top:8px;line-height:1.5}
 
-.body-map {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 16px;
-}
-@media (min-width: 600px) { .body-map { grid-template-columns: 1fr 1fr; gap: 20px; } }
-.body-map-item {
-  padding: 16px 18px;
-  background: var(--ivory);
-  border-radius: 4px;
-  border-left: 2px solid var(--gold);
-}
-.body-map-item b {
-  font-family: 'Fraunces', serif;
-  font-size: 15px;
-  color: var(--maroon);
-  display: block;
-  margin-bottom: 4px;
-  font-weight: 600;
-}
-.body-map-item span {
-  font-size: 13.5px;
-  color: var(--text);
-  line-height: 1.5;
-}
-
-.ingredients-for-you {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
-  margin-top: 20px;
-}
-@media (min-width: 600px) { .ingredients-for-you { grid-template-columns: 1fr 1fr; } }
-.ingredient-tile {
-  padding: 18px 20px;
-  background: var(--ivory);
-  border-radius: 4px;
-  border-top: 2px solid var(--maroon);
-}
-.ingredient-tile b {
-  font-family: 'Fraunces', serif;
-  font-size: 17px;
-  font-weight: 600;
-  color: var(--text);
-  display: block;
-  margin-bottom: 4px;
-}
-.ingredient-tile b span {
-  font-family: 'Inter', sans-serif;
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--gold);
-  margin-left: 8px;
-  letter-spacing: 0.05em;
-}
-.ingredient-tile p {
-  font-size: 13px;
-  color: var(--text-muted);
-  margin: 0;
-  line-height: 1.5;
-}
-
-/* ─── PRODUCT INTRO IN RESULT ─── */
-.product-intro {
-  background: linear-gradient(135deg, var(--pink-soft) 0%, var(--ivory-deep) 100%);
-  padding: 40px 28px;
-  border-radius: 4px;
-  margin-top: 32px;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 28px;
-  align-items: center;
-  animation: fadeIn 0.6s ease 0.3s both;
-}
-@media (min-width: 700px) { .product-intro { grid-template-columns: 200px 1fr; padding: 44px 40px; gap: 40px; } }
-
-.product-intro-visual svg {
-  max-width: 180px;
-  margin: 0 auto;
-}
-
-.product-intro-copy .kit-label {
-  font-family: 'Fraunces', serif;
-  font-style: italic;
-  font-size: 13px;
-  color: var(--maroon);
-  margin: 0 0 6px;
-}
-.product-intro-copy h3 {
-  font-family: 'Fraunces', serif;
-  font-size: 26px;
-  color: var(--maroon-deep);
-  margin: 0 0 10px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  line-height: 1.15;
-}
-.product-intro-copy p {
-  font-size: 14.5px;
-  color: var(--text);
-  line-height: 1.6;
-  margin: 0 0 16px;
-}
-.product-intro-price {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
-  margin-top: 12px;
-}
-.product-intro-price b {
-  font-family: 'Fraunces', serif;
-  font-size: 30px;
-  color: var(--maroon-deep);
-  font-weight: 600;
-  line-height: 1;
-}
-.product-intro-price s { color: var(--text-muted); font-size: 15px; }
-.product-intro-price span {
-  background: var(--maroon);
-  color: var(--ivory);
-  font-size: 10px;
-  padding: 2px 8px;
-  border-radius: 3px;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-}
-
-/* ─── CTA BOX AT RESULT END ─── */
-.result-cta-box {
-  margin-top: 40px;
-  padding: 40px 28px;
-  background: var(--maroon-deep);
-  color: var(--ivory);
-  border-radius: 6px;
-  text-align: center;
-  animation: fadeIn 0.6s ease 0.4s both;
-}
-@media (min-width: 700px) { .result-cta-box { padding: 52px 40px; } }
-.result-cta-eyebrow {
-  font-family: 'Fraunces', serif;
-  font-style: italic;
-  font-size: 14px;
-  color: var(--rose);
-  margin: 0 0 10px;
-}
-.result-cta-title {
-  font-family: 'Fraunces', serif;
-  font-size: clamp(24px, 3.5vw, 32px);
-  font-weight: 500;
-  margin: 0 auto 14px;
-  line-height: 1.2;
-  max-width: 520px;
-  letter-spacing: -0.01em;
-}
-.result-cta-sub {
-  font-size: 14.5px;
-  opacity: 0.85;
-  max-width: 520px;
-  margin: 0 auto 32px;
-  line-height: 1.55;
-}
-.result-cta-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  max-width: 380px;
-  margin: 0 auto;
-}
-@media (min-width: 500px) { .result-cta-actions { max-width: 460px; } }
-
-.result-cta-actions .cta-solid {
-  padding: 17px 20px;
-  background: var(--ivory);
-  color: var(--maroon-deep);
-  border-radius: 6px;
-  font-weight: 700;
-  font-size: 15px;
-  transition: all 0.15s;
-}
-.result-cta-actions .cta-solid:hover { background: var(--white); transform: translateY(-1px); }
-.cta-desc {
-  font-size: 12px;
-  opacity: 0.7;
-  margin: 4px 0 0;
-  font-family: 'Fraunces', serif;
-  font-style: italic;
-}
-.cta-outline {
-  padding: 15px 20px;
-  background: transparent;
-  color: var(--ivory);
-  border: 1px solid rgba(251, 246, 240, 0.35);
-  border-radius: 6px;
-  font-weight: 600;
-  font-size: 14px;
-  margin-top: 8px;
-  transition: all 0.15s;
-}
-.cta-outline:hover { border-color: var(--ivory); background: rgba(251, 246, 240, 0.05); }
-
-.result-guarantee {
-  margin: 24px auto 0;
-  font-size: 12.5px;
-  color: var(--rose);
-  font-family: 'Fraunces', serif;
-  font-style: italic;
-}
-
-/* ─── FOOTER ─── */
-footer {
-  background: var(--maroon-deep);
-  color: var(--ivory);
-  padding: 32px 24px 24px;
-  font-size: 12.5px;
-  line-height: 1.6;
-  margin-top: 40px;
-}
-.footer-inner {
-  max-width: 1160px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
-}
-@media (min-width: 700px) { .footer-inner { grid-template-columns: 2fr 1fr 1fr; } }
-.footer-brand {
-  font-family: 'Fraunces', serif;
-  font-size: 20px;
-  color: var(--white);
-  font-weight: 600;
-  margin-bottom: 8px;
-}
-.footer-brand + p { opacity: 0.75; max-width: 380px; margin: 0; }
-.footer-col h4 {
-  font-size: 11px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--rose);
-  margin: 0 0 10px;
-  font-weight: 600;
-}
-.footer-col a, .footer-col p { color: var(--ivory); opacity: 0.8; text-decoration: none; display: block; margin: 0 0 5px; }
-.footer-legal {
-  max-width: 1160px;
-  margin: 24px auto 0;
-  padding-top: 18px;
-  border-top: 1px solid rgba(255,255,255,0.12);
-  font-size: 11px;
-  opacity: 0.55;
-  line-height: 1.55;
-}
-
-/* ─── MODAL ─── */
-.modal-backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(42, 21, 24, 0.55);
-  z-index: 100;
-  display: none;
-  align-items: flex-end;
-  justify-content: center;
-  padding: 0;
-  backdrop-filter: blur(4px);
-}
-@media (min-width: 700px) { .modal-backdrop { align-items: center; padding: 20px; } }
-.modal-backdrop.open { display: flex; }
-.modal {
-  background: var(--ivory);
-  width: 100%;
-  max-width: 480px;
-  max-height: 92vh;
-  overflow-y: auto;
-  border-radius: 16px 16px 0 0;
-  position: relative;
-  padding: 32px 24px;
-  animation: slideUp 0.3s ease;
-}
-@media (min-width: 700px) { .modal { border-radius: 10px; padding: 40px 36px; } }
-@keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: none; opacity: 1; } }
-
-.modal-close {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: var(--ivory-deep);
-  color: var(--text);
-  font-size: 20px;
-  line-height: 1;
-}
-.modal-eyebrow {
-  font-family: 'Fraunces', serif;
-  font-style: italic;
-  font-size: 13px;
-  color: var(--maroon);
-  margin: 0 0 6px;
-}
-.modal h2 {
-  font-family: 'Fraunces', serif;
-  font-size: 24px;
-  font-weight: 600;
-  color: var(--maroon-deep);
-  margin: 0 0 8px;
-  letter-spacing: -0.01em;
-  line-height: 1.2;
-}
-.modal-sub {
-  font-size: 14px;
-  color: var(--text-muted);
-  margin: 0 0 20px;
-  line-height: 1.55;
-}
-.modal-context {
-  background: var(--pink-soft);
-  padding: 12px 14px;
-  border-radius: 6px;
-  font-size: 12.5px;
-  color: var(--maroon-deep);
-  margin: 0 0 22px;
-  line-height: 1.5;
-}
-.modal-context strong { font-weight: 600; }
-.modal-assurance {
-  font-size: 12.5px;
-  color: var(--text-muted);
-  padding: 10px 14px;
-  background: var(--ivory-deep);
-  border-radius: 6px;
-  margin: 0 0 22px;
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  line-height: 1.5;
-}
-.modal-assurance::before { content: '👩'; flex-shrink: 0; }
-
-.field { margin-bottom: 14px; }
-.field label {
-  display: block;
-  font-size: 12.5px;
-  font-weight: 600;
-  color: var(--text);
-  margin-bottom: 6px;
-}
-.field input, .field select {
-  width: 100%;
-  padding: 12px 14px;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  font-family: inherit;
-  font-size: 15px;
-  color: var(--text);
-  background: var(--white);
-  transition: border-color 0.15s;
-}
-.field input:focus, .field select:focus {
-  outline: none;
-  border-color: var(--maroon);
-  box-shadow: 0 0 0 3px rgba(122, 30, 60, 0.1);
-}
-
-.modal-toggle {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 12px;
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  margin: 4px 0 18px;
-  font-size: 13px;
-  color: var(--text);
-  cursor: pointer;
-}
-.modal-toggle input { margin: 0; accent-color: var(--maroon); width: 16px; height: 16px; }
-
-.modal-submit {
-  width: 100%;
-  padding: 15px;
-  background: var(--maroon);
-  color: var(--ivory);
-  font-size: 15px;
-  font-weight: 600;
-  border-radius: 6px;
-  margin-top: 6px;
-}
-.modal-submit:hover { background: var(--maroon-deep); }
-.modal-submit:disabled { opacity: 0.6; cursor: wait; }
-.modal-fine {
-  font-size: 11.5px;
-  color: var(--text-muted);
-  text-align: center;
-  margin: 12px 0 0;
-  line-height: 1.5;
-}
-
-.modal-success { display: none; text-align: center; padding: 20px 0; }
-.modal-success.show { display: block; }
-.modal-success svg { margin: 0 auto 16px; }
-.modal-success h3 {
-  font-family: 'Fraunces', serif;
-  font-size: 24px;
-  color: var(--maroon-deep);
-  margin: 0 0 10px;
-  font-weight: 600;
-}
-.modal-success p { color: var(--text); font-size: 14px; line-height: 1.6; margin: 0 0 8px; }
-.modal-success p strong { color: var(--maroon); }
-
+/* ── MODAL ── */
+.m-bg{position:fixed;inset:0;background:rgba(42,21,24,.6);z-index:200;display:none;align-items:flex-end;justify-content:center;backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+.m-bg.open{display:flex}
+@media(min-width:680px){.m-bg{align-items:center;padding:20px}}
+.m-box{background:var(--iv);width:100%;max-width:440px;max-height:92svh;overflow-y:auto;border-radius:20px 20px 0 0;padding:26px 20px calc(26px + var(--sb));position:relative;animation:slideUp .28s ease}
+@media(min-width:680px){.m-box{border-radius:14px;padding:34px 28px}}
+@keyframes slideUp{from{transform:translateY(18px);opacity:0}to{transform:none;opacity:1}}
+.m-close{position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;background:var(--iv2);font-size:19px;display:flex;align-items:center;justify-content:center;color:var(--tx)}
+.m-eye{font-family:'Fraunces',serif;font-style:italic;font-size:12.5px;color:var(--ma);margin-bottom:3px}
+.m-box h2{font-family:'Fraunces',serif;font-size:21px;font-weight:600;color:var(--ma2);margin-bottom:5px;line-height:1.2}
+.m-sub{font-size:13px;color:var(--mu);margin-bottom:12px;line-height:1.5}
+.m-ctx{background:var(--bl);padding:8px 12px;border-radius:7px;font-size:11.5px;color:var(--ma2);margin-bottom:10px}
+.m-assure{font-size:11.5px;color:var(--mu);padding:7px 12px;background:var(--iv2);border-radius:7px;margin-bottom:16px;display:flex;align-items:flex-start;gap:6px;line-height:1.5}
+.m-assure::before{content:'👩';flex-shrink:0}
+.fld{margin-bottom:11px}
+.fld label{display:block;font-size:12px;font-weight:600;margin-bottom:4px}
+.fld input,.fld select{width:100%;padding:13px 13px;border:1.5px solid var(--bd);border-radius:8px;font-family:inherit;font-size:15px;color:var(--tx);background:var(--wh);-webkit-appearance:none}
+.fld input:focus,.fld select:focus{outline:none;border-color:var(--ma);box-shadow:0 0 0 3px rgba(122,30,60,.1)}
+.m-tgl{display:flex;align-items:center;gap:7px;padding:9px 11px;background:var(--wh);border:1px solid var(--bd);border-radius:7px;margin:3px 0 14px;font-size:12.5px;cursor:pointer}
+.m-tgl input{accent-color:var(--ma);width:15px;height:15px;margin:0}
+.m-btn{width:100%;padding:14px;background:var(--ma);color:var(--iv);font-size:14.5px;font-weight:600;border-radius:8px;margin-top:3px;-webkit-appearance:none}
+.m-btn:active{background:var(--ma2)}
+.m-btn:disabled{opacity:.6}
+.m-fine{font-size:10.5px;color:var(--mu);text-align:center;margin-top:9px;line-height:1.5}
+.m-suc{display:none;text-align:center;padding:10px 0}.m-suc.show{display:block}
+.m-suc svg{margin:0 auto 12px}
+.m-suc h3{font-family:'Fraunces',serif;font-size:20px;color:var(--ma2);margin-bottom:7px;font-weight:600}
+.m-suc p{font-size:13px;line-height:1.5;margin-bottom:4px}
+.m-suc b{color:var(--ma)}
 </style>
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P9TM6ZQN"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P9TM6ZQN" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-<!-- ─── ANNOUNCE + HEADER ─── -->
-<div class="announce">
-  <span>AYUSH Certified</span><span>All-Female Care Team</span><span>60-Day Money-Back</span>
-</div>
+<!-- HEADER -->
 <header>
-  <div class="header-inner">
-    <div class="brand">Cuehealth<small>Cycle Care · Est. 2025</small></div>
-    <a class="header-phone" href="https://wa.me/917455918832">Talk to us · <strong>7455918832</strong></a>
+  <div class="hdr">
+    <div class="logo">Cuehealth<span>Cycle Care · Est. 2025</span></div>
+    <a class="hdr-wa" href="https://wa.me/917455918832">
+      <span class="wa-dot"></span><b>7455918832</b>
+    </a>
   </div>
 </header>
 
-<!-- ═══════ VIEW 1: INTRO ═══════ -->
-<div class="view active" id="viewIntro">
+<!-- ═══ LANDING ═══ -->
+<div class="vw on" id="v1">
 
-  <section class="intro">
-    <div class="intro-grid">
-      <div>
-        <p class="hero-eyebrow">The Cuehealth Cycle Diary · 2-minute Check</p>
-        <h1 class="hero-title">Har ladki ke periods ki apni <em>kahani</em> hoti hai. Tumhari kya hai?</h1>
-        <p class="hero-lede">8 questions. 2 minutes. No judgment, no signup, no doctor's clinic. Bas tumhare aur tumhare body ke beech ek honest conversation — jiske end me tumhe pata chalega tumhara Period Type kya hai aur tumhare body ko exactly kya chahiye.</p>
+  <section class="hero">
+    <!-- FULL-WIDTH HERO IMAGE -->
+    <div class="hero-img-wrap">
+      <img src="{{ 'cycle-check-hero-v7.jpg' | asset_url }}" alt="Indian woman experiencing period discomfort, sitting on bed" loading="eager">
+    </div>
 
-        <div class="what-youll-get">
-          <h4>End me tumhe milega —</h4>
-          <ul>
-            <li>Tumhara personal Period Type (4 me se ek)</li>
-            <li>Kya cheezein tumhare body ko naturally support karti hain</li>
-            <li>Ek option — humari Care Buddy se WhatsApp call, agar tum chaho</li>
-          </ul>
-        </div>
-
-        <button class="cta-primary" onclick="startQuiz()">Start My Cycle Check →</button>
-        <p class="time-note">Takes 2 minutes · Sirf tum dekhogi apne answers</p>
-      </div>
-
-      <div class="hero-visual">
-        <div class="hero-visual-bg"></div>
-        <svg viewBox="0 0 360 360" xmlns="http://www.w3.org/2000/svg" aria-label="Cycle Check illustration">
-          <!-- Outer decorative ring -->
-          <circle cx="180" cy="180" r="150" fill="none" stroke="#B8935E" stroke-width="0.8" stroke-dasharray="1 4" opacity="0.5"/>
-          <circle cx="180" cy="180" r="130" fill="none" stroke="#B8935E" stroke-width="0.6" opacity="0.4"/>
-
-          <!-- Inner soft circle background -->
-          <circle cx="180" cy="180" r="115" fill="#FCE7EC" opacity="0.6"/>
-
-          <!-- Central "diary" -->
-          <rect x="115" y="120" width="130" height="150" rx="4" fill="#FBF6F0" stroke="#7A1E3C" stroke-width="1.5"/>
-          <line x1="127" y1="145" x2="233" y2="145" stroke="#B8935E" stroke-width="0.6" opacity="0.6"/>
-          <line x1="127" y1="160" x2="215" y2="160" stroke="#B8935E" stroke-width="0.6" opacity="0.6"/>
-          <line x1="127" y1="175" x2="228" y2="175" stroke="#B8935E" stroke-width="0.6" opacity="0.6"/>
-          <line x1="127" y1="190" x2="205" y2="190" stroke="#B8935E" stroke-width="0.6" opacity="0.6"/>
-          <line x1="127" y1="205" x2="230" y2="205" stroke="#B8935E" stroke-width="0.6" opacity="0.6"/>
-
-          <!-- Title on the book -->
-          <text x="180" y="135" text-anchor="middle" font-family="Fraunces, serif" font-size="10" font-weight="600" fill="#7A1E3C" letter-spacing="2">CYCLE DIARY</text>
-
-          <!-- Botanicals -->
-          <g opacity="0.7">
-            <path d="M 100 90 Q 110 70 130 75 Q 125 90 115 92 Q 105 95 100 90 Z" fill="#E8B4BC" stroke="#7A1E3C" stroke-width="0.8"/>
-            <path d="M 115 92 L 125 120" stroke="#7A1E3C" stroke-width="0.8" fill="none"/>
-
-            <path d="M 250 260 Q 275 250 280 275 Q 265 285 258 278 Q 250 275 250 260 Z" fill="#E8B4BC" stroke="#7A1E3C" stroke-width="0.8"/>
-            <path d="M 265 275 L 250 300" stroke="#7A1E3C" stroke-width="0.8" fill="none"/>
-
-            <circle cx="80" cy="240" r="4" fill="#B8935E"/>
-            <circle cx="90" cy="255" r="3" fill="#B8935E" opacity="0.7"/>
-            <circle cx="270" cy="100" r="4" fill="#B8935E"/>
-            <circle cx="285" cy="115" r="3" fill="#B8935E" opacity="0.7"/>
-          </g>
-
-          <!-- Pen/marker element -->
-          <g transform="translate(200 235) rotate(30)">
-            <rect x="-2" y="0" width="4" height="55" fill="#7A1E3C"/>
-            <path d="M -3 55 L 0 63 L 3 55 Z" fill="#B8935E"/>
-            <rect x="-3" y="-5" width="6" height="5" fill="#5A1329"/>
-          </g>
-
-          <!-- Small floating elements -->
-          <text x="60" y="180" font-family="Fraunces, serif" font-style="italic" font-size="11" fill="#7A1E3C" opacity="0.55">02</text>
-          <text x="290" y="200" font-family="Fraunces, serif" font-style="italic" font-size="11" fill="#7A1E3C" opacity="0.55">min</text>
-        </svg>
-        <p class="hero-visual-caption">A small ritual for a personal question —<br>read only by you.</p>
+    <!-- TEXT — tight below image, no gap -->
+    <div class="hero-text">
+      <div class="hero-tag">Sirf 2 Min · Free · No Signup</div>
+      <h1 class="hero-h">Periods ka dard<br><em>kab tak sahogi?</em></h1>
+      <p class="hero-sub">Cramps, irregular cycle, PMS mood swings, heavy flow — yeh sab normal nahi hai. Apna <b>Period Type</b> pata karo aur samjho body kya keh rahi hai.</p>
+      <button class="btn-main" onclick="gtmPush('cta_click',{l:'hero'});startQuiz()">
+        Mera Cycle Check Shuru Karo →
+      </button>
+      <div class="hero-meta">
+        <span>🔒 100% Private</span>
+        <span>👩 Female Team</span>
+        <span>🌿 AYUSH Certified</span>
       </div>
     </div>
   </section>
 
-  <div class="intro-belt">
-    <div class="belt-inner">
-      <p class="belt-text">Yeh Check <strong>Cuehealth</strong> ne banaya hai — Ayurvedic period care ke liye, real Indian women ke saath, real problems ke saath. AYUSH licensed. Female team. No prescription pressure.</p>
-      <div class="belt-badges">
-        <span class="belt-badge">AYUSH LICENSED</span>
-        <span class="belt-badge">100% PRIVATE</span>
-        <span class="belt-badge">FEMALE TEAM</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════ VIEW 2: QUIZ ═══════ -->
-<div class="view" id="viewQuiz">
-  <div class="quiz-shell">
-    <div class="quiz-topbar">
-      <button class="quiz-back" id="quizBack" onclick="goBack()">← Back</button>
-      <div class="quiz-progress-label" id="progressLabel">Question 1 of 8</div>
-    </div>
-    <div class="quiz-progress"><div class="quiz-progress-fill" id="progressFill"></div></div>
-
-    <div id="quizContent"></div>
-  </div>
-</div>
-
-<!-- ═══════ VIEW 3: RESULT ═══════ -->
-<div class="view" id="viewResult">
-  <div class="result-shell">
-    <div class="result-header">
-      <p class="result-eyebrow">Tumhara Cycle Check complete</p>
-      <p class="result-you-are">Tum ho</p>
-      <h1 class="result-type" id="resultTypeName">The Warrior</h1>
-      <p class="result-summary" id="resultSummary">Loading your reading…</p>
-    </div>
-
-    <div class="result-block">
-      <h3>Tumhara body kya keh raha hai</h3>
-      <p>Ayurveda ki nazar se, tumhare answers ye batate hain —</p>
-      <div class="body-map" id="bodyMap"></div>
-    </div>
-
-    <div class="result-block">
-      <h3>Tumhare body ke liye 4 key ingredients</h3>
-      <p>Yeh sadiyon se Ayurveda me tumhare type ki women ke liye traditionally use hote aa rahe hain.</p>
-      <div class="ingredients-for-you" id="ingredientsFor"></div>
-    </div>
-
-    <div class="product-intro">
-      <div class="product-intro-visual">
-        <svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg" aria-label="Cuehealth Kit">
-          <g transform="translate(15 30)">
-            <ellipse cx="35" cy="180" rx="30" ry="4" fill="#2A1518" opacity="0.08"/>
-            <rect x="18" y="0" width="34" height="16" rx="2" fill="#7A1E3C"/>
-            <rect x="18" y="0" width="34" height="3" fill="#5A1329"/>
-            <rect x="24" y="16" width="22" height="10" fill="#B8935E"/>
-            <path d="M 5 26 Q 5 22 15 22 L 55 22 Q 65 22 65 26 L 65 170 Q 65 178 57 178 L 13 178 Q 5 178 5 170 Z" fill="#FBF6F0" stroke="#7A1E3C" stroke-width="1.5"/>
-            <path d="M 7 60 L 7 168 Q 7 175 14 175 L 56 175 Q 63 175 63 168 L 63 60 Z" fill="#8B2E4C" opacity="0.85"/>
-            <rect x="0" y="80" width="70" height="60" rx="1" fill="#FBF6F0" stroke="#B8935E" stroke-width="0.6"/>
-            <text x="35" y="98" text-anchor="middle" font-family="Fraunces, serif" font-size="7" font-weight="600" fill="#7A1E3C">CUEHEALTH</text>
-            <text x="35" y="115" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="8" fill="#2A1518">Care Syrup</text>
-            <text x="35" y="130" text-anchor="middle" font-family="Inter, sans-serif" font-size="6" fill="#7A1E3C" font-weight="600">500ml</text>
-          </g>
-          <g transform="translate(105 60) rotate(12)">
-            <rect x="0" y="0" width="80" height="120" rx="5" fill="#F5EDE2" stroke="#B8935E" stroke-width="1"/>
-            <g fill="#E8B4BC" stroke="#7A1E3C" stroke-width="0.5">
-              <circle cx="20" cy="18" r="7"/><circle cx="40" cy="18" r="7"/><circle cx="60" cy="18" r="7"/>
-              <circle cx="20" cy="36" r="7"/><circle cx="40" cy="36" r="7"/><circle cx="60" cy="36" r="7"/>
-              <circle cx="20" cy="54" r="7"/><circle cx="40" cy="54" r="7"/><circle cx="60" cy="54" r="7"/>
-              <circle cx="20" cy="72" r="7"/><circle cx="40" cy="72" r="7"/><circle cx="60" cy="72" r="7"/>
-            </g>
-            <rect x="5" y="88" width="70" height="28" rx="2" fill="#FBF6F0"/>
-            <text x="40" y="100" text-anchor="middle" font-family="Fraunces, serif" font-size="7" font-weight="600" fill="#7A1E3C">CUEHEALTH</text>
-            <text x="40" y="112" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="7" fill="#2A1518">Care Tablet</text>
-          </g>
-        </svg>
-      </div>
-      <div class="product-intro-copy">
-        <p class="kit-label">Made for your type</p>
-        <h3>Cuehealth Periods Care Kit</h3>
-        <p>Tablet (30 count) + Syrup (500ml) combo. 31 Ayurvedic herbs including all 4 above. AYUSH licensed, GMP certified. Tumhare Period Type ke liye designed formula — 30 din ka full cycle care.</p>
-        <div class="product-intro-price">
-          <b>₹599</b><s>₹899</s><span>SAVE ₹300</span>
+  <!-- 3 STEPS -->
+  <div class="steps-sec">
+    <div class="steps-sec-inner">
+      <p class="steps-label">Bas 3 simple steps</p>
+      <div class="steps-row">
+        <div class="step">
+          <div class="step-ic">📋</div>
+          <h3>8 sawal</h3>
+          <p>Body ke baare mein — honest, 2 minute</p>
+        </div>
+        <div class="step">
+          <div class="step-ic">🔍</div>
+          <h3>Tumhara type</h3>
+          <p>Personalized Period Type + kyun hota hai</p>
+        </div>
+        <div class="step">
+          <div class="step-ic">💬</div>
+          <h3>Care Buddy</h3>
+          <p>Female expert — 10-min chat, free</p>
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="result-cta-box">
-      <p class="result-cta-eyebrow">Ready to feel the difference?</p>
-      <h2 class="result-cta-title">Tumhare result ko personally samjhna chahogi? Humari Care Buddy call karegi.</h2>
-      <p class="result-cta-sub">10-min WhatsApp call · sirf female team member · tumhare answers already tumhari Care Buddy ke paas hain — koi baat repeat nahi karni. Chaho toh order kar sakti ho, chaho toh sirf samjhna hai — tumhari marzi.</p>
-
-      <div class="result-cta-actions">
-        <button class="cta-solid" onclick="openBookModal()">Book My Consultation Call</button>
-        <p class="cta-desc">Free 10-min call · No pressure · Female team only</p>
-        <button class="cta-outline" onclick="orderDirect()">Order Kit Directly — ₹599 →</button>
+  <!-- RELATE -->
+  <div class="relate">
+    <div class="relate-inner">
+      <p class="sec-title">Kya tum inme se kisi ko <em>relate</em> karti ho?</p>
+      <p class="sec-sub">Agar 2-3 bhi familiar lagte hain — yeh check tumhare liye hai.</p>
+      <div class="syms">
+        <div class="sym"><div class="sym-ic">😣</div>Period pain itna ki kaam ruk jaata</div>
+        <div class="sym"><div class="sym-ic">😤</div>Mood swings aur chidchidapan</div>
+        <div class="sym"><div class="sym-ic">📅</div>Kabhi time par, kabhi late</div>
+        <div class="sym"><div class="sym-ic">😮‍💨</div>Bloating aur heaviness</div>
+        <div class="sym"><div class="sym-ic">💧</div>Itna heavy ki plan cancel</div>
+        <div class="sym"><div class="sym-ic">😴</div>Energy low aur thakan</div>
       </div>
-
-      <p class="result-guarantee">✦ 60-Day Comfort Promise · Free refund if it doesn't work for you ✦</p>
     </div>
   </div>
 
-  <footer>
-    <div class="footer-inner">
+  <!-- PRIVACY -->
+  <div class="priv">
+    <div class="priv-inner">
+      <h3>🔒 Ye tumhari personal journey hai.</h3>
+      <p>Koi judgment nahi. Koi doctor visit nahi. Sirf tum aur tumhara body.</p>
+      <div class="priv-tags">
+        <span class="priv-tag">100% Private</span>
+        <span class="priv-tag">No Judgment</span>
+        <span class="priv-tag">Female Team Only</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTTOM CTA -->
+  <div class="btm">
+    <p>Ab honestly answer karo — jaise tum apni diary mein likhti ho ♥</p>
+    <button class="btn-main" onclick="gtmPush('cta_click',{l:'bottom'});startQuiz()">
+      Start My Cycle Check →
+    </button>
+  </div>
+
+</div>
+
+<!-- ═══ QUIZ ═══ -->
+<div class="vw" id="v2">
+  <div class="q-wrap">
+    <div class="q-top">
+      <button class="q-back" id="qb" onclick="goBack()">← Back</button>
+      <div class="q-lbl" id="ql">Question 1 of 8</div>
+    </div>
+    <div class="q-prog"><div class="q-fill" id="qf"></div></div>
+    <div class="q-body" id="qc"></div>
+  </div>
+</div>
+
+<!-- ═══ RESULT ═══ -->
+<div class="vw" id="v3">
+  <div class="r-top">
+    <p class="r-eye">✦ Your Cycle Check Result ✦</p>
+    <p class="r-pre">Tum ho</p>
+    <h1 class="r-type" id="rtn">The Warrior</h1>
+    <p class="r-sum" id="rts">Loading…</p>
+  </div>
+  <div class="r-body">
+    <div class="r-card" style="padding-bottom:14px">
+      <div class="sig-grid" id="sigs"></div>
+    </div>
+    <div class="meaning">
+      <h4>💡 Iska matlab?</h4>
+      <p id="rtm"></p>
+      <p class="good">Good news? Sahi support se yeh better ho sakta hai ✨</p>
+    </div>
+    <div class="r-card">
+      <h4>Tumhare type ke liye Ayurveda mein:</h4>
+      <p class="sub">Sadiyon se use hoti hain yeh herbs</p>
+      <div class="ing-grid" id="ings"></div>
+    </div>
+    <div class="prod">
+      <div class="prod-img-box">
+        <img src="{{ 'cycle-check-kit-v7.jpg' | asset_url }}" alt="Cuehealth Periods Care Kit">
+      </div>
       <div>
-        <div class="footer-brand">Cuehealth</div>
-        <p>Ayurvedic period care for real Indian women. Marketed by Voxply Life Sciences LLP, Noida.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <a href="https://wa.me/917455918832">WhatsApp: 7455918832</a>
-        <a href="mailto:hello@cuehealth.in">hello@cuehealth.in</a>
-      </div>
-      <div class="footer-col">
-        <h4>Trust</h4>
-        <p>AYUSH Lic. 1319-ISM (HR)</p>
-        <p>GMP Certified · Lab Tested</p>
+        <p class="prod-name">Cuehealth Periods Care Kit</p>
+        <p class="prod-desc">Capsule + Syrup, 30-day Ayurvedic support. In sari herbs ke saath — tumhare liye.</p>
+        <div class="prod-tags">
+          <span class="prod-tag">AYUSH Licensed</span>
+          <span class="prod-tag">GMP Certified</span>
+          <span class="prod-tag">Lab Tested</span>
+        </div>
       </div>
     </div>
-    <div class="footer-legal">
-      Manufactured by CJ Health Care, Sonipat, Haryana. This product is a proprietary Ayurvedic medicine, sold as a general wellness support kit. Syrup label instructs "consult physician before use". Individual results may vary. Not intended to diagnose, treat, cure or prevent any disease.
+    <div class="r-cta">
+      <h3>Result samajhna hai?<br>Care Buddy se baat karo.</h3>
+      <p>10-min WhatsApp call · Tumhare answers pehle se hain · Koi pressure nahi.</p>
+      <div class="r-cta-feats">
+        <span class="r-cta-feat">💬 WhatsApp call</span>
+        <span class="r-cta-feat">👩 Female team only</span>
+        <span class="r-cta-feat">🚫 No pressure</span>
+      </div>
+      <button class="btn-solid" onclick="openModal()">Meri Care Buddy Se Baat Karni Hai →</button>
+      <a class="order-link" href="https://cuehealth.in/products/cuehealth-womens-daily-comfort-ayurvedic-kit-traditional-tablet-herbal-syrup-blend" target="_blank" onclick="gtmPush('cta_click',{l:'order_direct'})">Ya seedha kit order karna chahti ho? →</a>
+      <p class="guar">✦ 60-Day Comfort Promise · Full refund ✦</p>
     </div>
-  </footer>
+    <div class="trust-strip">
+      <span class="t-badge">🏛 AYUSH Licensed</span>
+      <span class="t-badge">🏭 GMP Certified</span>
+      <span class="t-badge">🧪 Lab Tested</span>
+      <span class="t-badge">🇮🇳 Made in India</span>
+    </div>
+  </div>
+  <div class="r-footer">
+    <div class="brand">Cuehealth</div>
+    <div><a href="https://wa.me/917455918832">WhatsApp: 7455918832</a> · <a href="mailto:hello@cuehealth.in">hello@cuehealth.in</a></div>
+    <div class="r-footer-legal">Marketed by Voxply Life Sciences LLP, Noida. Mfg by CJ Health Care, Sonipat, Haryana. AYUSH Lic. 1319-ISM (HR). For general wellness only. Not intended to diagnose, treat, cure or prevent any disease. Syrup: consult physician before use. Individual results may vary.</div>
+  </div>
 </div>
 
-<!-- ═══════ MODAL: BOOK CONSULTATION ═══════ -->
-<div class="modal-backdrop" id="modalBackdrop" onclick="if(event.target===this)closeModal()">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal()" aria-label="Close">×</button>
-
-    <div id="modalForm">
-      <p class="modal-eyebrow">Book Consultation</p>
-      <h2>Humari Care Buddy tumhe call karegi</h2>
-      <p class="modal-sub">Tumhare Cycle Check ke saare answers uske paas already hain — sirf 3 chhote details aur.</p>
-
-      <div class="modal-context" id="modalContext">
-        <strong>Tumhara result:</strong> <span id="modalResultName">The Warrior</span>
-      </div>
-
-      <div class="modal-assurance">
-        Sirf female team member call karegi. Chaho toh phone call ke bajaye WhatsApp pe chat kar sakti ho.
-      </div>
-
-      <form id="bookForm" onsubmit="submitBooking(event)">
-        <div class="field">
-          <label for="name">Pehla naam</label>
-          <input type="text" id="name" required placeholder="Priya">
-        </div>
-
-        <div class="field">
-          <label for="phone">WhatsApp number</label>
-          <input type="tel" id="phone" required pattern="[0-9]{10}" maxlength="10" placeholder="10-digit mobile">
-        </div>
-
-        <div class="field">
-          <label for="time">Call ke liye best time?</label>
-          <select id="time" required>
-            <option value="">Select...</option>
+<!-- MODAL -->
+<div class="m-bg" id="mbg" onclick="if(event.target===this)closeModal()">
+  <div class="m-box">
+    <button class="m-close" onclick="closeModal()">×</button>
+    <div id="mf">
+      <p class="m-eye">Book Consultation</p>
+      <h2>Care Buddy tumhe call karegi</h2>
+      <p class="m-sub">Tumhare answers uske paas hain — sirf 3 details aur.</p>
+      <div class="m-ctx"><b>Result:</b> <span id="mrn">—</span></div>
+      <div class="m-assure">Sirf female team member call karegi. Chaho toh WhatsApp chat bhi.</div>
+      <form id="bf" onsubmit="submitForm(event)">
+        <div class="fld"><label>Pehla naam</label><input type="text" id="nm" required placeholder="Priya" autocomplete="given-name"></div>
+        <div class="fld"><label>WhatsApp number</label><input type="tel" id="ph" required pattern="[0-9]{10}" maxlength="10" placeholder="10-digit mobile" inputmode="numeric" autocomplete="tel-national"></div>
+        <div class="fld"><label>Call ke liye best time?</label>
+          <select id="tm" required>
+            <option value="">Select…</option>
             <option>10 AM — 1 PM</option>
             <option>1 PM — 4 PM</option>
             <option>4 PM — 7 PM</option>
             <option>7 PM — 9 PM</option>
           </select>
         </div>
-
-        <label class="modal-toggle">
-          <input type="checkbox" id="whatsappOnly">
-          <span>Phone call ke bajaye sirf WhatsApp chat pe baat karo</span>
-        </label>
-
-        <button type="submit" class="modal-submit" id="submitBtn">Book My Call</button>
-        <p class="modal-fine">Submit karke tum sirf call book kar rahi ho — abhi koi payment nahi. Order tabhi hoga jab tum bologi haan.</p>
+        <label class="m-tgl"><input type="checkbox" id="wo"><span>Phone nahi — sirf WhatsApp chat</span></label>
+        <button type="submit" class="m-btn" id="sb">Book My Call</button>
+        <p class="m-fine">Abhi koi payment nahi. Order tabhi jab tum bologi haan.</p>
       </form>
     </div>
-
-    <div class="modal-success" id="modalSuccess">
-      <svg width="72" height="72" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="36" cy="36" r="34" fill="none" stroke="#7A1E3C" stroke-width="2"/>
-        <path d="M 22 36 L 32 46 L 50 26" fill="none" stroke="#7A1E3C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <h3>Ho gaya! Call booked.</h3>
-      <p>Tumhari Care Buddy <strong id="successName">Riya</strong> <strong id="successTime">1-4 PM</strong> pe WhatsApp pe reach karegi.</p>
-      <p>Tab tak WhatsApp pe welcome message aa jaayega — apna result vahan attached milega.</p>
-      <button class="modal-submit" style="margin-top:20px;" onclick="closeModal()">Great, close</button>
+    <div class="m-suc" id="ms">
+      <svg width="54" height="54" viewBox="0 0 54 54"><circle cx="27" cy="27" r="25" fill="none" stroke="#7A1E3C" stroke-width="2"/><path d="M16 27L23 34L38 19" fill="none" stroke="#7A1E3C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <h3>Call booked! 🎉</h3>
+      <p>Care Buddy <b id="sn">Riya</b> tumhe <b id="st">—</b> pe reach karegi.</p>
+      <p>WhatsApp pe welcome message aayega jald hi.</p>
+      <button class="m-btn" style="margin-top:14px" onclick="closeModal()">Great, close</button>
     </div>
   </div>
 </div>
 
 <script>
-// ═══════════════════════════════════════════
-//  QUIZ DATA + STATE
-// ═══════════════════════════════════════════
+window.dataLayer=window.dataLayer||[];
+function gtmPush(e,p){var d={event:e};if(p)for(var k in p)d[k]=p[k];dataLayer.push(d)}
+gtmPush('page_view',{page_type:'cycle_check_v6'});
+(function(){var f={};[25,50,75,100].forEach(function(t){});
+window.addEventListener('scroll',function(){var h=document.documentElement.scrollHeight-window.innerHeight;if(h<=0)return;var p=Math.round(window.scrollY/h*100);[25,50,75,100].forEach(function(t){if(p>=t&&!f[t]){f[t]=true;gtmPush('scroll_depth',{pct:t})}})})})();
 
-const questions = [
-  {
-    id: 'q1',
-    title: 'Tumhari umar kya hai?',
-    hint: 'Har age me periods alag behave karte hain.',
-    options: [
-      { label: '18 — 24 saal', value: 'young' },
-      { label: '25 — 32 saal', value: 'mid' },
-      { label: '33 — 42 saal', value: 'later' },
-      { label: '42+ saal', value: 'senior' }
-    ]
-  },
-  {
-    id: 'q2',
-    title: 'Tumhare periods kaise behave karte hain?',
-    hint: 'Cycle ka pattern.',
-    options: [
-      { label: 'Regular — every 28-30 din', value: 0 },
-      { label: 'Thoda irregular — kabhi jaldi, kabhi late', value: 2 },
-      { label: 'Bahut unpredictable — koi fix pattern nahi', value: 3 },
-      { label: 'Kabhi 2-3 mahine skip bhi ho jaate hain', value: 3 }
-    ]
-  },
-  {
-    id: 'q3',
-    title: 'Cramps ka level kaisa hota hai?',
-    hint: 'Har mahine tumhare periods ka pain.',
-    options: [
-      { label: 'Almost nahi hote', value: 0 },
-      { label: 'Manageable — kaam chalu rehta hai', value: 1 },
-      { label: 'Painful — kaam ruk jaata hai kabhi kabhi', value: 3 },
-      { label: 'Unbearable — painkiller ke bina nahi chalti', value: 4 }
-    ]
-  },
-  { insight: true, id: 'i1' },
-  {
-    id: 'q4',
-    title: 'PMS ke mood swings hote hain?',
-    hint: 'Periods se pehle ke din.',
-    options: [
-      { label: 'Nahi, mostly theek rehti hoon', value: 0 },
-      { label: 'Kabhi kabhi — sometimes irritated feel karti hoon', value: 1 },
-      { label: 'Almost har mahine — mood upar-neeche hota hai', value: 3 },
-      { label: 'Har baar — badly. Pura hafta affect hota hai', value: 4 }
-    ]
-  },
-  {
-    id: 'q5',
-    title: 'Flow kaisa hota hai?',
-    hint: 'Bleeding ki intensity.',
-    options: [
-      { label: 'Light — thoda hi hota hai', value: 0 },
-      { label: 'Normal — regular flow', value: 1 },
-      { label: 'Heavy — pads jaldi change karne padte hain', value: 3 },
-      { label: 'Bahut heavy — har 2 ghante me pad', value: 4 }
-    ]
-  },
-  {
-    id: 'q6',
-    title: 'Ab tak kya try kar chuki ho?',
-    hint: 'Aisa kuch jo problem ke liye kiya ho.',
-    options: [
-      { label: 'Kuch bhi nahi — bear kar leti hoon', value: 'none' },
-      { label: 'Home remedies (haldi doodh, ajwain paani, etc.)', value: 'home' },
-      { label: 'Painkillers — jab bhi zaroori ho', value: 'painkiller' },
-      { label: 'Doctor ke medications ya Ayurvedic products', value: 'doctor' }
-    ]
-  },
-  { insight: true, id: 'i2' },
-  {
-    id: 'q7',
-    title: 'Yeh problem kab tak hai?',
-    hint: 'Kitne time se face kar rahi ho.',
-    options: [
-      { label: '3 mahine se kam', value: 1 },
-      { label: '6 mahine se', value: 2 },
-      { label: 'Ek saal se', value: 3 },
-      { label: 'Bahut saal se — hamesha se', value: 3 }
-    ]
-  },
-  {
-    id: 'q8',
-    title: 'Iss mahine <em>sabse pehle</em> kya solve karna chahogi?',
-    hint: 'Ek cheez pe focus.',
-    options: [
-      { label: 'Cramps kam karne hain', value: 'cramps' },
-      { label: 'Cycle regular karna hai', value: 'cycle' },
-      { label: 'Mood aur PMS better karna hai', value: 'mood' },
-      { label: 'Heavy flow control karna hai', value: 'flow' }
-    ]
-  }
+const Q=[
+  {id:'q1',title:'Tumhari umar kya hai?',hint:'Har age pe periods alag behave karte hain.',ic:['👧','👩','💃','🌸'],opts:[{l:'18 — 24 saal',v:'young'},{l:'25 — 32 saal',v:'mid'},{l:'33 — 42 saal',v:'later'},{l:'42+ saal',v:'senior'}]},
+  {id:'q2',title:'Period ke first 2 din… pain kaisa hota hai?',hint:'Pain level honestly.',ic:['😌','🙂','😣','😰'],opts:[{l:'Thoda hota hai, manage ho jaata',v:0},{l:'Hota hai but routine continue',v:1},{l:'Pain ki wajah se slow karna padta',v:3},{l:'Unbearable — kuch ghante sirf pain',v:4}]},
+  {id:'q3',title:'Tumhare periods <em>kab aate hain?</em>',hint:'Cycle ka pattern.',ic:['📅','🔄','❓','⏭'],opts:[{l:'Regular — every 28-30 din',v:0},{l:'Thoda idhar-udhar — manageable',v:1},{l:'Bahut unpredictable',v:3},{l:'2-3 mahine skip bhi ho jaate',v:3}]},
+  {type:'insight',id:'i1'},
+  {id:'q4',title:'PMS mood swings hote hain?',hint:'Periods se pehle ke din.',ic:['😊','😐','😤','🌪'],opts:[{l:'Nahi, mostly theek',v:0},{l:'Kabhi kabhi irritated',v:1},{l:'Almost har mahine',v:3},{l:'Har baar — badly affect karta',v:4}]},
+  {id:'q5',title:'Flow kaisa hota hai?',hint:'Bleeding ki intensity.',ic:['💧','🌊','🌧','⛈'],opts:[{l:'Light — thoda hi',v:0},{l:'Normal — regular flow',v:1},{l:'Heavy — pad jaldi change',v:3},{l:'Bahut heavy — har 2 ghante',v:4}]},
+  {id:'q6',title:'Ab tak kya try kar chuki ho?',hint:'Period problem ke liye.',ic:['🤷','🏠','💊','👩‍⚕'],opts:[{l:'Kuch nahi — bear kar leti hoon',v:'none'},{l:'Home remedies (haldi, ajwain)',v:'home'},{l:'Painkillers jab zaruri',v:'pk'},{l:'Doctor ya Ayurvedic products',v:'doc'}]},
+  {type:'insight',id:'i2'},
+  {type:'pattern',id:'pat'},
+  {id:'q7',title:'Yeh problem <em>kab se</em> hai?',hint:'Kitne time se.',ic:['🌱','🌿','🌳','🏔'],opts:[{l:'3 mahine se kam',v:1},{l:'6 mahine se',v:2},{l:'Ek saal se',v:3},{l:'Bahut saal se',v:3}]},
+  {id:'q8',title:'Iss mahine <em>sabse pehle</em> kya solve karna chahogi?',hint:'Ek cheez pe focus.',ic:['🔥','🔄','🌀','💧'],opts:[{l:'Cramps kam karna',v:'cramps'},{l:'Cycle regular karna',v:'cycle'},{l:'Mood aur PMS better',v:'mood'},{l:'Heavy flow control',v:'flow'}]}
 ];
-
-const insights = {
-  i1: {
-    mark: 'A quick pause',
-    body: 'Painkillers ka kaam sirf <strong>pain block karna</strong> hai — root cause solve nahi karti. Isliye har mahine wahi problem laut aati hai.',
-    attrib: '— an honest note from the Cuehealth team',
-    cta: 'Aage chalein →'
-  },
-  i2: {
-    mark: 'A quiet thought',
-    body: 'Ayurveda me periods ko <strong>"ritu"</strong> kaha jaata hai — har cycle body ka natural reset hai. Agar body me santulan ho toh yeh reset smooth hota hai.',
-    attrib: '— Ayurveda, sadiyon se',
-    cta: 'Aakhri 2 sawal →'
-  }
+const INS={
+  i1:{mark:'Ek soch',body:'Painkillers ka kaam sirf <strong>pain block karna</strong> hai — root cause solve nahi karti. Isliye har mahine wahi problem wapas.',attr:'— Cuehealth team',cta:'Aage chalein →'},
+  i2:{mark:'Ek nazar',body:'Ayurveda mein periods ko <strong>"ritu"</strong> kaha jaata hai — har cycle body ka natural reset. Santulan ho toh smooth hota hai.',attr:'— Ayurveda, sadiyon se',cta:'Almost done →'}
 };
-
-const state = {
-  stepIndex: 0,
-  answers: {}
+const S={i:0,a:{}};
+function showV(id){document.querySelectorAll('.vw').forEach(v=>v.classList.remove('on'));document.getElementById(id).classList.add('on');window.scrollTo({top:0,behavior:'smooth'})}
+function startQuiz(){S.i=0;S.a={};showV('v2');render();gtmPush('quiz_start',{})}
+function qNum(){let n=0;for(let i=0;i<=S.i;i++)if(!Q[i].type)n++;return n}
+function render(){
+  const s=Q[S.i],pct=((S.i+1)/Q.length)*100;
+  document.getElementById('qf').style.width=pct+'%';
+  document.getElementById('ql').textContent=s.type?'✦':'Question '+qNum()+' of 8';
+  document.getElementById('qb').disabled=S.i===0;
+  const c=document.getElementById('qc');
+  if(s.type==='insight'){const d=INS[s.id];c.innerHTML=`<div class="ins"><div class="ins-mark">${d.mark}</div><p class="ins-body">${d.body}</p><p class="ins-attr">${d.attr}</p><button class="btn-sm" onclick="nxt()">${d.cta}</button></div>`;gtmPush('quiz_insight',{id:s.id})}
+  else if(s.type==='pattern'){c.innerHTML=`<div class="pat"><h3>Tumhare answers se ek pattern samne aa raha hai…</h3><div class="pat-grid"><div><div class="pat-ring">🔥</div><div class="pat-nm">Pain</div></div><div><div class="pat-ring">📅</div><div class="pat-nm">Cycle</div></div><div><div class="pat-ring">🌀</div><div class="pat-nm">Mood</div></div><div><div class="pat-ring">💧</div><div class="pat-nm">Flow</div></div></div><p class="pat-sub">Tumhara result bas thoda aur door hai…</p><button class="btn-sm" onclick="nxt()">Mera Result Dikhao →</button></div>`;gtmPush('quiz_pattern',{})}
+  else{const oh=s.opts.map((o,i)=>`<button class="opt" onclick="pick('${s.id}',${JSON.stringify(o.v).replace(/"/g,'&quot;')})"><div class="opt-ic">${s.ic[i]}</div><div class="opt-tx">${o.l}</div></button>`).join('');c.innerHTML=`<div class="ques"><h2 class="q-title">${s.title}</h2><p class="q-hint">${s.hint}</p><div class="opts">${oh}</div></div>`}
+}
+function pick(qid,v){S.a[qid]=v;gtmPush('quiz_answer',{qid,v:String(v),n:qNum()});setTimeout(nxt,160)}
+function nxt(){S.i++;S.i>=Q.length?showResult():render()}
+function goBack(){if(S.i>0){S.i--;render()}}
+const T={
+  warrior:{name:'The Warrior 🔥',sum:'Tum har month adjust kar leti ho. Par iska matlab ye nahi ki tumhe har month sehna chahiye. Tumhara body extra comfort maang raha hai.',sigs:[{ic:'📅',l:'Irregular Cycle'},{ic:'⚡',l:'High Pain'},{ic:'🌀',l:'Mood Swings'},{ic:'😴',l:'Low Energy'}],meaning:'Tumhara body signals de raha hai ki use thoda extra support chahiye. Yeh bahut common hai — tum akeli nahi ho.',ings:[{ic:'🌿',n:'Ashoka',d:'Menstrual comfort'},{ic:'🌾',n:'Lodhra',d:'Flow balance'},{ic:'🌱',n:'Shatavari',d:'Hormonal support'},{ic:'🍃',n:'Ashwagandha',d:'Stress adaptogen'}]},
+  waverider:{name:'The Wave Rider 🌊',sum:'Tumhara cycle predict karna mushkil ho gaya hai. Modern lifestyle ka classic response — body ko rhythm chahiye.',sigs:[{ic:'🔄',l:'Unpredictable'},{ic:'😤',l:'PMS Signs'},{ic:'📊',l:'Stress Linked'},{ic:'💤',l:'Energy Dips'}],meaning:'Irregular cycle hormonal shift ka sign hai. Consistent Ayurvedic support se rhythm wapas aa sakti hai.',ings:[{ic:'🌱',n:'Shatavari',d:'Cycle regularity'},{ic:'🌿',n:'Ashoka',d:'Classical herb'},{ic:'🍃',n:'Guduchi',d:'Balance support'},{ic:'🌾',n:'Ashwagandha',d:'Stress adaptogen'}]},
+  storm:{name:'The Storm 🌪',sum:'Tumhara body physical se pehle emotional signals deta hai. PMS ki intensity hormonal shifts se aati hai.',sigs:[{ic:'🌀',l:'Strong PMS'},{ic:'😤',l:'Emotional Peaks'},{ic:'🧠',l:'Stress High'},{ic:'💛',l:'Needs Calm'}],meaning:'Mood swings hormones ke cycle ka part hain — par itni intensity zaroori nahi. Adaptogens ise balance karte hain.',ings:[{ic:'🌾',n:'Ashwagandha',d:'Mood adaptogen'},{ic:'🌸',n:'Jatamansi',d:'Mind calm'},{ic:'🍯',n:'Yashtimadhu',d:'Nervous support'},{ic:'🌿',n:'Bhringraj',d:'Rejuvenator'}]},
+  whisper:{name:'The Whisper 🤫',sum:'Tumhara body silently bahut kaam kar raha hai. Heavy flow aur thakaan — extra inner strength ki zarurat hai.',sigs:[{ic:'💧',l:'Heavy Flow'},{ic:'😴',l:'Deep Fatigue'},{ic:'🤫',l:'Silent Struggle'},{ic:'💪',l:'Needs Strength'}],meaning:'Heavy flow se body ke reserves affect hote hain. Deep nourishment aur strengthening dono zaroori hain.',ings:[{ic:'🌿',n:'Ashoka',d:'Flow support'},{ic:'🌾',n:'Lodhra',d:'Women\'s herb'},{ic:'🌱',n:'Shatavari',d:'Nourishment'},{ic:'🌾',n:'Ashwagandha',d:'Strength'}]}
 };
-
-// ═══════════════════════════════════════════
-//  NAVIGATION
-// ═══════════════════════════════════════════
-
-function showView(id) {
-  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-function startQuiz() {
-  state.stepIndex = 0;
-  state.answers = {};
-  showView('viewQuiz');
-  renderStep();
-}
-
-function renderStep() {
-  const step = questions[state.stepIndex];
-  const total = questions.length;
-
-  // update progress
-  const progressPct = ((state.stepIndex + 1) / total) * 100;
-  document.getElementById('progressFill').style.width = progressPct + '%';
-  document.getElementById('progressLabel').textContent =
-    step.insight ? 'A moment' : `Question ${countQuestionNumber()} of 8`;
-
-  // back button state
-  document.getElementById('quizBack').disabled = state.stepIndex === 0;
-
-  const content = document.getElementById('quizContent');
-
-  if (step.insight) {
-    const ins = insights[step.id];
-    content.innerHTML = `
-      <div class="insight">
-        <div class="insight-mark">${ins.mark}</div>
-        <p class="insight-body">${ins.body}</p>
-        <p class="insight-attrib">${ins.attrib}</p>
-        <button class="insight-cta" onclick="nextStep()">${ins.cta}</button>
-      </div>
-    `;
-  } else {
-    const optionsHtml = step.options.map((opt, i) => `
-      <button class="option" onclick="selectOption('${step.id}', ${JSON.stringify(opt.value).replace(/"/g,'&quot;')})">
-        <span class="option-marker"></span>
-        <span>${opt.label}</span>
-      </button>
-    `).join('');
-
-    content.innerHTML = `
-      <div class="question">
-        <h2 class="question-title">${step.title}</h2>
-        <p class="question-hint">${step.hint}</p>
-        <div class="options">${optionsHtml}</div>
-      </div>
-    `;
-  }
-}
-
-function countQuestionNumber() {
-  // count only non-insight questions up to and including current
-  let n = 0;
-  for (let i = 0; i <= state.stepIndex; i++) {
-    if (!questions[i].insight) n++;
-  }
-  return n;
-}
-
-function selectOption(qid, value) {
-  state.answers[qid] = value;
-  setTimeout(nextStep, 200); // slight delay for feel
-}
-
-function nextStep() {
-  state.stepIndex++;
-  if (state.stepIndex >= questions.length) {
-    showResult();
-  } else {
-    renderStep();
-  }
-}
-
-function goBack() {
-  if (state.stepIndex > 0) {
-    state.stepIndex--;
-    renderStep();
-  }
-}
-
-// ═══════════════════════════════════════════
-//  RESULT LOGIC
-// ═══════════════════════════════════════════
-
-const types = {
-  warrior: {
-    name: 'The Warrior',
-    summary: 'Tumhara body high pain response deta hai during periods. Cramps ke bawajood tum function karti ho — asli warrior wali strength. Iska matlab body ko andar se comfort aur calm support chahiye.',
-    bodyMap: [
-      { title: 'High pain sensitivity', desc: 'Tumhara body monthly pain ko intense feel karta hai — normal nahi hai, aur ignore karne wali cheez nahi hai.' },
-      { title: 'Painkiller dependency', desc: 'Har mahine painkiller pe depend karna long-term me body ke saath achha nahi hai.' },
-      { title: 'Cycle work aur life ko affect karta hai', desc: 'Kaam ruk jaana ek signal hai ki root pe kaam hona chahiye.' },
-      { title: 'Body strength intact hai', desc: 'Tum functionally strong ho — bas comfort layer add karni hai.' }
-    ],
-    ingredients: [
-      { name: 'Ashoka', dose: '25mg tablet · 410mg syrup', note: 'Sanskrit me "sorrow reliever" — classical menstrual comfort herb, sadiyon se traditional use.' },
-      { name: 'Shatavari', dose: '50mg tablet · 200mg syrup', note: 'Women\'s wellness ki foundation herb, hormonal balance ke liye Ayurveda ki go-to.' },
-      { name: 'Yashtimadhu', dose: '30mg tablet', note: 'Mulethi — comfort aur digestion dono ke liye traditional support.' },
-      { name: 'Ashwagandha', dose: '100mg tablet · 410mg syrup', note: 'Body ki inner strength support ke liye Ayurveda ki most-studied herb.' }
-    ]
-  },
-  waverider: {
-    name: 'The Wave Rider',
-    summary: 'Tumhara cycle predictable nahi hai — kabhi jaldi, kabhi late. Modern lifestyle ka classic response hai. Body ko rhythm chahiye, aur Ayurveda specifically iske liye designed hai.',
-    bodyMap: [
-      { title: 'Unpredictable cycle timing', desc: 'Kabhi 25 din, kabhi 40 — body ka natural rhythm disturb hai.' },
-      { title: 'Hormonal shift ke signs', desc: 'Irregular cycle ka most common reason — hormonal imbalance jise natural support se help mil sakti hai.' },
-      { title: 'Lifestyle-related factor', desc: 'Stress, sleep, diet — modern life ka combined effect body pe padta hai.' },
-      { title: 'Body ready hai response dene ke liye', desc: 'Consistent Ayurvedic support ke saath cycle regularity return kar sakti hai.' }
-    ],
-    ingredients: [
-      { name: 'Shatavari', dose: '50mg tablet · 200mg syrup', note: 'Cycle regularity support ke liye Ayurveda ki primary women\'s herb.' },
-      { name: 'Ashoka', dose: '25mg tablet · 410mg syrup', note: 'Menstrual health ke liye classical Ayurvedic text me sabse zyada mention.' },
-      { name: 'Guduchi', dose: '30mg tablet · 50mg syrup', note: 'Body ke natural balance ke liye "amrit" kehte hain Sanskrit me.' },
-      { name: 'Ashwagandha', dose: '100mg tablet · 410mg syrup', note: 'Stress response manage karti hai — jo aksar irregularity ka root cause hai.' }
-    ]
-  },
-  storm: {
-    name: 'The Storm',
-    summary: 'Tumhara body physical se pehle emotional signals deti hai. PMS ki intensity tumhare hormones ke natural shifts se aati hai — ise hormonal shift kehte hain. Ashwagandha jaisi adaptogens iske liye Ayurveda ka answer hain.',
-    bodyMap: [
-      { title: 'Emotional peaks periods se pehle', desc: 'Mood swings, irritability, low motivation — sab PMS ke signals hain.' },
-      { title: 'Stress response amplified', desc: 'Body already thake hue hormones ke saath extra stress handle kar rahi hai.' },
-      { title: 'Family aur relationships bhi affect', desc: 'Pura hafta ka mood shift others tak bhi pahunchta hai — natural hai, awkward nahi.' },
-      { title: 'Adaptogens ki need', desc: 'Ayurveda me adaptogen herbs specifically iske liye hain.' }
-    ],
-    ingredients: [
-      { name: 'Ashwagandha', dose: '100mg tablet · 410mg syrup', note: 'Adaptogen — mood aur stress dono ke liye Ayurveda ki most-researched herb.' },
-      { name: 'Jatamansi', dose: '20mg syrup', note: 'Traditional mind-calm herb, emotional wellness ke liye classical use.' },
-      { name: 'Yashtimadhu', dose: '30mg tablet', note: 'Mulethi — nervous system aur mood ke liye supportive.' },
-      { name: 'Bhringraj', dose: '50mg syrup', note: 'Traditional rejuvenator — energy aur balance ke liye classical Ayurvedic herb.' }
-    ]
-  },
-  whisper: {
-    name: 'The Whisper',
-    summary: 'Tumhara body silently bahut kaam kar raha hai during periods. Heavy flow aur fatigue ke signs hain ki tumhe extra inner strength support chahiye. Ashoka aur Lodhar jaise ingredients Ayurveda ne exactly iske liye traditionally use kiye hain.',
-    bodyMap: [
-      { title: 'Heavy monthly flow', desc: 'Body har cycle me significantly zyada effort de raha hai.' },
-      { title: 'Fatigue aur energy dip', desc: 'Iron aur nutrient reserves affect hoti hain heavy flow se — thakaan real hai.' },
-      { title: 'Silent kind of struggle', desc: 'Tum bahar se strong lagti ho, andar bahut kuch bardaasht kar rahi ho.' },
-      { title: 'Body needs deep nourishment', desc: 'Sirf comfort nahi — replenishment aur strengthening bhi zaruri hai.' }
-    ],
-    ingredients: [
-      { name: 'Ashoka', dose: '25mg tablet · 410mg syrup', note: 'Flow support ke liye Ayurveda ka most-referenced women\'s health herb.' },
-      { name: 'Lodhar', dose: '50mg tablet · 250mg syrup', note: 'Classical Ayurvedic women\'s wellness herb, higher dose in syrup form.' },
-      { name: 'Shatavari', dose: '50mg tablet · 200mg syrup', note: 'Deep nourishment aur strengthening — post-period recovery ke liye.' },
-      { name: 'Ashwagandha', dose: '100mg tablet · 410mg syrup', note: 'Energy aur strength restoration ke liye adaptogen support.' }
-    ]
-  }
-};
-
-function calculateType() {
-  const a = state.answers;
-
-  // Score each dimension (higher = stronger indicator)
-  const cramps = typeof a.q3 === 'number' ? a.q3 : 0;
-  const cycle = typeof a.q2 === 'number' ? a.q2 : 0;
-  const mood = typeof a.q4 === 'number' ? a.q4 : 0;
-  const flow = typeof a.q5 === 'number' ? a.q5 : 0;
-
-  // Primary focus from Q8 gets extra weight
-  const focusBoost = { cramps: 1.5, cycle: 1.5, mood: 1.5, flow: 1.5 };
-  const focusMap = { cramps: 'warrior', cycle: 'waverider', mood: 'storm', flow: 'whisper' };
-
-  const scores = {
-    warrior: cramps * 1.2 + (a.q8 === 'cramps' ? 3 : 0),
-    waverider: cycle * 1.2 + (a.q8 === 'cycle' ? 3 : 0),
-    storm: mood * 1.2 + (a.q8 === 'mood' ? 3 : 0),
-    whisper: flow * 1.2 + (a.q8 === 'flow' ? 3 : 0)
-  };
-
-  // find highest
-  let topType = 'warrior';
-  let topScore = -1;
-  for (const [type, score] of Object.entries(scores)) {
-    if (score > topScore) {
-      topScore = score;
-      topType = type;
-    }
-  }
-  return topType;
-}
-
-function showResult() {
-  const typeKey = calculateType();
-  const type = types[typeKey];
-
-  document.getElementById('resultTypeName').textContent = type.name;
-  document.getElementById('resultSummary').textContent = type.summary;
-  document.getElementById('modalResultName').textContent = type.name;
-
-  // body map
-  document.getElementById('bodyMap').innerHTML = type.bodyMap.map(item => `
-    <div class="body-map-item">
-      <b>${item.title}</b>
-      <span>${item.desc}</span>
-    </div>
-  `).join('');
-
-  // ingredients
-  document.getElementById('ingredientsFor').innerHTML = type.ingredients.map(ing => `
-    <div class="ingredient-tile">
-      <b>${ing.name} <span>${ing.dose}</span></b>
-      <p>${ing.note}</p>
-    </div>
-  `).join('');
-
-  showView('viewResult');
-}
-
-// ═══════════════════════════════════════════
-//  MODAL
-// ═══════════════════════════════════════════
-
-function openBookModal() {
-  document.getElementById('modalBackdrop').classList.add('open');
-  document.body.style.overflow = 'hidden';
-  document.getElementById('modalForm').style.display = 'block';
-  document.getElementById('modalSuccess').classList.remove('show');
-  document.getElementById('bookForm').reset();
-}
-
-function closeModal() {
-  document.getElementById('modalBackdrop').classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-function orderDirect() {
-  // In production, redirect to Shopify product page
-  alert('Redirecting to product page — cuehealth.in/products/periods-care-kit\n\n(In production, isko Shopify product page pe link kar do.)');
-  // window.location.href = 'https://cuehealth.in/products/periods-care-kit';
-}
+function calcType(){const a=S.a,cr=typeof a.q2==='number'?a.q2:0,cy=typeof a.q3==='number'?a.q3:0,mo=typeof a.q4==='number'?a.q4:0,fl=typeof a.q5==='number'?a.q5:0,sc={warrior:cr*1.2+(a.q8==='cramps'?3:0),waverider:cy*1.2+(a.q8==='cycle'?3:0),storm:mo*1.2+(a.q8==='mood'?3:0),whisper:fl*1.2+(a.q8==='flow'?3:0)};let top='warrior',mx=-1;for(const[k,v] of Object.entries(sc))if(v>mx){mx=v;top=k}return top}
+function showResult(){const k=calcType(),t=T[k];document.getElementById('rtn').textContent=t.name;document.getElementById('rts').textContent=t.sum;document.getElementById('rtm').textContent=t.meaning;document.getElementById('mrn').textContent=t.name;document.getElementById('sigs').innerHTML=t.sigs.map(s=>`<div class="sig"><div class="sig-ic">${s.ic}</div><b>${s.l}</b></div>`).join('');document.getElementById('ings').innerHTML=t.ings.map(i=>`<div class="ing"><div class="ing-ic">${i.ic}</div><b>${i.n}</b><span>${i.d}</span></div>`).join('');showV('v3');gtmPush('quiz_complete',{type:t.name,age:S.a.q1||'',concern:S.a.q8||''});gtmPush('generate_lead',{method:'quiz_complete',type:t.name})}
+function openModal(){document.getElementById('mbg').classList.add('open');document.body.style.overflow='hidden';document.getElementById('mf').style.display='block';document.getElementById('ms').classList.remove('show');document.getElementById('bf').reset();gtmPush('cta_click',{l:'care_buddy_modal'})}
+function closeModal(){document.getElementById('mbg').classList.remove('open');document.body.style.overflow=''}
 
 var CYCLE_CHECK_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwua77RhbD3X-Hu9At0YLLu_LPqN-1OzWOevnFDUhuhy52ZZ8UBBeKmhXa7bfMjAbVnIw/exec';
 
-function submitBooking(e) {
-  e.preventDefault();
-  const btn = document.getElementById('submitBtn');
-  btn.disabled = true;
-  btn.textContent = 'Booking...';
+function submitForm(e){e.preventDefault();const b=document.getElementById('sb');b.disabled=true;b.textContent='Booking…';const tm=document.getElementById('tm').value;document.getElementById('st').textContent=tm.replace(' — ','-');const names=['Riya','Priya','Sneha','Anjali'];document.getElementById('sn').textContent=names[Math.floor(Math.random()*names.length)];const payload={name:document.getElementById('nm').value,phone:document.getElementById('ph').value,time:tm,whatsappOnly:document.getElementById('wo').checked,periodType:document.getElementById('mrn').textContent,quizAnswers:S.a};gtmPush('form_submit',{type:payload.periodType,time:tm,concern:S.a.q8||''});gtmPush('generate_lead',{method:'booking'});
 
-  const time = document.getElementById('time').value;
-  document.getElementById('successTime').textContent = time.replace(' — ', '-');
-
-  const teamNames = ['Riya', 'Priya', 'Sneha', 'Anjali'];
-  document.getElementById('successName').textContent = teamNames[Math.floor(Math.random() * teamNames.length)];
-
-  const data = new URLSearchParams({
-    name: document.getElementById('name').value,
-    phone: document.getElementById('phone').value,
-    time,
-    whatsappOnly: document.getElementById('whatsappOnly').checked ? 'true' : 'false',
-    periodType: document.getElementById('modalResultName').textContent,
-    quizAnswers: JSON.stringify(state.answers),
+  var data = new URLSearchParams({
+    name: payload.name,
+    phone: payload.phone,
+    time: payload.time,
+    whatsappOnly: payload.whatsappOnly ? 'true' : 'false',
+    periodType: payload.periodType,
+    quizAnswers: JSON.stringify(payload.quizAnswers),
     pageUrl: window.location.href
   });
 
@@ -1643,16 +638,14 @@ function submitBooking(e) {
     mode: 'no-cors',
     body: data
   }).catch(function(){}).finally(function(){
-    document.getElementById('modalForm').style.display = 'none';
-    document.getElementById('modalSuccess').classList.add('show');
-    btn.disabled = false;
-    btn.textContent = 'Book My Call';
+    document.getElementById('mf').style.display='none';
+    document.getElementById('ms').classList.add('show');
+    b.disabled=false;
+    b.textContent='Book My Call';
+    gtmPush('booking_confirmed',{type:payload.periodType});
   });
 }
-
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeModal();
-});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
 </script>
 </body>
 </html>
