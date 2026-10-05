@@ -1,0 +1,118 @@
+{{ 'component-rating.css' | asset_url | stylesheet_tag }}
+
+<section class="ch-reviews" data-ch-reviews data-webhook="{{ section.settings.webhook_url }}" data-product-id="{{ product.id }}" data-product-title="{{ product.title | escape }}">
+  <div class="ch-reviews__inner">
+    <p class="ch-reviews__eyebrow">{{ section.settings.eyebrow }}</p>
+    <h2 class="ch-reviews__heading">{{ section.settings.heading }}</h2>
+
+    <div class="ch-reviews__empty">
+      <p>No reviews yet for {{ product.title | escape }}.</p>
+      <button type="button" class="ch-reviews__open button button--secondary">Write a review</button>
+    </div>
+
+    <form class="ch-reviews__form" hidden>
+      <div class="ch-reviews__field">
+        <label for="ch-review-name-{{ section.id }}">Your name</label>
+        <input id="ch-review-name-{{ section.id }}" name="name" type="text" required maxlength="60" autocomplete="name">
+      </div>
+      <div class="ch-reviews__field">
+        <label for="ch-review-city-{{ section.id }}">City (optional)</label>
+        <input id="ch-review-city-{{ section.id }}" name="city" type="text" maxlength="60">
+      </div>
+      <div class="ch-reviews__field">
+        <label for="ch-review-rating-{{ section.id }}">Rating</label>
+        <select id="ch-review-rating-{{ section.id }}" name="rating" required>
+          <option value="">Select</option>
+          <option value="5">5 — Excellent</option>
+          <option value="4">4 — Good</option>
+          <option value="3">3 — Okay</option>
+          <option value="2">2 — Poor</option>
+          <option value="1">1 — Very poor</option>
+        </select>
+      </div>
+      <div class="ch-reviews__field">
+        <label for="ch-review-text-{{ section.id }}">Your review</label>
+        <textarea id="ch-review-text-{{ section.id }}" name="text" rows="4" required maxlength="1000"></textarea>
+      </div>
+      <label class="ch-reviews__consent">
+        <input type="checkbox" name="consent" required>
+        <span>I confirm this is my honest experience and agree it may be published after verification.</span>
+      </label>
+      <button type="submit" class="ch-reviews__submit button">Submit review</button>
+      <p class="ch-reviews__status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<script>
+  (function () {
+    var root = document.querySelector('[data-ch-reviews][data-product-id="{{ product.id }}"]');
+    if (!root) return;
+    var webhook = root.getAttribute('data-webhook');
+    var openBtn = root.querySelector('.ch-reviews__open');
+    var form = root.querySelector('.ch-reviews__form');
+    var status = root.querySelector('.ch-reviews__status');
+
+    openBtn.addEventListener('click', function () {
+      form.hidden = false;
+      openBtn.parentElement.hidden = true;
+    });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!webhook) {
+        status.textContent = 'Reviews are not open yet. Please check back soon.';
+        return;
+      }
+      var btn = form.querySelector('.ch-reviews__submit');
+      btn.disabled = true;
+      var data = new URLSearchParams({
+        productId: root.getAttribute('data-product-id'),
+        productTitle: root.getAttribute('data-product-title'),
+        name: form.name.value,
+        city: form.city.value,
+        rating: form.rating.value,
+        text: form.text.value,
+        pageUrl: window.location.href
+      });
+      fetch(webhook, { method: 'POST', mode: 'no-cors', body: data })
+        .catch(function () {})
+        .finally(function () {
+          status.textContent = 'Thank you. Your review will appear after we verify it.';
+          form.reset();
+          btn.disabled = false;
+        });
+    });
+  })();
+</script>
+
+<style>
+  .ch-reviews { padding: 48px 20px; background: #fff; }
+  .ch-reviews__inner { max-width: 640px; margin: 0 auto; }
+  .ch-reviews__eyebrow { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: #1B4332; font-weight: 700; margin-bottom: 8px; }
+  .ch-reviews__heading { font-size: 26px; margin-bottom: 20px; }
+  .ch-reviews__empty { padding: 24px; background: #FDF8F0; border-radius: 10px; text-align: center; }
+  .ch-reviews__empty p { margin-bottom: 14px; color: #6B5B4F; }
+  .ch-reviews__form { display: grid; gap: 14px; margin-top: 18px; }
+  .ch-reviews__form[hidden], .ch-reviews__empty[hidden] { display: none; }
+  .ch-reviews__field { display: grid; gap: 6px; }
+  .ch-reviews__field label { font-size: 14px; font-weight: 600; }
+  .ch-reviews__field input, .ch-reviews__field select, .ch-reviews__field textarea { padding: 10px 12px; border: 1px solid #ccc; border-radius: 8px; font: inherit; }
+  .ch-reviews__consent { display: flex; gap: 10px; font-size: 13px; align-items: flex-start; }
+  .ch-reviews__submit { justify-self: start; }
+  .ch-reviews__status { font-size: 14px; color: #1B4332; min-height: 1em; }
+</style>
+
+{% schema %}
+{
+  "name": "Product reviews",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Customer reviews" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "What customers say" },
+    { "type": "url", "id": "webhook_url", "label": "Review webhook URL", "info": "Apps Script URL that stores submitted reviews. Leave empty to keep the form disabled." }
+  ],
+  "presets": [{ "name": "Product reviews" }]
+}
+{% endschema %}

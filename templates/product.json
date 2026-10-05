@@ -62,6 +62,14 @@
         "padding_bottom": 20
       }
     },
+    "product_reviews": {
+      "type": "product-reviews",
+      "settings": {
+        "eyebrow": "Customer reviews",
+        "heading": "What customers say",
+        "webhook_url": ""
+      }
+    },
     "related_products": {
       "type": "related-products",
       "settings": {
@@ -117,6 +125,7 @@
   },
   "order": [
     "main",
+    "product_reviews",
     "related_products",
     "video_testimonials_e9w7UJ",
     "video_fPAKKh"
