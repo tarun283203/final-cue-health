@@ -66,8 +66,7 @@
       "type": "product-reviews",
       "settings": {
         "eyebrow": "Customer reviews",
-        "heading": "What customers say",
-        "webhook_url": ""
+        "heading": "What customers say"
       }
     },
     "related_products": {
