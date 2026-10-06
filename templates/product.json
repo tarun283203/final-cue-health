@@ -124,9 +124,9 @@
   },
   "order": [
     "main",
-    "product_reviews",
     "video_testimonials_e9w7UJ",
     "video_fPAKKh",
-    "related_products"
+    "related_products",
+    "product_reviews"
   ]
 }
