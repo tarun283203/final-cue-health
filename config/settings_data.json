@@ -147,6 +147,11 @@
         "type": "shopify://apps/sweethelp/blocks/app-embed/734e357d-ae44-4bc3-b3fb-d82cb4fc763e",
         "disabled": false,
         "settings": {}
+      },
+      "14060646107696862457": {
+        "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+        "disabled": false,
+        "settings": {}
       }
     },
     "color_schemes": {
