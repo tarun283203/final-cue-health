@@ -146,7 +146,8 @@
         "desktop_columns": 3,
         "mobile_columns": "1",
         "padding_top": 64,
-        "padding_bottom": 64
+        "padding_bottom": 64,
+        "submit_url": "https://script.google.com/macros/s/AKfycbyhP1sPk9rHPkRZvWk-F_X8n8EvSHc0LuxIcoh2mzLvIKazGvKsUTXOL-_PrMA61z3C/exec"
       }
     }
   },
