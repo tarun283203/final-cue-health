@@ -80,14 +80,21 @@
       </button>
     </div>
 
-    <div class="ch-testimonials__summary{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
-      <div class="ch-testimonials__summary-stars">
-        {%- for i in (1..5) -%}{%- render 'ch-icon', icon: 'star-filled', size: 20 -%}{%- endfor -%}
+    {%- if section.settings.show_summary and section.blocks.size > 0 -%}
+      {%- assign rating_sum = 0 -%}
+      {%- for block in section.blocks -%}
+        {%- assign rating_sum = rating_sum | plus: block.settings.rating -%}
+      {%- endfor -%}
+      {%- assign average = rating_sum | times: 1.0 | divided_by: section.blocks.size | round: 1 -%}
+      <div class="ch-testimonials__summary{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+        <div class="ch-testimonials__summary-stars">
+          {%- for i in (1..5) -%}{%- render 'ch-icon', icon: 'star-filled', size: 20 -%}{%- endfor -%}
+        </div>
+        <p>
+          <strong>{{ section.blocks.size }} review{% if section.blocks.size != 1 %}s{% endif %}</strong> · Rated {{ average }}/5 on average
+        </p>
       </div>
-      <p>
-        <strong>{{ section.blocks.size | times: 1 }}+ happy customers</strong> · Rated 4.9/5 on average
-      </p>
-    </div>
+    {%- endif -%}
   </div>
 </section>
 
@@ -100,6 +107,7 @@
     { "type": "text",  "id": "heading",    "label": "Heading",    "default": "What Our Customers Say" },
     { "type": "text",  "id": "subheading", "label": "Subheading", "default": "Real results from real people across India" },
     { "type": "color", "id": "bg_color",   "label": "Background", "default": "#F8FAF9" },
+    { "type": "checkbox", "id": "show_summary", "label": "Show average rating summary", "info": "Only use once every block below is a real, submitted testimonial.", "default": false },
     { "type": "range", "id": "padding_top",    "min": 20, "max": 120, "step": 4, "unit": "px", "label": "Padding Top",    "default": 60 },
     { "type": "range", "id": "padding_bottom", "min": 20, "max": 120, "step": 4, "unit": "px", "label": "Padding Bottom", "default": 60 }
   ],
@@ -108,25 +116,19 @@
       "type": "testimonial",
       "name": "Testimonial",
       "settings": [
-        { "type": "text",         "id": "customer_name",     "label": "Name",                "default": "Priya S." },
-        { "type": "text",         "id": "customer_location", "label": "Location",            "default": "Mumbai" },
+        { "type": "text",         "id": "customer_name",     "label": "Name", "info": "Use the real customer's name." },
+        { "type": "text",         "id": "customer_location", "label": "Location", "info": "Use the real customer's city." },
         { "type": "text",         "id": "product_name",      "label": "Product (optional)" },
         { "type": "image_picker", "id": "avatar",            "label": "Photo (optional)" },
         { "type": "range",        "id": "rating", "min": 1, "max": 5, "step": 1, "label": "Stars", "default": 5 },
-        { "type": "textarea",     "id": "review_text",       "label": "Review",              "default": "CueHealth supplements have completely transformed my energy levels. Highly recommended!" }
+        { "type": "textarea",     "id": "review_text",       "label": "Review", "info": "Paste the customer's actual words. Do not write this on their behalf." }
       ]
     }
   ],
   "presets": [
     {
       "name": "Customer Testimonials",
-      "blocks": [
-        { "type": "testimonial", "settings": { "customer_name": "Priya S.",   "customer_location": "Mumbai",    "rating": 5, "review_text": "CueHealth supplements have completely transformed my energy levels. I feel more focused and active throughout the day. Highly recommended!" } },
-        { "type": "testimonial", "settings": { "customer_name": "Rahul M.",   "customer_location": "Delhi",     "rating": 5, "review_text": "Finally found supplements that actually work! Great quality ingredients and fast delivery. Will definitely order again." } },
-        { "type": "testimonial", "settings": { "customer_name": "Ananya K.",  "customer_location": "Bangalore", "rating": 5, "review_text": "The sleep supplement is a game-changer. Noticed a huge improvement in my sleep quality within the first week." } },
-        { "type": "testimonial", "settings": { "customer_name": "Vikram R.",  "customer_location": "Hyderabad", "rating": 4, "review_text": "Premium quality at a fair price. Love that they're FSSAI approved and lab tested. Trust is everything with supplements." } },
-        { "type": "testimonial", "settings": { "customer_name": "Neha T.",    "customer_location": "Pune",      "rating": 5, "review_text": "3 months in and I'm blown away by the results. My immunity has improved noticeably!" } }
-      ]
+      "blocks": []
     }
   ]
 }
