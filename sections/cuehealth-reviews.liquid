@@ -60,6 +60,37 @@
     {%- endif -%}
   {%- endfor -%}
 {%- endfor -%}
+{%- assign demo_mode = false -%}
+{%- if request.design_mode and section.settings.show_demo and review_count == 0 -%}
+  {%- assign demo_mode = true -%}
+  {%- assign demo_alt = 'SAMPLE/DEMO product photo for ' | append: product.title -%}
+  {%- for demo_index in (1..3) -%}
+    {%- capture demo_card -%}
+      <article class="cue-review-card" id="CueReview-{{ section.id }}-demo-{{ demo_index }}" tabindex="-1" data-cue-card>
+        {% if product.featured_image != blank %}
+          <a class="cue-review-card__photo" href="#CueReview-{{ section.id }}-demo-{{ demo_index }}" data-cue-open aria-label="Open SAMPLE/DEMO review {{ demo_index }}">
+            {{ product.featured_image | image_url: width: 800 | image_tag: widths: '240, 400, 600, 800', sizes: '(min-width: 990px) 33vw, 85vw', loading: 'lazy', alt: demo_alt }}
+          </a>
+        {% endif %}
+        <div class="cue-review-card__body">
+          <p class="cue-review-card__badge"><strong>SAMPLE/DEMO — not a customer review</strong></p>
+          <div class="cue-reviews-stars" role="img" aria-label="Example rating: 5 out of 5 stars"><span aria-hidden="true">★★★★★</span></div>
+          <h3 class="cue-review-card__name">Demo customer {{ demo_index }}</h3>
+          <blockquote class="cue-review-card__text">{% case demo_index %}{% when 1 %}Sample layout: genuine customer feedback about {{ product.title | escape }} will appear here.{% when 2 %}Sample layout: a longer customer story can be displayed here, preserving the customer's original meaning. This text demonstrates how multiple lines fit inside the card.{% when 3 %}Sample layout: Hindi or Hinglish feedback can be translated here after approval. The image above is a product photo, not a customer photo.{% endcase %}</blockquote>
+        </div>
+      </article>
+    {%- endcapture -%}
+    {%- assign cards = cards | append: demo_card -%}
+    {% if product.featured_image != blank %}
+      {%- capture demo_photo -%}
+        <a class="cue-reviews-photo" href="#CueReview-{{ section.id }}-demo-{{ demo_index }}" data-cue-open aria-label="Open SAMPLE/DEMO review {{ demo_index }}">
+          {{ product.featured_image | image_url: width: 240 | image_tag: widths: '120, 180, 240', sizes: '120px', loading: 'lazy', alt: demo_alt }}
+        </a>
+      {%- endcapture -%}
+      {%- assign photos = photos | append: demo_photo -%}
+    {% endif %}
+  {%- endfor -%}
+{%- endif -%}
 {%- if product != blank -%}
 <cuehealth-reviews class="cue-reviews" style="--cue-reviews-columns: {{ section.settings.desktop_columns }}; --cue-reviews-mobile-width: {% if section.settings.mobile_columns == '2' %}46%{% else %}85%{% endif %}; --cue-reviews-top: {{ section.settings.padding_top }}px; --cue-reviews-bottom: {{ section.settings.padding_bottom }}px" data-page-size="{{ section.settings.reviews_per_page }}" data-load-more="{{ section.settings.enable_load_more }}" data-lightbox="{{ section.settings.enable_lightbox }}">
   <div class="cue-reviews-inner page-width">
@@ -73,9 +104,10 @@
           <span>{{ review_count }} customer review{% if review_count != 1 %}s{% endif %}</span>
         </div>
       {% endif %}
+      {% if demo_mode %}<p class="cue-reviews-disclosure"><strong>SAMPLE/DEMO preview only.</strong> These are layout placeholders, not customer testimonials. Images are product photos. Demos are hidden on the public storefront and excluded from customer counts and ratings.</p>{% endif %}
     </header>
     {% if section.settings.show_gallery and photos != blank %}<nav class="cue-reviews-gallery" aria-label="Customer photo reviews">{{ photos }}</nav>{% endif %}
-    {% if review_count > 0 %}
+    {% if review_count > 0 or demo_mode %}
       <div class="cue-reviews-grid" data-cue-grid>{{ cards }}</div>
       <button type="button" class="cue-reviews-more" data-cue-more hidden>Load more reviews</button>
       <p class="cue-reviews-status" role="status" aria-live="polite" data-cue-status></p>
@@ -188,6 +220,13 @@
       "step": 4,
       "default": 64,
       "unit": "px"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_demo",
+      "label": "Show demo cards in editor",
+      "default": true,
+      "info": "Only when no genuine reviews exist. Product photos and sample text are never shown publicly."
     }
   ],
   "presets": [

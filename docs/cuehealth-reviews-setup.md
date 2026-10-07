@@ -112,3 +112,7 @@ The default `product.json` controls every product using the default product temp
 - Check product media, variant selection, cart and checkout entry points still work.
 - Review actual image loading/performance and browser console in the preview.
 - Publish only after preview verification; inspect the public product URL afterward.
+
+## Editor demo cards
+
+When a product has no genuine reviews, the theme editor can show three SAMPLE/DEMO cards with that product’s existing Shopify CDN image. Turn off **Show demo cards in editor** to hide them. The placeholders have no customer claims or verification labels, never contribute to rating/count totals, and never render on the public storefront. No demo Shopify records are created.
