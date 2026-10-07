@@ -60,13 +60,13 @@
     {%- endif -%}
   {%- endfor -%}
 {%- endfor -%}
-{%- if review_count > 0 or request.design_mode -%}
+{%- if product != blank -%}
 <cuehealth-reviews class="cue-reviews" style="--cue-reviews-columns: {{ section.settings.desktop_columns }}; --cue-reviews-mobile-width: {% if section.settings.mobile_columns == '2' %}46%{% else %}85%{% endif %}; --cue-reviews-top: {{ section.settings.padding_top }}px; --cue-reviews-bottom: {{ section.settings.padding_bottom }}px" data-page-size="{{ section.settings.reviews_per_page }}" data-load-more="{{ section.settings.enable_load_more }}" data-lightbox="{{ section.settings.enable_lightbox }}">
   <div class="cue-reviews-inner page-width">
     <header class="cue-reviews-header">
       <p class="cue-reviews-eyebrow">Customer experiences</p>
       <h2>{{ section.settings.heading | escape }}</h2>
-      <p class="cue-reviews-disclosure">Genuine customer feedback, shared with permission and published by Cuehealth on customers’ behalf.</p>
+      {% if review_count > 0 %}<p class="cue-reviews-disclosure">Genuine customer feedback, shared with permission and published by Cuehealth on customers’ behalf.</p>{% endif %}
       {% if section.settings.show_summary and review_count > 0 %}
         <div class="cue-reviews-summary">
           {% if rated_count > 0 %}{% assign average = rating_sum | times: 1.0 | divided_by: rated_count | round: 1 %}<strong>{{ average }}/5</strong><span>Based on {{ rated_count }} customer rating{% if rated_count != 1 %}s{% endif %}</span>{% endif %}
@@ -85,7 +85,7 @@
           <div data-cue-dialog-content></div>
         </dialog>
       {% endif %}
-    {% else %}<p>Add genuine review entries and link them in this product’s Cuehealth reviews metafield. This empty section appears only in the theme editor.</p>{% endif %}
+    {% else %}<p>No customer reviews for {{ product.title | escape }} yet.</p>{% if request.design_mode %}<p>Add genuine review entries and link them in this product’s Cuehealth reviews metafield.</p>{% endif %}{% endif %}
   </div>
 </cuehealth-reviews>
 {%- endif -%}

@@ -2,7 +2,7 @@
 
 ## Status
 
-The local checkout identifies itself as Dawn 15.4.1. Its product template uses `product-reviews`, an empty-state placeholder. The homepage uses a separate `customer-testimonials` section that includes a hardcoded 4.9 average, automatically labels reviews as verified purchases, and provides sample content in presets. Those existing files were not changed. Audit their published content before retaining them alongside this system.
+The local checkout identifies itself as Dawn 15.4.1. Its product template now includes Cuehealth Reviews after related products. An existing Judge.me app section is preserved. The homepage uses a separate `customer-testimonials` section that includes a hardcoded 4.9 average, automatically labels reviews as verified purchases, and provides sample content in presets. Those existing files were not changed. Audit their published content before retaining them alongside this system.
 
 The Shopify plugin is not connected in this Codex session. The CLI also requested login. The live store, Basic plan, currency, market, products, installed review apps, metaobjects and permissions have **not been verified**. No images or actual customer feedback have been supplied. No store records, uploads, theme pushes or publications have happened.
 
@@ -62,7 +62,7 @@ If using an API later, wait until Shopify reports the file ready and select its 
 
 Content → Metaobjects → Cuehealth Review → Add entry. Fill the fields from real supplied feedback. Leave rating empty if it was not supplied or clearly supported. Map each image to the correct customer and product. Flag potentially problematic health claims for review before setting the entry Active; don't silently replace customer meaning with a different claim. Use consented public names and locations.
 
-Open Products → the relevant product → Metafields → Cuehealth reviews → Select entries. Add that product's Active reviews and arrange the order. Save. An entry whose Product field does not match this product will be excluded even if accidentally selected. Empty names/text and unavailable Draft entries also do not display.
+Open Products → the relevant product → Metafields → Cuehealth reviews → Select entries. Add that product's Active reviews and arrange the order. Save. An entry whose Product field does not match this product will be excluded even if accidentally selected. Empty names/text and unavailable Draft entries also do not display. Products without reviews show a truthful empty state.
 
 Use the actual number supplied; do not fill a target of 50 with fabricated entries. `cuehealth-review-intake.csv` is an empty intake template with headers only, not a Shopify import file. Store original feedback, evidence and claim flags privately; publish only approved public fields.
 
@@ -77,7 +77,7 @@ Open its action menu → Edit code:
 
 Do not paste Markdown fences or rename the assets. No changes to layout/theme.liquid or main-product.liquid are needed.
 
-Online Store → Themes → the duplicate → Customize/Edit theme → top template selector → Products → Default product (or the template assigned to your product). Select a product with linked reviews using the preview product selector. Click **Add section → Cuehealth Reviews**. Place it beneath product details. Set heading, summary, photo gallery, reviews per load, dialog, desktop/mobile columns and spacing. Remove the old **Product reviews** placeholder from that template to avoid duplicate review sections. Save.
+Online Store → Themes → the duplicate → Customize/Edit theme → top template selector → Products → Default product (or the template assigned to your product). Select a product with linked reviews using the preview product selector. The repository default product template already includes **Cuehealth Reviews**. For other product templates, click **Add section → Cuehealth Reviews**. Place it beneath product details. Set heading, summary, photo gallery, reviews per load, dialog, desktop/mobile columns and spacing. Remove the old **Product reviews** placeholder from that template to avoid duplicate review sections. Save.
 
 Repeat the section addition for any separate product templates. All products using one template share its section configuration but load their own records. New products need only their review entries and product metafield populated when they use an already configured template.
 

@@ -133,6 +133,21 @@
       "settings": {
         "include_margins": true
       }
+    },
+    "cuehealth_reviews": {
+      "type": "cuehealth-reviews",
+      "settings": {
+        "heading": "Experiences from our community",
+        "show_summary": true,
+        "show_gallery": true,
+        "enable_lightbox": true,
+        "enable_load_more": true,
+        "reviews_per_page": 8,
+        "desktop_columns": 3,
+        "mobile_columns": "1",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
     }
   },
   "order": [
@@ -140,6 +155,7 @@
     "video_testimonials_e9w7UJ",
     "video_fPAKKh",
     "related_products",
+    "cuehealth_reviews",
     "179127442887946162"
   ]
 }
