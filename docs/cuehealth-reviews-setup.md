@@ -2,11 +2,13 @@
 
 ## Status
 
-The local checkout identifies itself as Dawn 15.4.1. Its product template now includes Cuehealth Reviews after related products. An existing Judge.me app section is preserved. The homepage uses a separate `customer-testimonials` section that includes a hardcoded 4.9 average, automatically labels reviews as verified purchases, and provides sample content in presets. Those existing files were not changed. Audit their published content before retaining them alongside this system.
+Verified directly against the store on 2026-10-07: shop name Cuehealth, domain cuehealth.in, Basic plan, currency INR, country India, theme Dawn ("final-cue-health/main", live/MAIN). Pushing to this repo's `main` branch on GitHub auto-deploys straight to that live theme — there is no separate "duplicate theme and paste code" step for this store, and §4 below has been corrected to match.
 
-The Shopify plugin is not connected in this Codex session. The CLI also requested login. The live store, Basic plan, currency, market, products, installed review apps, metaobjects and permissions have **not been verified**. No images or actual customer feedback have been supplied. No store records, uploads, theme pushes or publications have happened.
+The `cuehealth_review` metaobject definition and the `custom.cuehealth_reviews` product metafield definition (§1) have been **created directly via the Shopify Admin API**, with the exact fields and keys this section expects. `sections/cuehealth-reviews.liquid`, `assets/cuehealth-reviews.css/js` and the `product.json` wiring are committed and already live on the storefront.
 
-The new files implement the section locally. A Shopify connection or authenticated theme session is needed to inspect and implement remote setup; actual connector capabilities must be checked after connection. The existence of a Shopify connector does not establish that it supports metaobject creation or theme editing.
+Not yet done, because no real customer data has been supplied: no review entries exist, no customer photos have been uploaded, and no product has any reviews linked. Nothing here publishes a review until real feedback and images are provided.
+
+Separately, `sections/customer-testimonials.liquid` (homepage) has been fixed: its five fabricated testimonials and hardcoded "4.9/5 average" were removed from `templates/index.json`, and the section code no longer computes an average unless real blocks exist. A Judge.me app is also installed and its block is on the product template, but it is currently configured with `review_data: "sample_data"`, which shows Judge.me's demo reviews, not real ones — still needs to be switched over once Judge.me has real reviews or dropped in favor of this system.
 
 ## Architecture
 
@@ -20,13 +22,13 @@ Official references:
 - https://shopify.dev/docs/apps/build/metafields/metafield-limits
 - https://shopify.dev/docs/api/liquid/tags/paginate
 
-## 1. Create the data definition
+## 1. Data definition — done
 
-In Shopify Admin → Settings → Custom data → Metaobjects → Add definition (some admin versions also expose this through Content → Metaobjects → Add definition):
+Created via API on 2026-10-07:
+- Metaobject definition `cuehealth_review`: `gid://shopify/MetaobjectDefinition/25435406435`, display name field `reviewer_name`, storefront access `PUBLIC_READ`.
+- Product metafield definition `custom.cuehealth_reviews`: `gid://shopify/MetafieldDefinition/298886922339`, type `list.metaobject_reference` restricted to `cuehealth_review`, pinned, storefront access `PUBLIC_READ`.
 
-Name: **Cuehealth Review**. Type: **cuehealth_review**. Select reviewer_name as the display-name field. Enable storefront access and the Active/Draft capability. Keep entries Draft until their feedback, photo permission and any verification evidence have been reviewed. Enable storefront access for public fields. Do not put private original screenshots, phone numbers, purchase evidence or consent evidence in these publicly readable records.
-
-Use these exact field keys. Select the equivalent type label in the current Shopify admin:
+The publishable capability is enabled on the definition, so every entry has a Draft/Active status in Shopify Admin. New entries default to Draft and are excluded from the storefront automatically until switched to Active — create entries as Draft, check the claim against the original feedback, then activate. The field table below is for reference when editing entries in Shopify Admin → Content → Metaobjects → Cuehealth Review:
 
 | Display label | Key | Shopify type | Required / validation |
 | --- | --- | --- | --- |
@@ -54,34 +56,25 @@ This is a review-related product metafield only. No changes to prices, inventory
 
 ## 2. Upload photos before creating entries
 
-Shopify Admin → Content → Files → Upload files. Upload the supplied, permission-cleared customer photos first. Prefer properly oriented square JPEG/WebP images around 1000–1200 pixels, without private WhatsApp interface details. Keep the full uncropped source privately if needed. Shopify hosts the resulting images; select these image files in each entry's Customer image field. The section derives permanent Shopify CDN URLs with image_url; no local paths are embedded.
+Once real, permission-cleared customer photos are supplied, uploads can be done directly via the Shopify Admin API (`stagedUploadsCreate` + `fileCreate`) — no manual Files-page step needed. Prefer properly oriented square JPEG/WebP images around 1000–1200 pixels, without private WhatsApp interface details. Shopify hosts the resulting images under a permanent CDN URL; the section resolves that via `image_url`, so no local or temporary paths are ever embedded in the review record.
 
-If using an API later, wait until Shopify reports the file ready and select its file ID/reference before creating an image-bearing review record. Do not use a temporary staged-upload URL as the final image URL.
+Manual alternative: Shopify Admin → Content → Files → Upload files, then select the uploaded file in each entry's Customer image field.
 
 ## 3. Create and link genuine reviews
 
-Content → Metaobjects → Cuehealth Review → Add entry. Fill the fields from real supplied feedback. Leave rating empty if it was not supplied or clearly supported. Map each image to the correct customer and product. Flag potentially problematic health claims for review before setting the entry Active; don't silently replace customer meaning with a different claim. Use consented public names and locations.
+Entries can be created directly via the `metaobjectCreate` mutation once real feedback is supplied, using the fields above, with status Draft by default. Manual alternative: Content → Metaobjects → Cuehealth Review → Add entry.
 
-Open Products → the relevant product → Metafields → Cuehealth reviews → Select entries. Add that product's Active reviews and arrange the order. Save. An entry whose Product field does not match this product will be excluded even if accidentally selected. Empty names/text and unavailable Draft entries also do not display. Products without reviews show a truthful empty state.
+Fill the fields from real supplied feedback only. Leave rating empty if it was not supplied or clearly supported. Map each image to the correct customer and product. Flag potentially problematic health claims before setting the entry Active; don't silently replace customer meaning with a different claim. Use consented public names and locations.
+
+Open Products → the relevant product → Metafields → Cuehealth reviews → Select entries (or set the product metafield via `metafieldsSet`). Add that product's Active reviews and arrange the order. Save. An entry whose Product field does not match this product will be excluded even if accidentally selected. Empty names/text and Draft entries also do not display. Products without reviews show a truthful empty state.
 
 Use the actual number supplied; do not fill a target of 50 with fabricated entries. `cuehealth-review-intake.csv` is an empty intake template with headers only, not a Shopify import file. Store original feedback, evidence and claim flags privately; publish only approved public fields.
 
-## 4. Install the three theme files
+## 4. Theme files — done, deployed automatically
 
-Online Store → Themes → duplicate the current Dawn theme using its action menu. Work on that duplicate.
+This store's GitHub repo is connected to Shopify so that every push to `main` deploys straight to the live theme ("final-cue-health/main"). There is no duplicate-theme step for this store: `sections/cuehealth-reviews.liquid`, `assets/cuehealth-reviews.css`, `assets/cuehealth-reviews.js` and the `cuehealth_reviews` section entry in `templates/product.json` are already committed and confirmed present on the live theme.
 
-Open its action menu → Edit code:
-1. Under Sections, create `cuehealth-reviews.liquid`. Paste the complete contents of the local `sections/cuehealth-reviews.liquid` and save.
-2. Under Assets, create `cuehealth-reviews.css`. Paste the complete local CSS and save.
-3. Under Assets, create `cuehealth-reviews.js`. Paste the complete local JavaScript and save.
-
-Do not paste Markdown fences or rename the assets. No changes to layout/theme.liquid or main-product.liquid are needed.
-
-Online Store → Themes → the duplicate → Customize/Edit theme → top template selector → Products → Default product (or the template assigned to your product). Select a product with linked reviews using the preview product selector. The repository default product template already includes **Cuehealth Reviews**. For other product templates, click **Add section → Cuehealth Reviews**. Place it beneath product details. Set heading, summary, photo gallery, reviews per load, dialog, desktop/mobile columns and spacing. Remove the old **Product reviews** placeholder from that template to avoid duplicate review sections. Save.
-
-Repeat the section addition for any separate product templates. All products using one template share its section configuration but load their own records. New products need only their review entries and product metafield populated when they use an already configured template.
-
-Preview and complete the checks below. Publish the duplicate only when satisfied. Creating these local files or saving a draft theme does not make the section live.
+The default `product.json` controls every product using the default product template, which is all three current products (Periods Care, Shilajit, EverYoung). A product only needs its own metafield populated (§3) to show reviews — no further theme edit is needed per product. If a future product uses a different template, add the section there with **Theme editor → that template → Add section → Cuehealth Reviews**, placed beneath product details.
 
 ## Maintenance
 
