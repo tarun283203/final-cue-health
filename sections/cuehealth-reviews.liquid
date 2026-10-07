@@ -85,7 +85,13 @@
           <div data-cue-dialog-content></div>
         </dialog>
       {% endif %}
-    {% else %}<p>No customer reviews for {{ product.title | escape }} yet.</p>{% if request.design_mode %}<p>Add genuine review entries and link them in this product’s Cuehealth reviews metafield.</p>{% endif %}{% endif %}
+    {% else %}
+      <div class="cue-reviews-empty">
+        <p>No customer reviews for {{ product.title | escape }} yet.</p>
+        <a class="cue-reviews-empty__cta" href="https://wa.me/917455918832?text={{ 'Hi! I have used this product and would like to share my experience.' | url_encode }}" target="_blank" rel="noopener">Share your experience on WhatsApp</a>
+        {% if request.design_mode %}<p class="cue-reviews-empty__hint">Add genuine review entries and link them in this product’s Cuehealth reviews metafield.</p>{% endif %}
+      </div>
+    {% endif %}
   </div>
 </cuehealth-reviews>
 {%- endif -%}
