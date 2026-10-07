@@ -1,3 +1,30 @@
+function resizeImage(file, maxDim, quality) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    const reader = new FileReader();
+    reader.onerror = reject;
+    reader.onload = () => {
+      img.onerror = reject;
+      img.onload = () => {
+        let { width, height } = img;
+        if (width > maxDim || height > maxDim) {
+          const scale = maxDim / Math.max(width, height);
+          width = Math.round(width * scale);
+          height = Math.round(height * scale);
+        }
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext('2d').drawImage(img, 0, 0, width, height);
+        const dataUrl = canvas.toDataURL('image/jpeg', quality);
+        resolve({ base64: dataUrl.split(',')[1], mimeType: 'image/jpeg' });
+      };
+      img.src = reader.result;
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
 (() => {
   if (customElements.get('cuehealth-reviews')) return;
   customElements.define('cuehealth-reviews', class extends HTMLElement {
@@ -49,6 +76,54 @@
         if (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom) this.dialog.close();
       }, { signal });
       this.dialog?.addEventListener('close', () => this.opener?.focus(), { signal });
+
+      this.writeToggle = this.querySelector('[data-cue-write-toggle]');
+      this.writeForm = this.querySelector('[data-cue-write-form]');
+      this.writeStatus = this.querySelector('[data-cue-write-status]');
+      this.writeToggle?.addEventListener('click', () => {
+        this.writeForm.hidden = !this.writeForm.hidden;
+        if (!this.writeForm.hidden) this.writeForm.querySelector('input,select,textarea')?.focus();
+      }, { signal });
+      this.writeForm?.addEventListener('submit', event => this.submitReview(event), { signal });
+    }
+    async submitReview(event) {
+      event.preventDefault();
+      const form = event.target;
+      const submitUrl = form.dataset.submitUrl;
+      const productId = form.dataset.productId;
+      const submitBtn = form.querySelector('.cue-reviews-write__submit');
+      const status = this.writeStatus;
+      submitBtn.disabled = true;
+      status.textContent = 'Submitting…';
+      try {
+        const fileInput = form.querySelector('input[type="file"]');
+        const file = fileInput?.files?.[0];
+        let imageBase64 = '', imageFilename = '', imageMimeType = '';
+        if (file) {
+          const resized = await resizeImage(file, 1000, 0.8);
+          imageBase64 = resized.base64;
+          imageFilename = file.name.replace(/[^\w.\-]/g, '_');
+          imageMimeType = resized.mimeType;
+        }
+        const data = new URLSearchParams({
+          productId,
+          name: form.name.value,
+          location: form.location.value,
+          rating: form.rating.value,
+          reviewText: form.reviewText.value,
+          imageBase64,
+          imageFilename,
+          imageMimeType
+        });
+        await fetch(submitUrl, { method: 'POST', mode: 'no-cors', body: data });
+        status.textContent = 'Thank you! Your review will appear after we check it.';
+        form.reset();
+        setTimeout(() => { form.hidden = true; }, 1600);
+      } catch (err) {
+        status.textContent = 'Something went wrong. Please try again.';
+      } finally {
+        submitBtn.disabled = false;
+      }
     }
     update() {
       this.cards.forEach((card, index) => { card.hidden = index >= this.visible; });

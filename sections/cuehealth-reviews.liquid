@@ -105,7 +105,49 @@
         </div>
       {% endif %}
       {% if demo_mode %}<p class="cue-reviews-disclosure"><strong>SAMPLE/DEMO preview only.</strong> These are layout placeholders, not customer testimonials. Images are product photos. Demos are hidden on the public storefront and excluded from customer counts and ratings.</p>{% endif %}
+      {%- if section.settings.submit_url != blank -%}
+        <button type="button" class="cue-reviews-write__toggle" data-cue-write-toggle>Write a review</button>
+      {%- endif -%}
     </header>
+    {%- if section.settings.submit_url != blank -%}
+      <form class="cue-reviews-write__form" data-cue-write-form hidden data-submit-url="{{ section.settings.submit_url }}" data-product-id="{{ product.id }}">
+        <div class="cue-reviews-write__row">
+          <div class="cue-reviews-write__field">
+            <label for="CueReviewName-{{ section.id }}">Your name</label>
+            <input id="CueReviewName-{{ section.id }}" name="name" type="text" required maxlength="80" autocomplete="name">
+          </div>
+          <div class="cue-reviews-write__field">
+            <label for="CueReviewLocation-{{ section.id }}">City (optional)</label>
+            <input id="CueReviewLocation-{{ section.id }}" name="location" type="text" maxlength="60">
+          </div>
+        </div>
+        <div class="cue-reviews-write__field">
+          <label for="CueReviewRating-{{ section.id }}">Rating</label>
+          <select id="CueReviewRating-{{ section.id }}" name="rating" required>
+            <option value="">Select</option>
+            <option value="5">5 — Excellent</option>
+            <option value="4">4 — Good</option>
+            <option value="3">3 — Okay</option>
+            <option value="2">2 — Poor</option>
+            <option value="1">1 — Very poor</option>
+          </select>
+        </div>
+        <div class="cue-reviews-write__field">
+          <label for="CueReviewText-{{ section.id }}">Your review</label>
+          <textarea id="CueReviewText-{{ section.id }}" name="reviewText" rows="4" required maxlength="1000"></textarea>
+        </div>
+        <div class="cue-reviews-write__field">
+          <label for="CueReviewPhoto-{{ section.id }}">Add a photo (optional)</label>
+          <input id="CueReviewPhoto-{{ section.id }}" name="photo" type="file" accept="image/*">
+        </div>
+        <label class="cue-reviews-write__consent">
+          <input type="checkbox" required>
+          <span>This is my honest experience, and I agree Cuehealth may publish it after review.</span>
+        </label>
+        <button type="submit" class="cue-reviews-write__submit">Submit review</button>
+        <p class="cue-reviews-write__status" role="status" aria-live="polite" data-cue-write-status></p>
+      </form>
+    {%- endif -%}
     {% if section.settings.show_gallery and photos != blank %}<nav class="cue-reviews-gallery" aria-label="Customer photo reviews">{{ photos }}</nav>{% endif %}
     {% if review_count > 0 or demo_mode %}
       <div class="cue-reviews-grid" data-cue-grid>{{ cards }}</div>
@@ -227,6 +269,12 @@
       "label": "Show demo cards in editor",
       "default": true,
       "info": "Only when no genuine reviews exist. Product photos and sample text are never shown publicly."
+    },
+    {
+      "type": "url",
+      "id": "submit_url",
+      "label": "Review submission URL",
+      "info": "The deployed Apps Script /exec URL from google-apps-script/review-api.gs. The 'Write a review' button is hidden until this is set."
     }
   ],
   "presets": [

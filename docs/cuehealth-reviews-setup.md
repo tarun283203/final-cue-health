@@ -10,9 +10,25 @@ Not yet done, because no real customer data has been supplied: no review entries
 
 Separately, `sections/customer-testimonials.liquid` (homepage) has been fixed: its five fabricated testimonials and hardcoded "4.9/5 average" were removed from `templates/index.json`, and the section code no longer computes an average unless real blocks exist. A Judge.me app is also installed and its block is on the product template, but it is currently configured with `review_data: "sample_data"`, which shows Judge.me's demo reviews, not real ones — still needs to be switched over once Judge.me has real reviews or dropped in favor of this system.
 
+## 0. On-site submission API (POST + GET)
+
+Added 2026-10-07: `google-apps-script/review-api.gs` is a self-hosted API (deployed on Google Apps Script, not a Shopify app) that lets a site visitor write a review directly on the product page, instead of only through WhatsApp or admin entry.
+
+- **POST** (submission): the "Write a review" form on each product page sends name, rating, review text, optional city, and an optional photo (resized to max 1000px client-side and base64-encoded) to the deployed `/exec` URL. The script uploads the photo to Shopify Files, creates a **Draft** `cuehealth_review` metaobject, and appends it to that product's `custom.cuehealth_reviews` metafield. Nothing becomes visible until you set the entry Active in Shopify Admin.
+- **GET** (listing): `?productId=<id>` returns the product's **Active** reviews as JSON (or JSONP with `&callback=`). The storefront itself doesn't need this — the Liquid section already server-renders Active reviews at page load — but it's there for verification, testing, or future use outside this theme.
+
+Setup (one-time, by you — this requires revealing a Shopify Admin API access token, which only you can generate):
+1. Shopify Admin → Settings → Apps and sales channels → Develop apps → Create an app → Configure Admin API scopes. Enable: `read_products`, `write_products`, `read_metaobjects`, `write_metaobjects`, `read_files`, `write_files`. Install the app, then reveal the Admin API access token.
+2. In a new Google Sheet → Extensions → Apps Script, paste the contents of `google-apps-script/review-api.gs` as `Code.gs`.
+3. In that Apps Script project: Project Settings → Script properties → add `SHOPIFY_STORE` (e.g. `cuehealth.in`) and `SHOPIFY_ADMIN_TOKEN` (the token from step 1). Never put the token in this repo or in any client-side code.
+4. Deploy → New deployment → Web app. Execute as "Me", access "Anyone". Copy the `/exec` URL.
+5. Shopify Admin → Online Store → Themes → Customize → open a product page → Cuehealth Reviews section → paste that URL into **"Review submission URL"**. The "Write a review" button stays hidden on every product until this is set.
+
+Until step 5 is done, the section behaves exactly as before (empty-state card with the WhatsApp link, no "Write a review" button).
+
 ## Architecture
 
-Customer feedback → merchant-owned `cuehealth_review` metaobject → Shopify image file reference → product metafield `custom.cuehealth_reviews` (ordered list of metaobject references) → `cuehealth-reviews` Liquid section.
+Customer feedback → merchant-owned `cuehealth_review` metaobject → Shopify image file reference → product metafield `custom.cuehealth_reviews` (ordered list of metaobject references) → `cuehealth-reviews` Liquid section. The new §0 API is an additional, optional front door into the same metaobject, alongside manual admin entry.
 
 A product list avoids scanning all reviews in the store. Product references inside the entries provide an additional filter. Featured photos lead the gallery; review cards retain the product list order. Rating averages include only ratings present and in the 1–5 range. Unrated reviews count toward the review count but not the rating denominator. There is no invented average, customer count or verification label. A visible statement explains that Cuehealth publishes the feedback on customers’ behalf.
 
