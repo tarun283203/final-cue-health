@@ -1,10 +1,7 @@
 /*
  * ------------------------------------------------------------
  * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
+ * This file may be updated by the Shopify admin theme editor.
  * ------------------------------------------------------------
  */
 {
@@ -40,7 +37,7 @@
         "content_position": "left",
         "eyebrow": "Ancient Wisdom. Modern Science.",
         "heading": "<p>Your Cue to <em>Healthy Life</em></p>",
-        "description": "FSSAI approved Ayurvedic supplements \u2014 rooted in 5,000 years of tradition, validated by modern science. No fillers, no compromise.",
+        "description": "FSSAI approved Ayurvedic supplements — rooted in 5,000 years of tradition, validated by modern science. No fillers, no compromise.",
         "btn1_label": "Shop Ayurvedic Products",
         "btn1_link": "shopify://collections/all",
         "btn2_label": "Free Consultation",
@@ -77,7 +74,7 @@
           "type": "badge",
           "settings": {
             "icon": "truck",
-            "label": "Free Shipping \u20b9499+"
+            "label": "Free Shipping ₹499+"
           }
         },
         "badge_5": {
@@ -142,7 +139,7 @@
             "fa_icon": "fa-seedling",
             "name": "Ashwagandha",
             "sanskrit": "Withania somnifera",
-            "benefit": "India's most powerful adaptogen \u2014 reduces cortisol, builds strength, and restores vitality naturally.",
+            "benefit": "India's most powerful adaptogen — reduces cortisol, builds strength, and restores vitality naturally.",
             "tags": "Stress Relief, Energy, Strength"
           }
         },
@@ -162,7 +159,7 @@
             "fa_icon": "fa-brain",
             "name": "Brahmi",
             "sanskrit": "Bacopa monnieri",
-            "benefit": "Sacred brain tonic \u2014 enhances memory, focus, and cognitive function while calming the nervous system.",
+            "benefit": "Sacred brain tonic — enhances memory, focus, and cognitive function while calming the nervous system.",
             "tags": "Brain Health, Memory, Focus"
           }
         },
@@ -172,7 +169,7 @@
             "fa_icon": "fa-mountain",
             "name": "Shilajit",
             "sanskrit": "Asphaltum punjabianum",
-            "benefit": "Himalayan mineral resin rich in fulvic acid \u2014 boosts energy, stamina, and vitality.",
+            "benefit": "Himalayan mineral resin rich in fulvic acid — boosts energy, stamina, and vitality.",
             "tags": "Energy, Vitality, Men's Health"
           }
         },
@@ -182,7 +179,7 @@
             "fa_icon": "fa-spa",
             "name": "Shatavari",
             "sanskrit": "Asparagus racemosus",
-            "benefit": "Queen of Ayurvedic herbs for women \u2014 balances hormones, supports fertility, and enhances vitality.",
+            "benefit": "Queen of Ayurvedic herbs for women — balances hormones, supports fertility, and enhances vitality.",
             "tags": "Women's Health, Hormones, Fertility"
           }
         },
@@ -245,7 +242,7 @@
           "settings": {
             "icon": "truck",
             "title": "Delivered with Care",
-            "description": "Packaged in eco-friendly materials and shipped pan-India in 3\u20137 working days, free on orders above \u20b9499."
+            "description": "Packaged in eco-friendly materials and shipped pan-India in 3–7 working days, free on orders above ₹499."
           }
         }
       },
@@ -329,7 +326,7 @@
           "settings": {
             "icon": "leaf",
             "title": "100% Ayurvedic",
-            "description": "Authentic herbs from certified sources \u2014 no synthetic compounds, no artificial fillers."
+            "description": "Authentic herbs from certified sources — no synthetic compounds, no artificial fillers."
           }
         },
         "u2": {
@@ -353,7 +350,7 @@
           "settings": {
             "icon": "microscope",
             "title": "Third-Party Lab Tested",
-            "description": "Independent lab testing for heavy metals, microbials, and potency \u2014 results published transparently."
+            "description": "Independent lab testing for heavy metals, microbials, and potency — results published transparently."
           }
         },
         "u5": {
@@ -361,7 +358,7 @@
           "settings": {
             "icon": "truck",
             "title": "Fast Pan-India Delivery",
-            "description": "Free shipping on orders above \u20b9499. Delivered across India in 3\u20137 working days."
+            "description": "Free shipping on orders above ₹499. Delivered across India in 3–7 working days."
           }
         },
         "u6": {
@@ -369,7 +366,7 @@
           "settings": {
             "icon": "return",
             "title": "7-Day Easy Returns",
-            "description": "Not satisfied? Return within 7 days for a full, hassle-free refund \u2014 no questions asked."
+            "description": "Not satisfied? Return within 7 days for a full, hassle-free refund — no questions asked."
           }
         }
       },
@@ -393,7 +390,7 @@
       "settings": {
         "eyebrow": "Free Ayurvedic Consultation",
         "heading": "<p>Not Sure Which Supplement <em>is Right for You?</em></p>",
-        "description": "Our certified Ayurvedic wellness advisors are here to guide you \u2014 completely free, no obligation. Get personalised supplement recommendations tailored to your prakriti and health goals.",
+        "description": "Our certified Ayurvedic wellness advisors are here to guide you — completely free, no obligation. Get personalised supplement recommendations tailored to your prakriti and health goals.",
         "btn_wa_label": "Chat with an Expert",
         "whatsapp_message": "Hi! I'd like a free Ayurvedic consultation to find the right CueHealth supplements for me.",
         "btn_learn_label": "Explore Products",
@@ -406,7 +403,7 @@
         "v1": {
           "type": "video_testimonial",
           "settings": {
-            "video_url": "",
+            "video_url": "https://www.youtube.com/watch?v=OEPrvmhF9Vc",
             "customer_name": "Rani",
             "customer_location": "Mumbai",
             "rating": 5,
@@ -495,7 +492,7 @@
         "subtext": {
           "type": "paragraph",
           "settings": {
-            "text": "<p>Get ancient wisdom delivered to your inbox \u2014 Ayurvedic tips, herb spotlights, and exclusive offers.</p>"
+            "text": "<p>Get ancient wisdom delivered to your inbox — Ayurvedic tips, herb spotlights, and exclusive offers.</p>"
           }
         }
       },
