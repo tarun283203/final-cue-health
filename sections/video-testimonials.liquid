@@ -57,28 +57,38 @@
               </div>
             {%- endif -%}
 
-            <span class="ch-video-testimonials__tag">
-              <i class="fa-solid fa-check" aria-hidden="true"></i>
-              Verified customer
-            </span>
+            {%- if block.settings.video_url != blank -%}
+              <span class="ch-video-testimonials__tag">
+                <i class="fa-solid fa-circle-play" aria-hidden="true"></i>
+                Video testimonial
+              </span>
+            {%- endif -%}
           </div>
 
           <div class="ch-video-testimonials__body">
-            <div class="ch-video-testimonials__stars" aria-label="{{ block.settings.rating }} out of 5 stars">
-              {%- assign rating = block.settings.rating | times: 1 -%}
-              {%- for i in (1..5) -%}
-                <i class="fa-solid fa-star{% if i > rating %} ch-video-testimonials__star--muted{% endif %}" aria-hidden="true"></i>
-              {%- endfor -%}
-            </div>
+            {%- assign rating = block.settings.rating | times: 1 -%}
+            {%- if rating > 0 -%}
+              <div class="ch-video-testimonials__stars" aria-label="{{ rating }} out of 5 stars">
+                {%- for i in (1..5) -%}
+                  <i class="fa-solid fa-star{% if i > rating %} ch-video-testimonials__star--muted{% endif %}" aria-hidden="true"></i>
+                {%- endfor -%}
+              </div>
+            {%- endif -%}
 
             {%- if block.settings.quote != blank -%}
               <p class="ch-video-testimonials__quote">"{{ block.settings.quote | escape }}"</p>
             {%- endif -%}
 
-            <div class="ch-video-testimonials__author">
-              <strong>{{ block.settings.customer_name | escape }}</strong>
-              <span>{{ block.settings.customer_location | escape }}</span>
-            </div>
+            {%- if block.settings.customer_name != blank or block.settings.customer_location != blank -%}
+              <div class="ch-video-testimonials__author">
+                {%- if block.settings.customer_name != blank -%}
+                  <strong>{{ block.settings.customer_name | escape }}</strong>
+                {%- endif -%}
+                {%- if block.settings.customer_location != blank -%}
+                  <span>{{ block.settings.customer_location | escape }}</span>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
           </div>
         </article>
       {%- endfor -%}
@@ -178,7 +188,7 @@
         {
           "type": "range",
           "id": "rating",
-          "min": 1,
+          "min": 0,
           "max": 5,
           "step": 1,
           "label": "Rating",
